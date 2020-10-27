@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b74aa1a4-0c3d-49bb-bb5f-60b0f158bef4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/zuul-framework/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/out/production/zuul-framework/README.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/out/production/zuul-framework/worldofzuul/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/out/production/zuul-framework/worldofzuul/CommandWord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/out/production/zuul-framework/worldofzuul/CommandWords.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/out/production/zuul-framework/worldofzuul/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/out/production/zuul-framework/worldofzuul/Parser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/out/production/zuul-framework/worldofzuul/Room.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/out/production/zuul-framework/worldofzuul/Start.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/zuul-framework.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/zuul-framework/README.TXT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/zuul-framework/worldofzuul/Command.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/zuul-framework/worldofzuul/CommandWord.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/zuul-framework/worldofzuul/CommandWords.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/zuul-framework/worldofzuul/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/zuul-framework/worldofzuul/Parser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/zuul-framework/worldofzuul/Room.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zuul-framework/zuul-framework/worldofzuul/Start.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +44,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -77,6 +77,18 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1603805144973">
       <screen x="0" y="0" width="1536" height="864" />
@@ -94,5 +106,17 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1603805144973" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1603805211672">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1603805211672" />
+    <state x="586" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603805423204">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="586" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1603805423204" />
+    <state x="392" y="52" key="new project wizard" timestamp="1603805415983">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="392" y="52" key="new project wizard/0.0.1536.864@0.0.1536.864" timestamp="1603805415983" />
   </component>
 </project>

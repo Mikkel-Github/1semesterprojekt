@@ -141,6 +141,9 @@ public class Game
         if (commandWord == CommandWord.HELP) {
             printHelp();
         }
+        else if (commandWord == CommandWord.BUY){
+            buyItem(command);
+        }
         else if (commandWord == CommandWord.GO) {
             goRoom(command);
         }
@@ -158,7 +161,14 @@ public class Game
         System.out.println("Your command words are:");
         parser.showCommands();
     }
+    private void buyItem(Command command)
+    {
+        if(!command.hasSecondWord()){
+            System.out.println("Buy what?");
+            return;
+        }
 
+    }
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {

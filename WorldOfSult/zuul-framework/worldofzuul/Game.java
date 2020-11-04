@@ -120,18 +120,7 @@ public class Game
         System.out.println("World of Sult handler om FN's 2. verdensmål, 'Stop Sult'.");
         System.out.println("* Informationer omkring emnet *");
 
-        // 5 seconds delay
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("Tryk på en knap for at forsætte");
-        boolean finished = false;
-        while (! finished) {
-            
-        }
+        
 
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();

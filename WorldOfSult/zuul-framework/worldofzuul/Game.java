@@ -1,15 +1,11 @@
 package worldofzuul;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
-
 public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+    private Player playerManager = new Player();
+
 
     public Game() 
     {

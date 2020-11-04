@@ -20,13 +20,13 @@ public class Game
 
     private void createRooms()
     {
-        Room outside, theatre, pub, lab, office;
+        Room outside, theatre, markedsplads, kornoggrønt, kød;
       
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab!");
-        office = new Room("in the computing admin office");
+        //outside = new Room("outside the main entrance of the university");
+        //theatre = new Room("in a lecture theatre");
+        markedsplads = new Room("in the campus pub");
+        kornoggrønt = new Room("in a computing lab!");
+        kød = new Room("in the computing admin office");
         
         outside.setExit("east", theatre);
         outside.setExit("south", lab);
@@ -34,12 +34,13 @@ public class Game
 
         theatre.setExit("west", outside);
 
-        pub.setExit("east", outside);
+        markedsplads.setExit("humans", humans);
+        markedsplads.setExit("kornoggrønt", kornoggrønt);
+        markedsplads.setExit("kød", kød);
 
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
+        kornoggrønt.setExit("markedsplads", markedsplads);
 
-        office.setExit("west", lab);
+        kød.setExit("markedsplads", markedsplads);
 
         currentRoom = outside;
     }
@@ -167,6 +168,9 @@ public class Game
             System.out.println("Buy what?");
             return;
         }
+        String item = command.getSecondWord();
+
+
 
     }
     private void goRoom(Command command) 

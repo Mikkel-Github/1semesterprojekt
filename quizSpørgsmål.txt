@@ -1,0 +1,3 @@
+Spørgsmål 1,Svar A1,Svar B1,Svar C1,Svar D1,:
+Spørgsmål 2,Svar A2,Svar B2,Svar C2,Svar D2,:
+Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3,:

@@ -3,8 +3,6 @@ package worldofzuul;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import static worldofzuul.CommandWord.INVENTORY;
-
 public class Game
 {
     private Parser parser;
@@ -45,6 +43,7 @@ public class Game
 
         currentRoom = markedsplads;
 
+        // TEST af inventory
         playerManager.addItemToInventory("computer");
     }
 
@@ -155,7 +154,7 @@ public class Game
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
-        else if (commandWord == INVENTORY) {
+        else if (commandWord == CommandWord.INVENTORY) {
             //opens inventory
             ArrayList<String> temp = playerManager.getItemsFromInventory();
             for (String n : temp) {
@@ -180,8 +179,6 @@ public class Game
                 System.out.println("Hello I am " + child.name + " " + child.age + " i need ....");
             }
         }
-
-
         return wantToQuit;
     }
 

@@ -4,8 +4,8 @@ public class Item {
     String description;
 
     //constructor
-    public Item(String newdescription) {
-        description = newdescription;
+    public Item(String newDescription) {
+        description = newDescription;
     }
 
     public String getDescription() {

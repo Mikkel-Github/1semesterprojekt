@@ -1,0 +1,2 @@
+kylling,ged,fisk;
+yams,kassava,ris;

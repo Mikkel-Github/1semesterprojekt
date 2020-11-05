@@ -12,7 +12,7 @@ public class Game
     private Player playerManager = new Player();
     private ArrayList<String> quizList = new ArrayList<String>();
     private ArrayList<String> quizAnswers = new ArrayList<String>();
-
+    private Items items = new Items();
 
     public Game() 
     {
@@ -23,20 +23,20 @@ public class Game
 
     private void createRooms()
     {
-        Room markedsplads, kornoggrønt, kød, humans, quiz;
+        Room markedsplads, frugtoggrønt, kød, humans, quiz;
 
 
-        markedsplads = new Room("in the campus pub");
-        kornoggrønt = new Room("in a computing lab!");
-        kød = new Room("in the computing admin office");
+        markedsplads = new Room("Du er nu ved markedspladsen");
+        frugtoggrønt = new Room("Her kan du købe frugt og grønt");
+        kød = new Room("Her kan du købe kød");
         humans = new Room("In a room with people who needs your help to get the correct food and supplements.");
         quiz = new Room("in the quiz room");
 
         //markedsplads.setExit("humans", humans);
-        markedsplads.setExit("kornoggrønt", kornoggrønt);
+        markedsplads.setExit("kornoggrønt", frugtoggrønt);
         markedsplads.setExit("kød", kød);
 
-        kornoggrønt.setExit("markedsplads", markedsplads);
+        frugtoggrønt.setExit("markedsplads", markedsplads);
 
         kød.setExit("markedsplads", markedsplads);
 
@@ -240,6 +240,7 @@ public class Game
             return;
         }
         String item = command.getSecondWord();
+        items.items();
 
 
 

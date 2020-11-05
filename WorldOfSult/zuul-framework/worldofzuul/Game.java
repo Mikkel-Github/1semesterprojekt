@@ -12,6 +12,7 @@ public class Game
     private Player playerManager = new Player();
     private ArrayList<String> quizList = new ArrayList<String>();
     private ArrayList<String> quizAnswers = new ArrayList<String>();
+    Room village;
 
 
     public Game() 
@@ -31,6 +32,7 @@ public class Game
         kød = new Room("in the computing admin office");
         humans = new Room("In a room with people who needs your help to get the correct food and supplements.");
         quiz = new Room("in the quiz room");
+        village = new Room("In a room with three people who needs your help to get the correct food and supplements.");
 
         //markedsplads.setExit("humans", humans);
         markedsplads.setExit("kornoggrønt", kornoggrønt);
@@ -42,7 +44,12 @@ public class Game
 
         humans.setExit("markedsplads", markedsplads);
 
+        village.setExit("markedsplads", markedsplads);
+
         currentRoom = markedsplads;
+
+        // TEST af inventory
+        playerManager.addItemToInventory("computer");
     }
 
     public void startMenu() {
@@ -152,6 +159,31 @@ public class Game
         else if (commandWord == CommandWord.GO) {
             goRoom(command);
         }
+        else if (commandWord == CommandWord.INVENTORY) {
+            //opens inventory
+            ArrayList<String> temp = playerManager.getItemsFromInventory();
+            for (String n : temp) {
+                System.out.println(n);
+            }
+        }
+        else if (commandWord == CommandWord.MALE){
+            if (currentRoom == village){
+                Humans male = new Humans("Male", 30);
+                System.out.println("Hello I am " + male.name + " " + male.age + " i need ....");
+            }
+        }
+        else if (commandWord == CommandWord.FEMALE){
+            if (currentRoom == village){
+                Humans female = new Humans("Female", 30);
+                System.out.println("Hello I am " + female.name + " " + female.age + " i need ....");
+            }
+        }
+        else if (commandWord == CommandWord.CHILD){
+            if (currentRoom == village){
+                Humans child = new Humans("Child", 2);
+                System.out.println("Hello I am " + child.name + " " + child.age + " i need ....");
+            }
+        }
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
@@ -240,10 +272,8 @@ public class Game
             return;
         }
         String item = command.getSecondWord();
-
-
-
     }
+
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {

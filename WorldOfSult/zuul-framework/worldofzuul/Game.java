@@ -24,25 +24,23 @@ public class Game
 
     private void createRooms()
     {
-        Room markedsplads, kornoggrønt, kød, humans, quiz;
+        Room markedsplads, kornoggrønt, kød, quiz;
 
 
         markedsplads = new Room("in the campus pub");
         kornoggrønt = new Room("in a computing lab!");
         kød = new Room("in the computing admin office");
-        humans = new Room("In a room with people who needs your help to get the correct food and supplements.");
         quiz = new Room("in the quiz room");
         village = new Room("In a room with three people who needs your help to get the correct food and supplements.");
 
         //markedsplads.setExit("humans", humans);
         markedsplads.setExit("kornoggrønt", kornoggrønt);
         markedsplads.setExit("kød", kød);
+        markedsplads.setExit("village", village);
 
         kornoggrønt.setExit("markedsplads", markedsplads);
 
         kød.setExit("markedsplads", markedsplads);
-
-        humans.setExit("markedsplads", markedsplads);
 
         village.setExit("markedsplads", markedsplads);
 

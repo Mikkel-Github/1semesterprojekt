@@ -16,13 +16,13 @@ public class Game
 
     private void createRooms()
     {
-        Room markedsplads, kornoggrønt, kød;
-      
+        Room markedsplads, kornoggrønt, kød, humans;
+
 
         markedsplads = new Room("in the campus pub");
         kornoggrønt = new Room("in a computing lab!");
         kød = new Room("in the computing admin office");
-
+        humans = new Room("In a room with people who needs your help to get the correct food and supplements.");
 
         //markedsplads.setExit("humans", humans);
         markedsplads.setExit("kornoggrønt", kornoggrønt);
@@ -31,6 +31,8 @@ public class Game
         kornoggrønt.setExit("markedsplads", markedsplads);
 
         kød.setExit("markedsplads", markedsplads);
+
+        humans.setExit("markedsplads", markedsplads);
 
         currentRoom = markedsplads;
     }

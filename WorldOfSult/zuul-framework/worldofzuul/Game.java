@@ -10,6 +10,8 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Player playerManager = new Player();
+    Room village;
+
 
 
     public Game() 
@@ -21,23 +23,25 @@ public class Game
 
     private void createRooms()
     {
-        Room markedsplads, kornoggrønt, kød, humans;
+        Room markedsplads, kornoggrønt, kød;
 
 
         markedsplads = new Room("in the campus pub");
         kornoggrønt = new Room("in a computing lab!");
         kød = new Room("in the computing admin office");
-        humans = new Room("In a room with people who needs your help to get the correct food and supplements.");
+        village = new Room("In a room with three people who needs your help to get the correct food and supplements.");
 
-        //markedsplads.setExit("humans", humans);
+        //markedsplads.setExit("village", village);
         markedsplads.setExit("kornoggrønt", kornoggrønt);
         markedsplads.setExit("kød", kød);
+        markedsplads.setExit("village", village);
 
         kornoggrønt.setExit("markedsplads", markedsplads);
 
         kød.setExit("markedsplads", markedsplads);
 
-        humans.setExit("markedsplads", markedsplads);
+        village.setExit("markedsplads", markedsplads);
+
 
         currentRoom = markedsplads;
 
@@ -158,6 +162,26 @@ public class Game
                 System.out.println(n);
             }
         }
+        else if (commandWord == CommandWord.MALE){
+            if (currentRoom == village){
+                Humans male = new Humans("Male", 30);
+                System.out.println("Hello I am " + male.name + " " + male.age + " i need ....");
+            }
+        }
+        else if (commandWord == CommandWord.FEMALE){
+            if (currentRoom == village){
+                Humans female = new Humans("Female", 30);
+                System.out.println("Hello I am " + female.name + " " + female.age + " i need ....");
+            }
+        }
+        else if (commandWord == CommandWord.CHILD){
+            if (currentRoom == village){
+                Humans child = new Humans("Child", 2);
+                System.out.println("Hello I am " + child.name + " " + child.age + " i need ....");
+            }
+        }
+
+
         return wantToQuit;
     }
 
@@ -199,6 +223,16 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
     }
+
+
+
+
+
+
+
+
+
+
 
     private boolean quit(Command command) 
     {

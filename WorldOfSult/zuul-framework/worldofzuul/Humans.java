@@ -1,18 +1,20 @@
 package worldofzuul;
 
+import java.util.ArrayList;
+
 public class Humans {
-    private String humans;
 
-    public String humans(String humans){
-        this.humans = humans;
-        return this.humans;
+    public String name;
+    public int age;
+
+    public Humans(String p_name, int p_age)
+    {
+        name = p_name;
+        age = p_age;
+
+
     }
 
-    private void setHumans(){
-        this.humans += 2;
-    }
 
-    protected String getHumans(){
-        return this.humans;
-    }
+
 }

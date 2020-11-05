@@ -1,5 +1,10 @@
 package worldofzuul;
 
+import java.io.OutputStream;
+import java.util.ArrayList;
+
+import static worldofzuul.CommandWord.INVENTORY;
+
 public class Game
 {
     private Parser parser;
@@ -35,6 +40,8 @@ public class Game
         humans.setExit("markedsplads", markedsplads);
 
         currentRoom = markedsplads;
+
+        playerManager.addItemToInventory("computer");
     }
 
     public void startMenu() {
@@ -83,6 +90,7 @@ public class Game
         }
         return wantToQuit;
     }
+
 
     public void info() {
         System.out.println("Info");
@@ -142,6 +150,13 @@ public class Game
         }
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
+        }
+        else if (commandWord == INVENTORY) {
+            //opens inventory
+            ArrayList<String> temp = playerManager.getItemsFromInventory();
+            for (String n : temp) {
+                System.out.println(n);
+            }
         }
         return wantToQuit;
     }

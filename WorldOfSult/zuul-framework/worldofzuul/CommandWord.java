@@ -4,7 +4,8 @@ public enum CommandWord
 {
     GO("go"), CONTINUE("continue"), QUIT("quit"),
     HELP("help"), UNKNOWN("?"), START("start"),
-    INFO("info"), SETTINGS("settings"), BUY("buy");
+    INFO("info"), SETTINGS("settings"), BUY("buy"),
+    INVENTORY("inventory");
     
     private String commandString;
     

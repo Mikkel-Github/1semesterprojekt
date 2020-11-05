@@ -20,21 +20,15 @@ public class Game
 
     private void createRooms()
     {
-        Room outside, theatre, markedsplads, kornoggrønt, kød;
+        Room markedsplads, kornoggrønt, kød;
       
-        //outside = new Room("outside the main entrance of the university");
-        //theatre = new Room("in a lecture theatre");
+
         markedsplads = new Room("in the campus pub");
         kornoggrønt = new Room("in a computing lab!");
         kød = new Room("in the computing admin office");
-        
-        outside.setExit("east", theatre);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
 
-        theatre.setExit("west", outside);
 
-        markedsplads.setExit("humans", humans);
+        //markedsplads.setExit("humans", humans);
         markedsplads.setExit("kornoggrønt", kornoggrønt);
         markedsplads.setExit("kød", kød);
 
@@ -42,7 +36,7 @@ public class Game
 
         kød.setExit("markedsplads", markedsplads);
 
-        currentRoom = outside;
+        currentRoom = markedsplads;
     }
 
     public void startMenu() {

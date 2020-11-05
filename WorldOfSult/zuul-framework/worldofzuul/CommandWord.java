@@ -6,7 +6,9 @@ public enum CommandWord
     HELP("help"), UNKNOWN("?"), START("start"),
     INFO("info"), SETTINGS("settings"), BUY("buy"),
     A("a"), B("b"), C("c"), D("d"),
-    QUIZ("quiz");
+    QUIZ("quiz"),
+    INVENTORY("inventory"), MALE("male"), FEMALE("female"),
+    CHILD("child");
     
     private String commandString;
     

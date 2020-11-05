@@ -16,28 +16,23 @@ public class Game
 
     private void createRooms()
     {
-        Room outside, theatre, pub, lab, office;
+        Room markedsplads, kornoggrønt, kød;
       
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab!");
-        office = new Room("in the computing admin office");
-        
-        outside.setExit("east", theatre);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
 
-        theatre.setExit("west", outside);
+        markedsplads = new Room("in the campus pub");
+        kornoggrønt = new Room("in a computing lab!");
+        kød = new Room("in the computing admin office");
 
-        pub.setExit("east", outside);
 
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
+        //markedsplads.setExit("humans", humans);
+        markedsplads.setExit("kornoggrønt", kornoggrønt);
+        markedsplads.setExit("kød", kød);
 
-        office.setExit("west", lab);
+        kornoggrønt.setExit("markedsplads", markedsplads);
 
-        currentRoom = outside;
+        kød.setExit("markedsplads", markedsplads);
+
+        currentRoom = markedsplads;
     }
 
     public void startMenu() {
@@ -137,6 +132,9 @@ public class Game
         if (commandWord == CommandWord.HELP) {
             printHelp();
         }
+        else if (commandWord == CommandWord.BUY){
+            buyItem(command);
+        }
         else if (commandWord == CommandWord.GO) {
             goRoom(command);
         }
@@ -154,7 +152,17 @@ public class Game
         System.out.println("Your command words are:");
         parser.showCommands();
     }
+    private void buyItem(Command command)
+    {
+        if(!command.hasSecondWord()){
+            System.out.println("Buy what?");
+            return;
+        }
+        String item = command.getSecondWord();
 
+
+
+    }
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {

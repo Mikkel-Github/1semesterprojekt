@@ -1,10 +1,17 @@
 package worldofzuul;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+
 public class Game
 {
     private Parser parser;
     private Room currentRoom;
     private Player playerManager = new Player();
+    private ArrayList<String> quizList = new ArrayList<String>();
+    private ArrayList<String> quizAnswers = new ArrayList<String>();
 
 
     public Game() 
@@ -16,13 +23,14 @@ public class Game
 
     private void createRooms()
     {
-        Room markedsplads, kornoggrønt, kød, humans;
+        Room markedsplads, kornoggrønt, kød, humans, quiz;
 
 
         markedsplads = new Room("in the campus pub");
         kornoggrønt = new Room("in a computing lab!");
         kød = new Room("in the computing admin office");
         humans = new Room("In a room with people who needs your help to get the correct food and supplements.");
+        quiz = new Room("in the quiz room");
 
         //markedsplads.setExit("humans", humans);
         markedsplads.setExit("kornoggrønt", kornoggrønt);
@@ -65,8 +73,12 @@ public class Game
             // Starts the game
             play();
         }
+        // DEBUG
+        else if (commandWord == CommandWord.QUIZ) {
+            quiz();
+            return true;
+        }
         else if (commandWord == CommandWord.CONTINUE) {
-            System.out.println("TEST");
             return true;
         }
         else if (commandWord == CommandWord.INFO) {
@@ -139,6 +151,73 @@ public class Game
         }
         else if (commandWord == CommandWord.GO) {
             goRoom(command);
+        }
+        else if (commandWord == CommandWord.QUIT) {
+            wantToQuit = quit(command);
+        }
+        return wantToQuit;
+    }
+
+    private void quiz() {
+        boolean canLoadFile = false;
+        Path fileName = Path.of("quizSpørgsmål.txt");
+        String actual = null;
+        try {
+            actual = Files.readString(fileName);
+            canLoadFile = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            canLoadFile = false;
+            System.out.println("Can't load file");
+        }
+
+        if(canLoadFile) {
+            String[] questionsAndAnswers = actual.split(":");
+            for (String s : questionsAndAnswers) {
+                String[] splitted = s.split(",");
+                for (String x : splitted) {
+                    System.out.println(x);
+                }
+            }
+        }
+
+        boolean finished = false;
+        while (! finished) {
+            Command command = parser.getCommand();
+            finished = processQuizCommand(command);
+        }
+
+    }
+
+    private boolean processQuizCommand(Command command)
+    {
+        boolean wantToQuit = false;
+
+        CommandWord commandWord = command.getCommandWord();
+
+        if(commandWord == CommandWord.UNKNOWN) {
+            System.out.println("I don't know what you mean...");
+            return false;
+        }
+
+        if (commandWord == CommandWord.HELP) {
+            // Printe hjælp til quizen
+        }
+        else if (commandWord == CommandWord.A){
+            // Valg A
+            System.out.println("Player chose A");
+        }
+        else if (commandWord == CommandWord.B) {
+            // Valg B
+            System.out.println("Player chose B");
+        }
+        else if (commandWord == CommandWord.C) {
+            // Valg C
+            System.out.println("Player chose C");
+        }
+        else if (commandWord == CommandWord.D) {
+            // Valg D
+            System.out.println("Player chose D");
         }
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);

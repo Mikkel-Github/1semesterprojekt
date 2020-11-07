@@ -9,6 +9,7 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;
+    private String hints;
 
     public Room(String description) 
     {
@@ -19,6 +20,14 @@ public class Room
     public void setExit(String direction, Room neighbor) 
     {
         exits.put(direction, neighbor);
+    }
+
+    public void setHints(String hint) {
+        hints = hint;
+    }
+
+    public String getHints() {
+        return hints;
     }
 
     public String getShortDescription()

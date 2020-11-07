@@ -26,25 +26,28 @@ public class Game
 
     private void createRooms()
     {
-        Room markedsplads, kornoggrønt, kød, quiz;
+        Room markedsplads, kornoggrønt, kød;
 
 
-        markedsplads = new Room("in the campus pub");
-        kornoggrønt = new Room("in a computing lab!");
-        kød = new Room("in the computing admin office");
-        quiz = new Room("in the quiz room");
+        markedsplads = new Room("Du er på markedspladsen");
+        kornoggrønt = new Room("Du er på korn og grønt markedet");
+        kød = new Room("Du er på kød markedet");
         village = new Room("In a room with three people who needs your help to get the correct food and supplements.");
 
         //markedsplads.setExit("humans", humans);
         markedsplads.setExit("kornoggrønt", kornoggrønt);
         markedsplads.setExit("kød", kød);
         markedsplads.setExit("village", village);
+        markedsplads.setHints("Her kan du vælge i mellem at gå til 'Korn og Grønt', 'Kød-markedet' eller tilbage til 'village'");
 
         kornoggrønt.setExit("markedsplads", markedsplads);
+        kornoggrønt.setHints("Her kan du købe korn og grønt");
 
         kød.setExit("markedsplads", markedsplads);
+        kød.setHints("Her kan du købe kød");
 
         village.setExit("markedsplads", markedsplads);
+        village.setHints("Her er tre mennesker som har brug for din hjælp til at købe næringsrigt mad");
 
         currentRoom = markedsplads;
 
@@ -162,7 +165,9 @@ public class Game
         else if (commandWord == CommandWord.VILLAGE) {
             goToVillage();
         }
-
+        else if (commandWord == CommandWord.HINTS) {
+            System.out.println(currentRoom.getHints());
+        }
         else if (commandWord == CommandWord.PAUSE) {
             pauseGame();
         }

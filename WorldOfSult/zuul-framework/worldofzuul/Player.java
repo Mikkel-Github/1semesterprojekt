@@ -66,7 +66,7 @@ public class Player {
         return playerBalance;
     }
 
-    
+
     ///////////////////////////// PLAYER QUIZ //////////////////////////////////
     // Adds a point to the players score
     public void addPoint() {

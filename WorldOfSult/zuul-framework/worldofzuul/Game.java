@@ -10,8 +10,10 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Player playerManager = new Player();
-    private ArrayList<String> quizList = new ArrayList<String>();
-    private ArrayList<String> quizAnswers = new ArrayList<String>();
+    ArrayList<String> Questionlist = new ArrayList<String>();
+    ArrayList<String> answerList = new ArrayList<String>();
+    int quizNumber = 0;
+    boolean isQuizDone = false;
     Room village;
 
 
@@ -189,6 +191,7 @@ public class Game
     }
 
     private void quiz() {
+        // Load Questions and Answers from file
         boolean canLoadFile = false;
         Path fileName = Path.of("quizSpørgsmål.txt");
         String actual = null;
@@ -201,22 +204,61 @@ public class Game
             System.out.println("Can't load file");
         }
 
+        // Set Questions and Answers up in a list
         if(canLoadFile) {
-            String[] questionsAndAnswers = actual.split(":");
+            int counter = 0;
+            String[] questionsAndAnswers = actual.split(";");
             for (String s : questionsAndAnswers) {
-                String[] splitted = s.split(",");
-                for (String x : splitted) {
-                    System.out.println(x);
+                // It first puts the questions and ansers in the list if counter is an odd number
+                if(counter == 0 || counter % 2 == 0) {
+                    String[] splitted = s.split(",");
+                    for (String x : splitted) {
+                        Questionlist.add(x);
+                    }
                 }
+                else {
+                    // Every other ";" it puts answer in answerList
+                    answerList.add(s);
+                }
+                counter++;
             }
         }
+
+        // First time quiz runs, it asks a question
+        // The other questions are being called from "processQuizCommand
+        askQuestion(quizNumber);
 
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
             finished = processQuizCommand(command);
-        }
 
+            if(isQuizDone) {
+                System.out.println("Du klarede quizen!");
+                System.out.println("Du fik " + playerManager.getPoints() + " rigtige ud af " + answerList.size() + " spørgsmål");
+            }
+        }
+    }
+
+    private void askQuestion(int questionNumber) {
+        if(questionNumber < Questionlist.size()) {
+            for(int i = questionNumber; i < questionNumber + 5; i++) {
+                System.out.println(Questionlist.get(i));
+            }
+        }
+        else {
+            isQuizDone = true;
+        }
+    }
+
+    private void checkQuestion(int questionNumber, String answer) {
+        if(answer.equals(answerList.get(questionNumber - 1))) {
+            System.out.println("Right answer");
+            playerManager.addPoint();
+        }
+        else {
+            System.out.println("Wrong answer");
+        }
     }
 
     private boolean processQuizCommand(Command command)
@@ -236,18 +278,30 @@ public class Game
         else if (commandWord == CommandWord.A){
             // Valg A
             System.out.println("Player chose A");
+            quizNumber += 5;
+            checkQuestion(quizNumber / 5, "a");
+            askQuestion(quizNumber);
         }
         else if (commandWord == CommandWord.B) {
             // Valg B
             System.out.println("Player chose B");
+            quizNumber += 5;
+            checkQuestion(quizNumber / 5, "b");
+            askQuestion(quizNumber);
         }
         else if (commandWord == CommandWord.C) {
             // Valg C
             System.out.println("Player chose C");
+            quizNumber += 5;
+            checkQuestion(quizNumber / 5, "c");
+            askQuestion(quizNumber);
         }
         else if (commandWord == CommandWord.D) {
             // Valg D
             System.out.println("Player chose D");
+            quizNumber += 5;
+            checkQuestion(quizNumber / 5, "d");
+            askQuestion(quizNumber);
         }
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);

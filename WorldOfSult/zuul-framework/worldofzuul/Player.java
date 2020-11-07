@@ -9,6 +9,9 @@ public class Player {
     // Players balance
     int playerBalance = 0;
 
+    // Player quiz score
+    int playerQuizScore = 0;
+
     //////////////////////////// INVENTORY ////////////////////////////////////////
     // add item to inventory
     public void addItemToInventory(String item) {
@@ -61,5 +64,22 @@ public class Player {
     // Get players amount of money
     public int getPlayerBalance(){
         return playerBalance;
+    }
+
+
+    ///////////////////////////// PLAYER QUIZ //////////////////////////////////
+    // Adds a point to the players score
+    public void addPoint() {
+        playerQuizScore++;
+    }
+
+    // Returns the players score
+    public int getPoints() {
+        return playerQuizScore;
+    }
+
+    // Reset players quiz score
+    public void resetPlayersScore() {
+        playerQuizScore = 0;
     }
 }

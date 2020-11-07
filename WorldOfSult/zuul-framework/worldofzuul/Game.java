@@ -159,6 +159,13 @@ public class Game
         else if (commandWord == CommandWord.GO) {
             goRoom(command);
         }
+        else if (commandWord == CommandWord.VILLAGE) {
+            goToVillage();
+        }
+
+        else if (commandWord == CommandWord.PAUSE) {
+            pauseGame();
+        }
         else if (commandWord == CommandWord.INVENTORY) {
             //opens inventory
             ArrayList<String> temp = playerManager.getItemsFromInventory();
@@ -185,6 +192,49 @@ public class Game
             }
         }
         else if (commandWord == CommandWord.QUIT) {
+            wantToQuit = quit(command);
+        }
+        return wantToQuit;
+    }
+
+    private void pauseGame() {
+        System.out.println("Game is now paused");
+        System.out.println("Pause \nInfo \nSettings \nQuit");
+
+        boolean finished = false;
+        while (! finished) {
+            Command command = parser.getCommand();
+            finished = processPauseGameCommand(command);
+        }
+    }
+
+    private boolean processPauseGameCommand(Command command)
+    {
+        boolean wantToQuit = false;
+
+        CommandWord commandWord = command.getCommandWord();
+
+        if(commandWord == CommandWord.UNKNOWN) {
+            System.out.println("I don't know what you mean...");
+            return false;
+        }
+        if (commandWord == CommandWord.PAUSE) {
+            // Unpauses the game
+            System.out.println("The game is now unpaused");
+            System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+            System.out.println();
+            System.out.println(currentRoom.getLongDescription());
+        }
+        else if (commandWord == CommandWord.INFO) {
+            // Opens information
+            info();
+        }
+        else if (commandWord == CommandWord.SETTINGS) {
+            // Opens settings
+            settings();
+        }
+        else if (commandWord == CommandWord.QUIT) {
+            // Exits the game
             wantToQuit = quit(command);
         }
         return wantToQuit;
@@ -344,6 +394,12 @@ public class Game
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
+    }
+
+    private void goToVillage() {
+        // Quick way to get to the village
+        currentRoom = village;
+        System.out.println(currentRoom.getLongDescription());
     }
 
     private boolean quit(Command command) 

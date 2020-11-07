@@ -5,8 +5,8 @@ public enum CommandWord
     GO("go"), CONTINUE("continue"), QUIT("quit"),
     HELP("help"), UNKNOWN("?"), START("start"),
     INFO("info"), SETTINGS("settings"), BUY("buy"),
-    A("a"), B("b"), C("c"), D("d"),
-    QUIZ("quiz"),
+    PAUSE("pause"), VILLAGE("village"),
+    QUIZ("quiz"), A("a"), B("b"), C("c"), D("d"),
     INVENTORY("inventory"), MALE("male"), FEMALE("female"),
     CHILD("child");
     

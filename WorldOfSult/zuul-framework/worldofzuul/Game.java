@@ -15,7 +15,7 @@ public class Game
     int quizNumber = 0;
     boolean isQuizDone = false;
     Room village;
-    private Items items;
+    private Items items = new Items();
 
 
     public Game() 

@@ -7,7 +7,7 @@ public class Player {
     ArrayList<String> inventory = new ArrayList<String>();
 
     // Players balance
-    int playerBalance = 0;
+    int playerBalance = 300;
 
     //////////////////////////// INVENTORY ////////////////////////////////////////
     // add item to inventory

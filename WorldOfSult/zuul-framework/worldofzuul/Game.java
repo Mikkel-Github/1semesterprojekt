@@ -8,13 +8,16 @@ import java.util.ArrayList;
 public class Game
 {
     private Parser parser;
-    private Room currentRoom;
+    private Room currentRoom, kød, frugtoggrønt;
     private Player playerManager = new Player();
     private ArrayList<String> quizList = new ArrayList<String>();
     private ArrayList<String> quizAnswers = new ArrayList<String>();
+    private ArrayList<String> kød1 = new ArrayList<String>();
+    private ArrayList<String> frugtoggrønt1 = new ArrayList<String>();
     private Items items = new Items();
 
-    public Game() 
+
+    public Game()
     {
         createRooms();
         parser = new Parser();
@@ -23,7 +26,7 @@ public class Game
 
     private void createRooms()
     {
-        Room markedsplads, frugtoggrønt, kød, humans, quiz;
+        Room markedsplads, humans, quiz;
 
 
         markedsplads = new Room("Du er nu ved markedspladsen");
@@ -32,7 +35,7 @@ public class Game
         humans = new Room("In a room with people who needs your help to get the correct food and supplements.");
         quiz = new Room("in the quiz room");
 
-        //markedsplads.setExit("humans", humans);
+        markedsplads.setExit("humans", humans);
         markedsplads.setExit("kornoggrønt", frugtoggrønt);
         markedsplads.setExit("kød", kød);
 
@@ -151,6 +154,12 @@ public class Game
         }
         else if (commandWord == CommandWord.GO) {
             goRoom(command);
+            if(currentRoom == kød) {
+                items.printKød();
+            }
+            else if(currentRoom == frugtoggrønt) {
+                items.printFrugtOgGrønt();
+            }
         }
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
@@ -240,8 +249,7 @@ public class Game
             return;
         }
         String item = command.getSecondWord();
-        items.items();
-
+        items.buyItem(item);
 
 
     }

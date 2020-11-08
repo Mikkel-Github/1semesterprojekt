@@ -7,7 +7,7 @@ public class Player {
     ArrayList<String> inventory = new ArrayList<String>();
 
     // Players balance
-    int playerBalance = 0;
+    int playerBalance = 100;
 
     // Player quiz score
     int playerQuizScore = 0;
@@ -53,7 +53,7 @@ public class Player {
     }
 
     public boolean canPlayerBuy(int amount) {
-        if (playerBalance - amount > 0) {
+        if (playerBalance - amount >= 0) {
             return true;
         }
         else {

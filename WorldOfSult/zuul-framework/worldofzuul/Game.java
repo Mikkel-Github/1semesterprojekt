@@ -236,6 +236,7 @@ public class Game
             System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
             System.out.println();
             System.out.println(currentRoom.getLongDescription());
+            wantToQuit = true;
         }
         else if (commandWord == CommandWord.INFO) {
             // Opens information
@@ -386,7 +387,9 @@ public class Game
             return;
         }
         String item = command.getSecondWord();
-        items.buyItem(item);
+        if(items.buyItem(item)) {
+            playerManager.addItemToInventory(item);
+        }
     }
 
     private void goRoom(Command command) 

@@ -54,35 +54,39 @@ public class Items {
 
     }
 
-    public void buyItem(String item) {
+    public boolean buyItem(String item) {
+        boolean didBuy = false;
         if(kødListe != null) {
-
-
             for (int i = 0; i < kødListe.size(); i++) {
                 if(item.equals(kødListe.get(i))) {
                     if(playerManager.canPlayerBuy(kødPriser.get(i))) {
                         playerManager.subtractMoneyFromPlayer(kødPriser.get(i));
-                        playerManager.addItemToInventory(item);
                         System.out.println(playerManager.getPlayerBalance());
+                        didBuy = true;
                         break;
+                    }
+                    else {
+                        System.out.println("Du har ikke råd til " + item);
                     }
                 }
             }
         }
         if(frugtoggrøntListe != null) {
-
-
             for (int i = 0; i < frugtoggrøntListe.size(); i++) {
                 if(item.equals(frugtoggrøntListe.get(i))) {
                     if(playerManager.canPlayerBuy(frugtoggrøntPriser.get(i))) {
                         playerManager.subtractMoneyFromPlayer(frugtoggrøntPriser.get(i));
-                        playerManager.addItemToInventory(item);
                         System.out.println(playerManager.getPlayerBalance());
+                        didBuy = true;
                         break;
+                    }
+                    else {
+                        System.out.println("Du har ikke råd til " + item);
                     }
                 }
             }
         }
+        return didBuy;
     }
 }
 

@@ -8,13 +8,14 @@ import java.util.ArrayList;
 public class Game
 {
     private Parser parser;
-    private Room currentRoom;
+    private Room currentRoom, kød, frugtoggrønt;
     private Player playerManager = new Player();
     ArrayList<String> Questionlist = new ArrayList<String>();
     ArrayList<String> answerList = new ArrayList<String>();
     int quizNumber = 0;
     boolean isQuizDone = false;
     Room village;
+    private Items items;
 
 
     public Game() 
@@ -26,22 +27,22 @@ public class Game
 
     private void createRooms()
     {
-        Room markedsplads, kornoggrønt, kød;
+        Room markedsplads;
 
 
         markedsplads = new Room("Du er på markedspladsen");
-        kornoggrønt = new Room("Du er på korn og grønt markedet");
+        frugtoggrønt = new Room("Du er på frugt og grønt markedet");
         kød = new Room("Du er på kød markedet");
         village = new Room("In a room with three people who needs your help to get the correct food and supplements.");
 
         //markedsplads.setExit("humans", humans);
-        markedsplads.setExit("kornoggrønt", kornoggrønt);
+        markedsplads.setExit("kornoggrønt", frugtoggrønt);
         markedsplads.setExit("kød", kød);
         markedsplads.setExit("village", village);
         markedsplads.setHints("Her kan du vælge i mellem at gå til 'Korn og Grønt', 'Kød-markedet' eller tilbage til 'village'");
 
-        kornoggrønt.setExit("markedsplads", markedsplads);
-        kornoggrønt.setHints("Her kan du købe korn og grønt");
+        frugtoggrønt.setExit("markedsplads", markedsplads);
+        frugtoggrønt.setHints("Her kan du købe korn og grønt");
 
         kød.setExit("markedsplads", markedsplads);
         kød.setHints("Her kan du købe kød");
@@ -161,6 +162,12 @@ public class Game
         }
         else if (commandWord == CommandWord.GO) {
             goRoom(command);
+            if(currentRoom == kød) {
+                items.printKød();
+            }
+            else if(currentRoom == frugtoggrønt) {
+                items.printFrugtOgGrønt();
+            }
         }
         else if (commandWord == CommandWord.VILLAGE) {
             goToVillage();
@@ -379,6 +386,7 @@ public class Game
             return;
         }
         String item = command.getSecondWord();
+        items.buyItem(item);
     }
 
     private void goRoom(Command command) 

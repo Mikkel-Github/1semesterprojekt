@@ -36,7 +36,7 @@ public class Game
         quiz = new Room("in the quiz room");
 
         markedsplads.setExit("humans", humans);
-        markedsplads.setExit("kornoggrønt", frugtoggrønt);
+        markedsplads.setExit("frugtoggrønt", frugtoggrønt);
         markedsplads.setExit("kød", kød);
 
         frugtoggrønt.setExit("markedsplads", markedsplads);

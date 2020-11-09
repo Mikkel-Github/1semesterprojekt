@@ -256,7 +256,7 @@ public class Game
     private void quiz() {
         // Load Questions and Answers from file
         boolean canLoadFile = false;
-        Path fileName = Path.of("quizSpørgsmål.txt");
+        Path fileName = Path.of("quizSporgsmaal.txt");
         String actual = null;
         try {
             actual = Files.readString(fileName);

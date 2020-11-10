@@ -33,16 +33,16 @@ public class Game
         markedsplads = new Room("Du er på markedspladsen");
         frugtoggrønt = new Room("Du er på frugt og grønt markedet");
         kød = new Room("Du er på kød markedet");
-        village = new Room("In a room with three people who needs your help to get the correct food and supplements.");
+        village = new Room("Du er nu i et rum med tre personer, som har brug for din hjælp til at få den rigtige mængde ernæringsstoffer.");
 
         //markedsplads.setExit("humans", humans);
-        markedsplads.setExit("kornoggrønt", frugtoggrønt);
+        markedsplads.setExit("frugtoggrønt", frugtoggrønt);
         markedsplads.setExit("kød", kød);
         markedsplads.setExit("village", village);
-        markedsplads.setHints("Her kan du vælge i mellem at gå til 'Korn og Grønt', 'Kød-markedet' eller tilbage til 'village'");
+        markedsplads.setHints("Her kan du vælge i mellem at gå til 'frugt og Grønt', 'Kød-markedet' eller tilbage til 'village'");
 
         frugtoggrønt.setExit("markedsplads", markedsplads);
-        frugtoggrønt.setHints("Her kan du købe korn og grønt");
+        frugtoggrønt.setHints("Her kan du købe frugt og grønt");
 
         kød.setExit("markedsplads", markedsplads);
         kød.setHints("Her kan du købe kød");
@@ -50,10 +50,8 @@ public class Game
         village.setExit("markedsplads", markedsplads);
         village.setHints("Her er tre mennesker som har brug for din hjælp til at købe næringsrigt mad");
 
-        currentRoom = markedsplads;
+        currentRoom = village;
 
-        // TEST af inventory
-        playerManager.addItemToInventory("computer");
     }
 
     public void startMenu() {
@@ -76,7 +74,7 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("Ugyldig kommando");
             return false;
         }
 
@@ -109,12 +107,12 @@ public class Game
 
     public void info() {
         System.out.println("Info");
-        System.out.println("Information about the game and hunger");
+        System.out.println("Information om spillet og sult");
     }
 
     public void settings() {
         System.out.println("Settings");
-        System.out.println("We have no settings to change");
+        System.out.println("Vi har ingen indstillinger at ændre");
     }
 
     public void play() 
@@ -126,7 +124,7 @@ public class Game
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Tak fordi du spillede spillet. ");
     }
 
     private void printWelcome()
@@ -138,7 +136,7 @@ public class Game
 
         
 
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("Giv kommando '" + CommandWord.HELP + "' hvis du har brug for hjælp.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -150,7 +148,7 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("Ugyldig kommando ");
             return false;
         }
 
@@ -187,20 +185,20 @@ public class Game
         }
         else if (commandWord == CommandWord.MALE){
             if (currentRoom == village){
-                Humans male = new Humans("Male", 30);
-                System.out.println("Hello I am " + male.name + " " + male.age + " i need ....");
+                Humans male = new Humans("Mand", 30);
+                System.out.println("Hej, jeg er en " + male.name + " og jeg er " + male.age + ", jeg har brug for ....");
             }
         }
         else if (commandWord == CommandWord.FEMALE){
             if (currentRoom == village){
-                Humans female = new Humans("Female", 30);
-                System.out.println("Hello I am " + female.name + " " + female.age + " i need ....");
+                Humans female = new Humans("Kvinde", 30);
+                System.out.println("Hej, jeg er en " + female.name + " og jeg er " + female.age + ", jeg har brug for ....");
             }
         }
         else if (commandWord == CommandWord.CHILD){
             if (currentRoom == village){
-                Humans child = new Humans("Child", 2);
-                System.out.println("Hello I am " + child.name + " " + child.age + " i need ....");
+                Humans child = new Humans("Barn", 2);
+                System.out.println("Hej, jeg er et " + child.name + " og jeg er " + child.age + ", jeg har brug for ....");
             }
         }
         else if (commandWord == CommandWord.QUIT) {
@@ -210,7 +208,7 @@ public class Game
     }
 
     private void pauseGame() {
-        System.out.println("Game is now paused");
+        System.out.println("Spillet er sat på pause");
         System.out.println("Pause \nInfo \nSettings \nQuit");
 
         boolean finished = false;
@@ -227,13 +225,13 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("Ugyldig kommando ...");
             return false;
         }
         if (commandWord == CommandWord.PAUSE) {
             // Unpauses the game
-            System.out.println("The game is now unpaused");
-            System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+            System.out.println("Spillet er ikke længere på pause");
+            System.out.println("Giv kommando '" + CommandWord.HELP + "' hvis du har brug for hjælp.");
             System.out.println();
             System.out.println(currentRoom.getLongDescription());
             wantToQuit = true;
@@ -316,11 +314,11 @@ public class Game
 
     private void checkQuestion(int questionNumber, String answer) {
         if(answer.equals(answerList.get(questionNumber - 1))) {
-            System.out.println("Right answer");
+            System.out.println("Rigtigt svar");
             playerManager.addPoint();
         }
         else {
-            System.out.println("Wrong answer");
+            System.out.println("Forkert svar");
         }
     }
 
@@ -331,7 +329,7 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("Ugyldig kommando...");
             return false;
         }
 
@@ -383,7 +381,7 @@ public class Game
     private void buyItem(Command command)
     {
         if(!command.hasSecondWord()){
-            System.out.println("Buy what?");
+            System.out.println("Køb hvad?");
             return;
         }
         String item = command.getSecondWord();
@@ -395,7 +393,7 @@ public class Game
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
-            System.out.println("Go where?");
+            System.out.println("Hvor vil du hen?");
             return;
         }
 
@@ -404,7 +402,7 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("Der er ingen vej!");
         }
         else {
             currentRoom = nextRoom;
@@ -422,7 +420,7 @@ public class Game
     {
         if(command.hasSecondWord()) {
             // Tjekker om brugeren har givet to commands
-            System.out.println("Quit what?");
+            System.out.println("Quit hvad?");
             return false;
         }
         else {

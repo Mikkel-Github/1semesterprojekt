@@ -6,6 +6,10 @@ import javafx.stage.StageStyle;
 
 
 public class GUI extends Application {
+    // Der skal ikke laves så meget i GUI
+    // Hvis i skal kunne gå mellem rummene, skal i bruge Controller
+        // Lave en funktion som bliver kaldt når brugeren trykker på en knap
+        // Kalde "stageController.changeScene("Navnet på FXML dokumentet");" i funktionen
 
     static Stage primaryStage = null;
 

@@ -14,30 +14,22 @@ import java.io.IOException;
 import static worldofzuul.StageController.currentStage;
 
 public class Controller {
-
     StageController stageController = new StageController();
 
     @FXML
     private ImageView startImage;
-
     @FXML
     private ImageView infoImage;
-
     @FXML
     private ImageView slutImage;
-
     @FXML
     private ImageView logoImage;
-
     @FXML
     private ImageView answerA;
-
     @FXML
     private ImageView answerB;
-
     @FXML
     private ImageView answerC;
-
     @FXML
     private ImageView answerD;
 

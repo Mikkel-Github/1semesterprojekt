@@ -10,6 +10,8 @@ public class StageController {
 
     public static String currentStage;
 
+    // Funktion til at skifte i mellem FXML dokumenter (scener)
+    // bare kald "stageController.changeScene("Navnet på FXML dokumentet");" i Controller
     public void changeScene(String sceneName) throws IOException {
         currentStage = sceneName;
         GUI.primaryStage.setTitle("World of Zuul - " + sceneName);

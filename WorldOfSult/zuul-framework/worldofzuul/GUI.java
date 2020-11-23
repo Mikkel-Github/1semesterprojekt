@@ -1,24 +1,26 @@
 package worldofzuul;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class GUI extends Application {
+    // Der skal ikke laves så meget i GUI
+    // Hvis i skal kunne gå mellem rummene, skal i bruge Controller
+        // Lave en funktion som bliver kaldt når brugeren trykker på en knap
+        // Kalde "stageController.changeScene("Navnet på FXML dokumentet");" i funktionen
+
+    static Stage primaryStage = null;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-        primaryStage.setTitle("World of Zuul");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
+        GUI.primaryStage = primaryStage;
+        GUI.primaryStage.initStyle(StageStyle.UNDECORATED);
+        GUI.primaryStage.setX(0);
+        GUI.primaryStage.setY(0);
 
-
-    public static void main(String[] args) {
-        launch(args);
+        StageController stageController = new StageController();
+        stageController.changeScene("Menu");
     }
 }

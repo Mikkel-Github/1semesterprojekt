@@ -22,6 +22,8 @@ public class GUI extends Application {
         GUI.primaryStage.setX(0);
         GUI.primaryStage.setY(0);
 
+        GUI.primaryStage.setMaximized(true);
+
         StageController stageController = new StageController();
         stageController.changeScene("Menu");
     }

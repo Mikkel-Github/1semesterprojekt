@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane onMouseClicked="#getMousePosition" maxHeight="1080.0" maxWidth="1920" minHeight="-Infinity" minWidth="-Infinity" prefHeight="863.2" prefWidth="1535.2" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.Controller">
+<Pane onMouseClicked="#getMousePosition" prefHeight="1080" prefWidth="1920" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.Controller">
    <children>
-      <ImageView fitWidth="1535.2" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitWidth="1920" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../src/Landsby_Baggrund.png" />
          </image>

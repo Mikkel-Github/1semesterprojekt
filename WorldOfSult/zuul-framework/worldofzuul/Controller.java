@@ -120,6 +120,10 @@ public class Controller {
         }
     }
 
+    public void getMousePosition(MouseEvent mouseEvent) {
+        System.out.println("X: " + mouseEvent.getX() + " Y: " + mouseEvent.getY());
+    }
+
     ///////////////////// QUIZ /////////////////////////
 
 }

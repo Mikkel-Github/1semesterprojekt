@@ -19,8 +19,6 @@ public class GUI extends Application {
     public void start(Stage primaryStage) throws Exception{
         GUI.primaryStage = primaryStage;
         GUI.primaryStage.initStyle(StageStyle.UNDECORATED);
-        GUI.primaryStage.setX(0);
-        GUI.primaryStage.setY(0);
 
         GUI.primaryStage.setMaximized(true);
 

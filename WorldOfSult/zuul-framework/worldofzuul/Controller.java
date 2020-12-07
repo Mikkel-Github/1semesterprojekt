@@ -5,16 +5,20 @@ import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.security.PrivateKey;
+
 
 import static worldofzuul.StageController.currentStage;
 
 public class Controller {
-    StageController stageController = new StageController();
+      StageController stageController = new StageController();
 
     @FXML
     private ImageView startImage;
@@ -32,6 +36,27 @@ public class Controller {
     private ImageView answerC;
     @FXML
     private ImageView answerD;
+    @FXML
+    private ImageView MandTale;
+    @FXML
+    private ImageView KvindeTale;
+    @FXML
+    private ImageView BarnTale;
+    @FXML
+    private Button MandSvarJa;
+    @FXML
+    private Button MandSvarNej;
+    @FXML
+    private Button KvindeSvarJa;
+    @FXML
+    private Button KvindeSvarNej;
+    @FXML
+    private Button BarnSvarJa;
+    @FXML
+    private Button BarnSvarNej;
+
+
+
 
     @FXML
     public void initialize() {
@@ -127,24 +152,34 @@ public class Controller {
     ///////////////////// QUIZ /////////////////////////
 
 
+@FXML
     public void MandClicked(MouseEvent mouseEvent) throws Exception {
         System.out.println("bitch");
-        stageController.changeScene("Landsby");
+    MandTale.setVisible(true);
+    MandSvarJa.setVisible(true);
+    MandSvarNej.setVisible(true);
+
+
+
+
+
 
 
     }
 
     public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
         System.out.println("bitch2");
-        stageController.changeScene("Landsby");
-
+        KvindeTale.setVisible(true);
+        KvindeSvarJa.setVisible(true);
+        KvindeSvarNej.setVisible(true);
 
     }
 
     public void DrengClicked(MouseEvent mouseEvent) throws Exception {
         System.out.println("bitch3");
-        stageController.changeScene("Landsby");
-
+       BarnTale.setVisible(true);
+       BarnSvarJa.setVisible(true);
+       BarnSvarNej.setVisible(true);
     }
 
     public void SkiltClicked(MouseEvent mouseEvent) throws Exception{

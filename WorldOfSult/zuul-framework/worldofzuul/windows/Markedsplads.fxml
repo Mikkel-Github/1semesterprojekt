@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox prefHeight="793.0" prefWidth="1460.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.Controller">
+   <children>
+      <AnchorPane>
+         <children>
+            <ImageView fitHeight="1080.0" fitWidth="1920.0" layoutY="14.0" onMouseClicked="#MarkedspladsClicked">
+               <image>
+                  <Image url="@../src/Markedsplads.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="423.0" fitWidth="557.0" layoutX="1363.0" layoutY="671.0" onMouseClicked="#Skilt_kødmarkedClicked">
+               <image>
+                  <Image url="@../src/Skilt_kødmarked.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="423.0" fitWidth="557.0" layoutY="671.0" onMouseClicked="#Skilt_frugtoggrøntClicked">
+               <image>
+                  <Image url="@../src/Skilt_frugtoggrønt.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="310.0" fitWidth="384.0" layoutX="793.0" layoutY="14.0" onMouseClicked="#Skilt_LandsbyClicked">
+               <image>
+                  <Image url="@../src/Skilt_Landsby.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

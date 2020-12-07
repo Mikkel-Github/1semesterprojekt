@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.Controller">
+   <AnchorPane>
+      <children>
+         <ImageView fx:id="kødMarked" fitHeight="1080.0" fitWidth="1920.0">
+            <image>
+               <Image url="@../src/Kødmarked_MedHylder.png" />
+            </image>
+         </ImageView>
+         <AnchorPane layoutX="827.0" layoutY="671.0">
+            <children>
+               <ImageView fx:id="bøf" fitHeight="158.0" fitWidth="245.0" layoutY="8.0" preserveRatio="true" onMouseClicked="#BøfClicked">
+                  <image>
+                     <Image url="@../src/Bøf.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="366.0" layoutY="606.0">
+            <children>
+               <ImageView fx:id="kylling" fitHeight="240.0" fitWidth="354.0" layoutY="26.0" preserveRatio="true" onMouseClicked="#KyllingClicked">
+                  <image>
+                     <Image url="@../src/Kylling.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="386.0" layoutY="430.0" prefHeight="167.0" prefWidth="245.0">
+            <children>
+               <ImageView fx:id="fisk" fitHeight="184.0" fitWidth="270.0" layoutY="14.0" onMouseClicked="#FiskClicked" preserveRatio="true">
+                  <image>
+                     <Image url="@../src/Fisk.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="-157.0" layoutY="616.0" />
+         <ImageView />
+            <ImageView fx:id="markedsPladsSkiltVenstre" fitHeight="460.0" fitWidth="535.0" layoutX="-139.0" layoutY="756.0" onMouseClicked="#markedsplads_venstreClicked" preserveRatio="true">
+            <image>
+               <Image url="@../src/markedsplads_venstre.png" />
+            </image>
+         </ImageView>
+         <Pane fx:id="fiskTekst" layoutX="614.0" layoutY="449.0" visible="false">
+            <children>
+               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../src/InformationsFirkant.png" />
+                  </image>
+               </ImageView>
+               <Label layoutX="15.0" layoutY="11.0" prefHeight="31.0" prefWidth="171.0" text="Bla bla" />
+            </children>
+         </Pane>
+         <Pane fx:id="kyllingTekst" layoutX="645.0" layoutY="648.0" prefHeight="125.0" prefWidth="182.0" visible="false">
+            <children>
+               <ImageView fitHeight="160.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../src/InformationsFirkant.png" />
+                  </image>
+               </ImageView>
+               <Label prefHeight="47.0" prefWidth="182.0" text="Bla Bla" />
+            </children>
+         </Pane>
+         <Pane fx:id="bøfTekst" layoutX="1005.0" layoutY="642.0" prefHeight="137.0" prefWidth="200.0" visible="false">
+            <children>
+               <ImageView fitHeight="160.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../src/InformationsFirkant.png" />
+                  </image>
+               </ImageView>
+               <Label prefHeight="41.0" prefWidth="200.0" text="Bla Bla" />
+            </children>
+         </Pane>
+      </children>
+   </AnchorPane>
+</VBox>

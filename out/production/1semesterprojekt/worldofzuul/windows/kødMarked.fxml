@@ -14,7 +14,7 @@
          </ImageView>
          <AnchorPane layoutX="827.0" layoutY="671.0">
             <children>
-               <ImageView fx:id="bøf" fitHeight="158.0" fitWidth="245.0" layoutY="8.0" preserveRatio="true" onMouseClicked="#BøfClicked">
+               <ImageView fx:id="bøf" fitHeight="158.0" fitWidth="245.0" layoutY="8.0" onMouseClicked="#BøfClicked" preserveRatio="true">
                   <image>
                      <Image url="@../src/Bøf.png" />
                   </image>
@@ -23,7 +23,7 @@
          </AnchorPane>
          <AnchorPane layoutX="366.0" layoutY="606.0">
             <children>
-               <ImageView fx:id="kylling" fitHeight="240.0" fitWidth="354.0" layoutY="26.0" preserveRatio="true" onMouseClicked="#KyllingClicked">
+               <ImageView fx:id="kylling" fitHeight="240.0" fitWidth="354.0" layoutY="26.0" onMouseClicked="#KyllingClicked" preserveRatio="true">
                   <image>
                      <Image url="@../src/Kylling.png" />
                   </image>
@@ -54,6 +54,7 @@
                   </image>
                </ImageView>
                <Label layoutX="15.0" layoutY="11.0" prefHeight="31.0" prefWidth="171.0" text="Bla bla" />
+               <Button layoutX="82.0" layoutY="104.0" mnemonicParsing="false" text="Køb" />
             </children>
          </Pane>
          <Pane fx:id="kyllingTekst" layoutX="645.0" layoutY="648.0" prefHeight="125.0" prefWidth="182.0" visible="false">
@@ -64,9 +65,10 @@
                   </image>
                </ImageView>
                <Label prefHeight="47.0" prefWidth="182.0" text="Bla Bla" />
+               <Button layoutX="72.0" layoutY="99.0" mnemonicParsing="false" text="Køb" />
             </children>
          </Pane>
-         <Pane fx:id="bøfTekst" layoutX="1005.0" layoutY="642.0" prefHeight="137.0" prefWidth="200.0" visible="false">
+         <Pane fx:id="bøfTekst" layoutX="1005.0" layoutY="642.0" prefHeight="137.0" prefWidth="200.0">
             <children>
                <ImageView fitHeight="160.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                   <image>
@@ -74,6 +76,7 @@
                   </image>
                </ImageView>
                <Label prefHeight="41.0" prefWidth="200.0" text="Bla Bla" />
+               <Button layoutX="81.0" layoutY="111.0" mnemonicParsing="false" text="Køb" />
             </children>
          </Pane>
       </children>

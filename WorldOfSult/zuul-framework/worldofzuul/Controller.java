@@ -17,6 +17,7 @@ import static worldofzuul.StageController.currentStage;
 
 public class Controller {
     StageController stageController = new StageController();
+    Player player = new Player();
     boolean tekstfelt = false;
     @FXML
     private ImageView startImage;
@@ -48,6 +49,20 @@ public class Controller {
     private Pane risTekst;
     @FXML
     private Pane kassavaTekst;
+    @FXML
+    private Button bøfKnap;
+    @FXML
+    private Button fiskKnap;
+    @FXML
+    private Button kyllingKnap;
+    @FXML
+    private Button yamsKnap;
+    @FXML
+    private Button bananKnap;
+    @FXML
+    private Button kassavaKnap;
+    @FXML
+    private Button risKnap;
 
 
     @FXML
@@ -232,6 +247,51 @@ public class Controller {
         } else {
             kassavaTekst.setVisible(false);
             tekstfelt = false;
+        }
+    }
+
+    public void Køb(MouseEvent mouseEvent) {
+        if(mouseEvent.getTarget() == bøfKnap) {
+            if(player.canPlayerBuy(50)) {
+                player.subtractMoneyFromPlayer(50);
+                player.addItemToInventory("Bøf");
+            }
+        }
+        else if(mouseEvent.getTarget() == kyllingKnap) {
+            if(player.canPlayerBuy(30)) {
+                player.subtractMoneyFromPlayer(30);
+                player.addItemToInventory("Kylling");
+            }
+        }
+        else if(mouseEvent.getTarget() == fiskKnap) {
+            if(player.canPlayerBuy(20)) {
+                player.subtractMoneyFromPlayer(20);
+                player.addItemToInventory("Fisk");
+            }
+        }
+        else if(mouseEvent.getTarget() == yamsKnap) {
+            if(player.canPlayerBuy(30)) {
+                player.subtractMoneyFromPlayer(30);
+                player.addItemToInventory("Yams");
+            }
+        }
+        else if(mouseEvent.getTarget() == kassavaKnap) {
+            if(player.canPlayerBuy(20)) {
+                player.subtractMoneyFromPlayer(20);
+                player.addItemToInventory("Kassava");
+            }
+        }
+        else if(mouseEvent.getTarget() == risKnap) {
+            if(player.canPlayerBuy(40)) {
+                player.subtractMoneyFromPlayer(40);
+                player.addItemToInventory("Ris");
+            }
+        }
+        else if(mouseEvent.getTarget() == bananKnap) {
+            if(player.canPlayerBuy(30)) {
+                player.subtractMoneyFromPlayer(30);
+                player.addItemToInventory("Banan");
+            }
         }
     }
 

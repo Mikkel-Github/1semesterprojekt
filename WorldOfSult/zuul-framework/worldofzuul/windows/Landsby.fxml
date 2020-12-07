@@ -55,22 +55,22 @@
                   <Image url="@../src/Talebobbel_Venstre.png" />
                </image>
             </ImageView>
-            <Button fx:id="MandSvarJa" layoutX="317.0" layoutY="269.0" mnemonicParsing="false" text="Ja, jeg kan hjælpe dig" visible="false" />
-            <Button fx:id="MandSvarNej" layoutX="74.0" layoutY="269.0" mnemonicParsing="false" text="Nej, jeg vil gerne se mig omkring først" visible="false" />
+            <Button fx:id="MandSvarJa" layoutX="317.0" layoutY="269.0" mnemonicParsing="false" text="Ja, jeg kan hjælpe dig" visible="false" onMouseClicked="#SvarJaClicked"/>
+            <Button fx:id="MandSvarNej" layoutX="74.0" layoutY="269.0" mnemonicParsing="false" text="Nej, jeg vil gerne se mig omkring først" visible="false" onMouseClicked="#SkjulTale"/>
             <ImageView fx:id="KvindeTale" fitHeight="325.0" fitWidth="502.0" layoutX="101.0" visible="false">
                <image>
                   <Image url="@../src/Talebobbel_Venstre.png" />
                </image>
             </ImageView>
-            <Button fx:id="KvindeSvarJa" layoutX="352.0" layoutY="282.0" mnemonicParsing="false" text="Ja, jeg kan hjælpe dig" visible="false" />
-            <Button fx:id="KvindeSvarNej" layoutX="127.0" layoutY="282.0" mnemonicParsing="false" text="Nej, jeg vil gerne se mig omkring først" visible="false" />
+            <Button fx:id="KvindeSvarJa" layoutX="352.0" layoutY="282.0" mnemonicParsing="false" text="Ja, jeg kan hjælpe dig" visible="false" onMouseClicked="#SvarJaClicked"/>
+            <Button fx:id="KvindeSvarNej" layoutX="127.0" layoutY="282.0" mnemonicParsing="false" text="Nej, jeg vil gerne se mig omkring først" visible="false" onMouseClicked="#SkjulTale"/>
             <ImageView fx:id="BarnTale" fitHeight="349.0" fitWidth="462.0" layoutX="184.0" layoutY="14.0" visible="false">
                <image>
                   <Image url="@../src/Talebobbel_Venstre.png" />
                </image>
             </ImageView>
-            <Button fx:id="BarnSvarJa" layoutX="503.0" layoutY="313.0" mnemonicParsing="false" text="Ja, jeg kan hjælpe dig" visible="false" />
-            <Button fx:id="BarnSvarNej" layoutX="264.0" layoutY="313.0" mnemonicParsing="false" text="Nej, jeg vil gerne se mig omkring først" visible="false" />
+            <Button fx:id="BarnSvarJa" layoutX="503.0" layoutY="313.0" mnemonicParsing="false" text="Ja, jeg kan hjælpe dig" visible="false" onMouseClicked="#SvarJaClicked"/>
+            <Button fx:id="BarnSvarNej" layoutX="264.0" layoutY="313.0" mnemonicParsing="false" text="Nej, jeg vil gerne se mig omkring først" visible="false" onMouseClicked="#SkjulTale"/>
          </children>
       </AnchorPane>
    </children>

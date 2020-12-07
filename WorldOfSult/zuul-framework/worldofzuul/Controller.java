@@ -128,23 +128,26 @@ public class Controller {
 
 
     public void MandClicked(MouseEvent mouseEvent) throws Exception {
-
+        System.out.println("bitch");
         stageController.changeScene("Landsby");
 
 
     }
 
     public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
-
+        System.out.println("bitch2");
         stageController.changeScene("Landsby");
 
 
     }
 
     public void DrengClicked(MouseEvent mouseEvent) throws Exception {
-
+        System.out.println("bitch3");
         stageController.changeScene("Landsby");
 
     }
 
+    public void SkiltClicked(MouseEvent mouseEvent) throws Exception{
+        stageController.changeScene("Markedsplads");
+    }
 }

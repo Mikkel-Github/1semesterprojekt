@@ -46,6 +46,7 @@ public class Controller {
     ///////////////////// MENU ////////////////////////
     public void startClicked(MouseEvent mouseEvent) throws Exception {
         System.out.println("Start");
+        stageController.changeScene("Landsby");
     }
 
     public void infoClicked(MouseEvent mouseEvent) throws IOException {
@@ -126,13 +127,24 @@ public class Controller {
     ///////////////////// QUIZ /////////////////////////
 
 
-    public void MandClicked(MouseEvent mouseEvent) {
+    public void MandClicked(MouseEvent mouseEvent) throws Exception {
+
+        stageController.changeScene("Landsby");
+
+
     }
 
-    public void KvindeClicked(MouseEvent mouseEvent) {
+    public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
+
+        stageController.changeScene("Landsby");
+
+
     }
 
-    public void DrengClicked(MouseEvent mouseEvent) {
+    public void DrengClicked(MouseEvent mouseEvent) throws Exception {
+
+        stageController.changeScene("Landsby");
+
     }
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,11 +10,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.Controller">
+<Pane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.QuizController">
    <children>
-      <ImageView pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="background" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../src/Quizrum.png" />
          </image>
@@ -29,53 +32,88 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="answerA" fitWidth="300.0" onMouseClicked="#chooseAnswer" onMouseEntered="#animationSizeBig" onMouseExited="#animationSizeStandard" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../src/Answer_A_kridt.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </ImageView>
-            <ImageView fx:id="answerB" fitWidth="300.0" onMouseClicked="#chooseAnswer" onMouseEntered="#animationSizeBig" onMouseExited="#animationSizeStandard" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../src/Answer_B_kridt.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </ImageView>
-            <ImageView fx:id="answerC" fitWidth="300.0" onMouseClicked="#chooseAnswer" onMouseEntered="#animationSizeBig" onMouseExited="#animationSizeStandard" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../src/Answer_C_kridt.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </ImageView>
-            <ImageView fx:id="answerD" fitWidth="300.0" onMouseClicked="#chooseAnswer" onMouseEntered="#animationSizeBig" onMouseExited="#animationSizeStandard" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../src/Answer_D_kridt.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </ImageView>
+            <Pane fx:id="answerAPanel" onMouseEntered="#animationSizeBig_Pane" onMouseExited="#animationSizeStandard_Pane" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="answerA" fitWidth="300.0" onMouseClicked="#chooseAnswer" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../src/Answer_A_kridt.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="AnswerAText" disable="true" fill="WHITE" layoutX="100.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer A">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="answerBPanel" onMouseEntered="#animationSizeBig_Pane" onMouseExited="#animationSizeStandard_Pane" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="answerB" fitWidth="300.0" onMouseClicked="#chooseAnswer" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../src/Answer_B_kridt.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="AnswerBText" disable="true" fill="WHITE" layoutX="100.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer B">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="answerCPanel" onMouseEntered="#animationSizeBig_Pane" onMouseExited="#animationSizeStandard_Pane" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fx:id="answerC" fitWidth="300.0" onMouseClicked="#chooseAnswer" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../src/Answer_C_kridt.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="AnswerCText" disable="true" fill="WHITE" layoutX="100.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer C">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="answerDPanel" onMouseEntered="#animationSizeBig_Pane" onMouseExited="#animationSizeStandard_Pane" opacity="0.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <ImageView fx:id="answerD" fitWidth="300.0" onMouseClicked="#chooseAnswer" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../src/Answer_D_kridt.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="AnswerDText" disable="true" fill="WHITE" layoutX="100.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer D">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </GridPane>
-       <StackPane layoutX="420.0" layoutY="70.0" prefHeight="300.0" prefWidth="440.0">
+       <StackPane fx:id="questionPanel" layoutX="420.0" layoutY="70.0" opacity="0.0" prefHeight="300.0" prefWidth="440.0">
          <ImageView fitHeight="300.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../src/InformationsFirkant.png" />
             </image>
          </ImageView>
-         <TextArea disable="true" editable="false" prefHeight="300.0" prefWidth="450.0" scaleX="0.9" scaleY="0.9" style="-fx-opacity: 100;" text="TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST" wrapText="true">
+         <TextArea fx:id="questionText" disable="true" editable="false" prefHeight="300.0" prefWidth="450.0" scaleX="0.9" scaleY="0.9" style="-fx-opacity: 100;" text="TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST" wrapText="true">
             <font>
                <Font name="Calibri Bold" size="16.0" />
             </font></TextArea>
        </StackPane>
+      <Pane fx:id="quizDone" disable="true" layoutX="390.0" opacity="0.0" prefHeight="700.0" prefWidth="500.0">
+         <children>
+            <Text fill="WHITE" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quizen er færdig">
+               <font>
+                  <Font size="70.0" />
+               </font>
+            </Text>
+            <VBox fx:id="quizResults" layoutY="300.0" prefHeight="400.0" prefWidth="500.0" />
+            <ScrollPane fx:id="scrollBox" hbarPolicy="NEVER" layoutY="268.0" prefHeight="433.0" prefWidth="510.0" />
+         </children>
+      </Pane>
    </children>
 </Pane>

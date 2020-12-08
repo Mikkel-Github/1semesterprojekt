@@ -23,6 +23,8 @@ public class Controller {
 
     boolean tekstfelt = false;
 
+    boolean HarOpgave = false;
+
     @FXML
     private ImageView startImage;
     @FXML
@@ -101,7 +103,7 @@ public class Controller {
     ///////////////////// MENU ////////////////////////
     public void startClicked(MouseEvent mouseEvent) throws Exception {
         System.out.println("Start");
-        stageController.changeScene("Quiz");
+        stageController.changeScene("Landsby");
     }
 
     public void infoClicked(MouseEvent mouseEvent) throws IOException {
@@ -288,75 +290,59 @@ public class Controller {
     }
 
     public void Køb(MouseEvent mouseEvent) {
-        if(mouseEvent.getTarget() == bøfKnap) {
-            if(playerController.canPlayerBuy(50)) {
+        if (mouseEvent.getTarget() == bøfKnap) {
+            if (playerController.canPlayerBuy(50)) {
                 playerController.subtractMoneyFromPlayer(50);
                 playerController.addItemToInventory("Bøf");
             }
-        }
-        else if(mouseEvent.getTarget() == kyllingKnap) {
-            if(playerController.canPlayerBuy(30)) {
+        } else if (mouseEvent.getTarget() == kyllingKnap) {
+            if (playerController.canPlayerBuy(30)) {
                 playerController.subtractMoneyFromPlayer(30);
                 playerController.addItemToInventory("Kylling");
             }
-        }
-        else if(mouseEvent.getTarget() == fiskKnap) {
-            if(playerController.canPlayerBuy(20)) {
+        } else if (mouseEvent.getTarget() == fiskKnap) {
+            if (playerController.canPlayerBuy(20)) {
                 playerController.subtractMoneyFromPlayer(20);
                 playerController.addItemToInventory("Fisk");
             }
-        }
-        else if(mouseEvent.getTarget() == yamsKnap) {
-            if(playerController.canPlayerBuy(30)) {
+        } else if (mouseEvent.getTarget() == yamsKnap) {
+            if (playerController.canPlayerBuy(30)) {
                 playerController.subtractMoneyFromPlayer(30);
                 playerController.addItemToInventory("Yams");
             }
-        }
-        else if(mouseEvent.getTarget() == kassavaKnap) {
-            if(playerController.canPlayerBuy(20)) {
+        } else if (mouseEvent.getTarget() == kassavaKnap) {
+            if (playerController.canPlayerBuy(20)) {
                 playerController.subtractMoneyFromPlayer(20);
                 playerController.addItemToInventory("Kassava");
             }
-        }
-        else if(mouseEvent.getTarget() == risKnap) {
-            if(playerController.canPlayerBuy(40)) {
+        } else if (mouseEvent.getTarget() == risKnap) {
+            if (playerController.canPlayerBuy(40)) {
                 playerController.subtractMoneyFromPlayer(40);
                 playerController.addItemToInventory("Ris");
             }
-        }
-        else if(mouseEvent.getTarget() == bananKnap) {
-            if(playerController.canPlayerBuy(30)) {
+        } else if (mouseEvent.getTarget() == bananKnap) {
+            if (playerController.canPlayerBuy(30)) {
                 playerController.subtractMoneyFromPlayer(30);
                 playerController.addItemToInventory("Banan");
             }
         }
+    }
 
     ///////////////////// QUIZ /////////////////////////
 
-    boolean HarOpgave = false;
-
-
-    @FXML
     public void MandClicked(MouseEvent mouseEvent) throws Exception {
-
-
         if(HarOpgave==false){
             MandTale.setVisible(true);
             MandSvarJa.setVisible(true);
             MandSvarNej.setVisible(true);
         }
-
-
-
     }
 
     public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
-
         if(HarOpgave==false) {
             KvindeTale.setVisible(true);
             KvindeSvarJa.setVisible(true);
             KvindeSvarNej.setVisible(true);
-
         }
     }
 
@@ -399,9 +385,5 @@ public class Controller {
         BarnTale.setVisible(false);
         BarnSvarJa.setVisible(false);
         BarnSvarNej.setVisible(false);
-
     }
-
-
-
 }

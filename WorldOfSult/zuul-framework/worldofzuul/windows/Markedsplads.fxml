@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="793.0" prefWidth="1460.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.Controller">
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.Controller">
    <children>
       <AnchorPane>
          <children>
-            <ImageView fitHeight="1095.0" fitWidth="1921.0" layoutX="-1.0" layoutY="-1.0" onMouseClicked="#MarkedspladsClicked" preserveRatio="true">
+            <ImageView onMouseClicked="#MarkedspladsClicked" preserveRatio="true">
                <image>
                   <Image url="@../src/Markedsplads.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="516.0" fitWidth="598.0" layoutX="1322.0" layoutY="738.0" onMouseClicked="#Skilt_kødmarkedClicked" preserveRatio="true">
+            <ImageView fitHeight="230.0" fitWidth="201.0" layoutX="657.0" layoutY="479.0" onMouseClicked="#Skilt_kødmarkedClicked" preserveRatio="true">
                <image>
                   <Image url="@../src/Skilt_kødmarked.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="573.0" fitWidth="646.0" layoutY="697.0" onMouseClicked="#Skilt_frugtoggrøntClicked" preserveRatio="true">
+            <ImageView fitHeight="323.0" fitWidth="190.0" layoutX="254.0" layoutY="430.0" onMouseClicked="#Skilt_frugtoggrøntClicked" preserveRatio="true">
                <image>
                   <Image url="@../src/Skilt_frugtoggrønt.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="263.0" fitWidth="434.0" layoutX="743.0" layoutY="14.0" onMouseClicked="#Skilt_LandsbyClicked" preserveRatio="true">
+            <ImageView fitHeight="201.0" fitWidth="144.0" layoutX="470.0" layoutY="28.0" onMouseClicked="#Skilt_LandsbyClicked" preserveRatio="true">
                <image>
                   <Image url="@../src/Skilt_Landsby.png" />
                </image>

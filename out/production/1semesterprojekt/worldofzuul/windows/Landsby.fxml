@@ -4,74 +4,83 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.Controller">
    <children>
-      <ImageView fitHeight="502.0" fitWidth="700.0">
+      <ImageView>
          <image>
             <Image url="@../src/Landsby_Baggrund.png" />
          </image>
       </ImageView>
-      <AnchorPane>
+      <ImageView fitHeight="353.0" fitWidth="191.0" layoutX="3.0" layoutY="367.1999999999998" onMouseClicked="#MandClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-0.1999999999998181">
+         <image>
+            <Image url="@../src/Mand.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="307.0" fitWidth="231.0" layoutX="180.0" layoutY="412.9999999999994" onMouseClicked="#KvindeClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="6.821210263296962E-13">
+         <image>
+            <Image url="@../src/Kvinde.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="254.0" fitWidth="164.0" layoutX="343.0" layoutY="466.2000000000005" onMouseClicked="#DrengClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-0.20000000000050022">
+         <image>
+            <Image url="@../src/Dreng.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="MandTale" layoutX="36.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" visible="false">
          <children>
-            <ImageView fitHeight="223.0" fitWidth="304.0" layoutX="198.0" layoutY="279.0" onMouseClicked="#SkiltClicked">
-               <image>
-                  <Image url="@../src/Skilt_Markedsplads.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="14.0" layoutY="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="300.0">
-         <children>
-            <ImageView fitHeight="206.0" fitWidth="105.0" layoutY="2.0" onMouseClicked="#MandClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0">
-               <image>
-                  <Image url="@../src/Mand.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="106.0" layoutY="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="300.0">
-         <children>
-            <ImageView fitHeight="195.0" fitWidth="121.0" layoutY="2.0" onMouseClicked="#KvindeClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0">
-               <image>
-                  <Image url="@../src/Kvinde.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="206.0" layoutY="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="300.0">
-         <children>
-            <ImageView fitHeight="173.0" fitWidth="105.0" onMouseClicked="#DrengClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0">
-               <image>
-                  <Image url="@../src/Dreng.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <ImageView fx:id="MandTale" fitHeight="302.0" fitWidth="578.0" layoutX="-10.0" layoutY="10.0" visible="false">
+            <ImageView fitHeight="302.0" fitWidth="578.0">
                <image>
                   <Image url="@../src/Talebobbel_Venstre.png" />
                </image>
             </ImageView>
-            <Button fx:id="MandSvarJa" layoutX="317.0" layoutY="269.0" mnemonicParsing="false" text="Ja, jeg kan hjælpe dig" visible="false" onMouseClicked="#SvarJaClicked"/>
-            <Button fx:id="MandSvarNej" layoutX="74.0" layoutY="269.0" mnemonicParsing="false" text="Nej, jeg vil gerne se mig omkring først" visible="false" onMouseClicked="#SkjulTale"/>
-            <ImageView fx:id="KvindeTale" fitHeight="325.0" fitWidth="502.0" layoutX="101.0" visible="false">
-               <image>
-                  <Image url="@../src/Talebobbel_Venstre.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="KvindeSvarJa" layoutX="352.0" layoutY="282.0" mnemonicParsing="false" text="Ja, jeg kan hjælpe dig" visible="false" onMouseClicked="#SvarJaClicked"/>
-            <Button fx:id="KvindeSvarNej" layoutX="127.0" layoutY="282.0" mnemonicParsing="false" text="Nej, jeg vil gerne se mig omkring først" visible="false" onMouseClicked="#SkjulTale"/>
-            <ImageView fx:id="BarnTale" fitHeight="349.0" fitWidth="462.0" layoutX="184.0" layoutY="14.0" visible="false">
-               <image>
-                  <Image url="@../src/Talebobbel_Venstre.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="BarnSvarJa" layoutX="503.0" layoutY="313.0" mnemonicParsing="false" text="Ja, jeg kan hjælpe dig" visible="false" onMouseClicked="#SvarJaClicked"/>
-            <Button fx:id="BarnSvarNej" layoutX="264.0" layoutY="313.0" mnemonicParsing="false" text="Nej, jeg vil gerne se mig omkring først" visible="false" onMouseClicked="#SkjulTale"/>
+            <Button fx:id="MandSvarJa" layoutX="228.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#SvarJaClicked" text="Ja" />
+            <Button fx:id="MandSvarNej" layoutX="292.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#SkjulTale" text="Ikke nu" />
+            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="KvindeTale" layoutX="202.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <children>
+            <ImageView fitHeight="302.0" fitWidth="578.0">
+               <image>
+                  <Image url="@../src/Talebobbel_Venstre.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="KvindeSvarJa" layoutX="228.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#SvarJaClicked" text="Ja" />
+            <Button fx:id="KvindeSvarNej" layoutX="292.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#SkjulTale" text="Ikke nu" />
+            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="BarnTale" layoutX="349.0" layoutY="195.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <children>
+            <ImageView fitHeight="302.0" fitWidth="578.0">
+               <image>
+                  <Image url="@../src/Talebobbel_Venstre.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="BarnSvarJa" layoutX="228.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#SvarJaClicked" text="Ja" />
+            <Button fx:id="BarnSvarNej" layoutX="292.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#SkjulTale" text="Ikke nu" />
+            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="259.0" fitWidth="168.0" layoutX="1103.0" layoutY="484.0" onMouseClicked="#SkiltClicked" preserveRatio="true">
+         <image>
+            <Image url="@../src/Skilt_Markedsplads.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

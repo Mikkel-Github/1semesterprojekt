@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -42,11 +43,11 @@ public class Controller {
     @FXML
     private ImageView answerD;
     @FXML
-    private ImageView MandTale;
+    private AnchorPane MandTale;
     @FXML
-    private ImageView KvindeTale;
+    private AnchorPane KvindeTale;
     @FXML
-    private ImageView BarnTale;
+    private AnchorPane BarnTale;
     @FXML
     private Button MandSvarJa;
     @FXML
@@ -329,28 +330,24 @@ public class Controller {
     }
 
     ///////////////////// QUIZ /////////////////////////
-
     public void MandClicked(MouseEvent mouseEvent) throws Exception {
         if(HarOpgave==false){
+            SkjulTale();
             MandTale.setVisible(true);
-            MandSvarJa.setVisible(true);
-            MandSvarNej.setVisible(true);
         }
     }
 
     public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
         if(HarOpgave==false) {
+            SkjulTale();
             KvindeTale.setVisible(true);
-            KvindeSvarJa.setVisible(true);
-            KvindeSvarNej.setVisible(true);
         }
     }
 
     public void DrengClicked(MouseEvent mouseEvent) throws Exception {
         if(HarOpgave==false) {
+            SkjulTale();
             BarnTale.setVisible(true);
-            BarnSvarJa.setVisible(true);
-            BarnSvarNej.setVisible(true);
         }
     }
 
@@ -375,15 +372,9 @@ public class Controller {
 
     public void SkjulTale(){
         MandTale.setVisible(false);
-        MandSvarJa.setVisible(false);
-        MandSvarNej.setVisible(false);
 
         KvindeTale.setVisible(false);
-        KvindeSvarJa.setVisible(false);
-        KvindeSvarNej.setVisible(false);
 
         BarnTale.setVisible(false);
-        BarnSvarJa.setVisible(false);
-        BarnSvarNej.setVisible(false);
     }
 }

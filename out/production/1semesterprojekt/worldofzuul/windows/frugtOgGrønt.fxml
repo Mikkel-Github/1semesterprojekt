@@ -62,7 +62,7 @@
                      </image>
                   </ImageView>
                   <Label text="Bla" />
-                  <Button layoutX="81.0" layoutY="112.0" mnemonicParsing="false" text="Køb" />
+                  <Button fx:id="bananKnap" layoutX="81.0" layoutY="112.0" mnemonicParsing="false" text="Køb" onMouseClicked="#Køb" />
                </children>
             </Pane>
             <Pane fx:id="yamsTekst" layoutX="557.0" layoutY="457.0" prefHeight="138.0" prefWidth="200.0" visible="false">
@@ -73,7 +73,7 @@
                      </image>
                   </ImageView>
                   <Label text="Bla" />
-                  <Button layoutX="81.0" layoutY="112.0" mnemonicParsing="false" text="Køb" />
+                  <Button fx:id="yamsKnap" layoutX="81.0" layoutY="112.0" mnemonicParsing="false" text="Køb" onMouseClicked="#Køb" />
                </children>
             </Pane>
             <Pane fx:id="risTekst" layoutX="885.0" layoutY="658.0" prefHeight="137.0" prefWidth="200.0" visible="false">
@@ -84,7 +84,7 @@
                      </image>
                   </ImageView>
                   <Label text="bla" />
-                  <Button layoutX="81.0" layoutY="111.0" mnemonicParsing="false" text="Køb" />
+                  <Button fx:id="risKnap" layoutX="81.0" layoutY="111.0" mnemonicParsing="false" text="Køb" onMouseClicked="#Køb"/>
                </children>
             </Pane>
             <Pane fx:id="kassavaTekst" layoutX="894.0" layoutY="458.0" prefHeight="137.0" prefWidth="200.0" visible="false">
@@ -95,7 +95,7 @@
                      </image>
                   </ImageView>
                   <Label text="bla" />
-                  <Button layoutX="81.0" layoutY="111.0" mnemonicParsing="false" text="Køb" />
+                  <Button fx:id="kassavaKnap" layoutX="81.0" layoutY="111.0" mnemonicParsing="false" text="Køb" onMouseClicked="#Køb"/>
                </children>
             </Pane>
          </children>

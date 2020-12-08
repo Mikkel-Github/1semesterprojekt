@@ -30,6 +30,8 @@ public class QuizController {
     @FXML
     private StackPane questionPanel;
     @FXML
+    private Pane answerPanel;
+    @FXML
     private ImageView background;
     @FXML
     private Pane answerAPanel;
@@ -89,7 +91,8 @@ public class QuizController {
                 quizResults.getChildren().add(text);
                 scrollBox.setContent(quizResults);
             }
-
+            answerPanel.setDisable(true);
+            questionPanel.setDisable(true);
             animationPopIn_Pane(quizDone);
             quizDone.setDisable(false);
         }

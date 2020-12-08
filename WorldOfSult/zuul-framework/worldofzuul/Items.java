@@ -15,7 +15,7 @@ public class Items {
     public void printKød() {
         kødListe = new ArrayList<String>();
         kødListe.add("kylling");
-        kødListe.add("ged");
+        kødListe.add("bøf");
         kødListe.add("fisk");
         kødBeskrivelse = new ArrayList<String>();
         kødBeskrivelse.add(": 181 kcal, 18,8g protein, 0g kulhydrater");

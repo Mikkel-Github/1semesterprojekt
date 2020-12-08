@@ -21,6 +21,8 @@ public class Controller {
     Game game = new Game();
     Player playerController = new Player();
 
+    boolean tekstfelt = false;
+
     @FXML
     private ImageView startImage;
     @FXML
@@ -55,7 +57,34 @@ public class Controller {
     private Button BarnSvarJa;
     @FXML
     private Button BarnSvarNej;
-
+    @FXML
+    private Pane fiskTekst;
+    @FXML
+    private Pane kyllingTekst;
+    @FXML
+    private Pane bøfTekst;
+    @FXML
+    private Pane bananTekst;
+    @FXML
+    private Pane yamsTekst;
+    @FXML
+    private Pane risTekst;
+    @FXML
+    private Pane kassavaTekst;
+    @FXML
+    private Button bøfKnap;
+    @FXML
+    private Button fiskKnap;
+    @FXML
+    private Button kyllingKnap;
+    @FXML
+    private Button yamsKnap;
+    @FXML
+    private Button bananKnap;
+    @FXML
+    private Button kassavaKnap;
+    @FXML
+    private Button risKnap;
 
 
 
@@ -157,16 +186,157 @@ public class Controller {
         }
     }
 
-    public void getMousePosition(MouseEvent mouseEvent) {
-        System.out.println("X: " + mouseEvent.getX() + " Y: " + mouseEvent.getY());
+    public void MarkedspladsClicked(MouseEvent mouseEvent) throws IOException {
+        System.out.println("kødmarked klikket");
+        stageController.changeScene("Markedsplads");
     }
+
+    public void Skilt_kødmarkedClicked(MouseEvent mouseEvent) throws IOException {
+        System.out.println("123");
+        stageController.changeScene("kødMarked");
+    }
+
+    public void Skilt_frugtoggrøntClicked(MouseEvent mouseEvent) throws IOException {
+        System.out.println("frugtoggrønt klikket");
+        stageController.changeScene("frugtOgGrønt");
+    }
+
+    public void Skilt_MarkedspladsClicked(MouseEvent mouseEvent) throws IOException {
+        System.out.println("markedspladsskilt klikket");
+        stageController.changeScene("Markedsplads");
+    }
+
+    public void markedsplads_venstreClicked(MouseEvent mouseEvent) throws IOException {
+        System.out.println("markedsplads klikket");
+        stageController.changeScene("Markedsplads");
+    }
+    public void Skilt_LandsbyClicked(MouseEvent mouseEvent) throws IOException {
+        System.out.println("Landsby klikket");
+        stageController.changeScene("Landsby");
+    }
+
+    public void FiskClicked(MouseEvent mouseEvent) {
+
+        if (tekstfelt == false) {
+            fiskTekst.setVisible(true);
+            tekstfelt = true;
+        } else {
+            fiskTekst.setVisible(false);
+            tekstfelt = false;
+        }
+
+    }
+
+    public void KyllingClicked(MouseEvent mouseEvent) {
+        if (tekstfelt == false) {
+            kyllingTekst.setVisible(true);
+            tekstfelt = true;
+        } else {
+            kyllingTekst.setVisible(false);
+            tekstfelt = false;
+        }
+    }
+
+    public void BøfClicked(MouseEvent mouseEvent) {
+        if (tekstfelt == false) {
+            bøfTekst.setVisible(true);
+            tekstfelt = true;
+        } else {
+            bøfTekst.setVisible(false);
+            tekstfelt = false;
+        }
+    }
+
+    public void bananClicked(MouseEvent mouseEvent) {
+        if (tekstfelt == false) {
+            bananTekst.setVisible(true);
+            tekstfelt = true;
+        } else {
+            bananTekst.setVisible(false);
+            tekstfelt = false;
+        }
+    }
+
+    public void YamsClicked(MouseEvent mouseEvent) {
+        if (tekstfelt == false) {
+            yamsTekst.setVisible(true);
+            tekstfelt = true;
+        } else {
+            yamsTekst.setVisible(false);
+            tekstfelt = false;
+        }
+    }
+
+    public void RisClicked(MouseEvent mouseEvent) {
+        if (tekstfelt == false) {
+            risTekst.setVisible(true);
+            tekstfelt = true;
+        } else {
+            risTekst.setVisible(false);
+            tekstfelt = false;
+        }
+    }
+
+    public void KassavaClicked(MouseEvent mouseEvent) {
+        if (tekstfelt == false) {
+            kassavaTekst.setVisible(true);
+            tekstfelt = true;
+        } else {
+            kassavaTekst.setVisible(false);
+            tekstfelt = false;
+        }
+    }
+
+    public void Køb(MouseEvent mouseEvent) {
+        if(mouseEvent.getTarget() == bøfKnap) {
+            if(playerController.canPlayerBuy(50)) {
+                playerController.subtractMoneyFromPlayer(50);
+                playerController.addItemToInventory("Bøf");
+            }
+        }
+        else if(mouseEvent.getTarget() == kyllingKnap) {
+            if(playerController.canPlayerBuy(30)) {
+                playerController.subtractMoneyFromPlayer(30);
+                playerController.addItemToInventory("Kylling");
+            }
+        }
+        else if(mouseEvent.getTarget() == fiskKnap) {
+            if(playerController.canPlayerBuy(20)) {
+                playerController.subtractMoneyFromPlayer(20);
+                playerController.addItemToInventory("Fisk");
+            }
+        }
+        else if(mouseEvent.getTarget() == yamsKnap) {
+            if(playerController.canPlayerBuy(30)) {
+                playerController.subtractMoneyFromPlayer(30);
+                playerController.addItemToInventory("Yams");
+            }
+        }
+        else if(mouseEvent.getTarget() == kassavaKnap) {
+            if(playerController.canPlayerBuy(20)) {
+                playerController.subtractMoneyFromPlayer(20);
+                playerController.addItemToInventory("Kassava");
+            }
+        }
+        else if(mouseEvent.getTarget() == risKnap) {
+            if(playerController.canPlayerBuy(40)) {
+                playerController.subtractMoneyFromPlayer(40);
+                playerController.addItemToInventory("Ris");
+            }
+        }
+        else if(mouseEvent.getTarget() == bananKnap) {
+            if(playerController.canPlayerBuy(30)) {
+                playerController.subtractMoneyFromPlayer(30);
+                playerController.addItemToInventory("Banan");
+            }
+        }
 
     ///////////////////// QUIZ /////////////////////////
 
     boolean HarOpgave = false;
 
 
-@FXML
+    @FXML
     public void MandClicked(MouseEvent mouseEvent) throws Exception {
 
 

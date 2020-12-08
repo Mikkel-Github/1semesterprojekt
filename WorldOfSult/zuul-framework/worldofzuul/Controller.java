@@ -1,9 +1,6 @@
 package worldofzuul;
 
-import javafx.animation.Animation;
-import javafx.animation.Interpolator;
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -18,10 +15,10 @@ import java.security.PrivateKey;
 import static worldofzuul.StageController.currentStage;
 
 public class Controller {
-      StageController stageController = new StageController();
+    StageController stageController = new StageController();
 
-      Player PlayerController = new Player();
-
+    Game game = new Game();
+    Player playerController = new Player();
 
     @FXML
     private ImageView startImage;
@@ -197,13 +194,13 @@ public class Controller {
     public void SvarJaClicked(MouseEvent mouseEvent)throws Exception {
         HarOpgave=true;
         if(mouseEvent.getTarget()==MandSvarJa){
-           PlayerController.addMoneyToPlayer(100);
+           playerController.addMoneyToPlayer(100);
         }
         else if(mouseEvent.getTarget()==KvindeSvarJa) {
-            PlayerController.addMoneyToPlayer(0);
+            playerController.addMoneyToPlayer(0);
         }
         else if(mouseEvent.getTarget()==BarnSvarJa) {
-            PlayerController.addMoneyToPlayer(1);
+            playerController.addMoneyToPlayer(1);
         }
         SkjulTale();
     }

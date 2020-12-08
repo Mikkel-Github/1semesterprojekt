@@ -2,12 +2,16 @@ package worldofzuul;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.security.PrivateKey;
+
 
 import static worldofzuul.StageController.currentStage;
 
@@ -15,6 +19,7 @@ public class Controller {
     StageController stageController = new StageController();
 
     Game game = new Game();
+    Player playerController = new Player();
 
     @FXML
     private ImageView startImage;
@@ -32,6 +37,27 @@ public class Controller {
     private ImageView answerC;
     @FXML
     private ImageView answerD;
+    @FXML
+    private ImageView MandTale;
+    @FXML
+    private ImageView KvindeTale;
+    @FXML
+    private ImageView BarnTale;
+    @FXML
+    private Button MandSvarJa;
+    @FXML
+    private Button MandSvarNej;
+    @FXML
+    private Button KvindeSvarJa;
+    @FXML
+    private Button KvindeSvarNej;
+    @FXML
+    private Button BarnSvarJa;
+    @FXML
+    private Button BarnSvarNej;
+
+
+
 
     @FXML
     public void initialize() {
@@ -136,5 +162,76 @@ public class Controller {
     }
 
     ///////////////////// QUIZ /////////////////////////
+
+    boolean HarOpgave = false;
+
+
+@FXML
+    public void MandClicked(MouseEvent mouseEvent) throws Exception {
+
+
+        if(HarOpgave==false){
+            MandTale.setVisible(true);
+            MandSvarJa.setVisible(true);
+            MandSvarNej.setVisible(true);
+        }
+
+
+
+    }
+
+    public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
+
+        if(HarOpgave==false) {
+            KvindeTale.setVisible(true);
+            KvindeSvarJa.setVisible(true);
+            KvindeSvarNej.setVisible(true);
+
+        }
+    }
+
+    public void DrengClicked(MouseEvent mouseEvent) throws Exception {
+        if(HarOpgave==false) {
+            BarnTale.setVisible(true);
+            BarnSvarJa.setVisible(true);
+            BarnSvarNej.setVisible(true);
+        }
+    }
+
+    public void SkiltClicked(MouseEvent mouseEvent) throws Exception{
+        stageController.changeScene("Markedsplads");
+    }
+
+
+    public void SvarJaClicked(MouseEvent mouseEvent)throws Exception {
+        HarOpgave=true;
+        if(mouseEvent.getTarget()==MandSvarJa){
+           playerController.addMoneyToPlayer(100);
+        }
+        else if(mouseEvent.getTarget()==KvindeSvarJa) {
+            playerController.addMoneyToPlayer(0);
+        }
+        else if(mouseEvent.getTarget()==BarnSvarJa) {
+            playerController.addMoneyToPlayer(1);
+        }
+        SkjulTale();
+    }
+
+    public void SkjulTale(){
+        MandTale.setVisible(false);
+        MandSvarJa.setVisible(false);
+        MandSvarNej.setVisible(false);
+
+        KvindeTale.setVisible(false);
+        KvindeSvarJa.setVisible(false);
+        KvindeSvarNej.setVisible(false);
+
+        BarnTale.setVisible(false);
+        BarnSvarJa.setVisible(false);
+        BarnSvarNej.setVisible(false);
+
+    }
+
+
 
 }

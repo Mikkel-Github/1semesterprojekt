@@ -18,9 +18,6 @@ public class GUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         GUI.primaryStage = primaryStage;
-        GUI.primaryStage.initStyle(StageStyle.UNDECORATED);
-
-        GUI.primaryStage.setMaximized(true);
 
         StageController stageController = new StageController();
         stageController.changeScene("Menu");

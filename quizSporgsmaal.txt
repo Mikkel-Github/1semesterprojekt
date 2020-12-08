@@ -2,3 +2,7 @@ Spørgsmål 1,Svar A1,Svar B1,Svar C1,Svar D1;a;
 Spørgsmål 2,Svar A2,Svar B2,Svar C2,Svar D2;b;
 Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3;c;
 Hvad er meningen med livet?,A: En ko,B: Fisk,C: grise,D: øøøøøhhh;d;
+Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3;c;
+Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3;c;
+Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3;c;
+Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3;c;

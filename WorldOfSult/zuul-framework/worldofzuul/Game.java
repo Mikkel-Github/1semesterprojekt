@@ -251,7 +251,7 @@ public class Game
         return wantToQuit;
     }
 
-    private void quiz() {
+    public void quiz() {
         // Load Questions and Answers from file
         boolean canLoadFile = false;
         Path fileName = Path.of("quizSporgsmaal.txt");
@@ -287,9 +287,9 @@ public class Game
 
         // First time quiz runs, it asks a question
         // The other questions are being called from "processQuizCommand
-        askQuestion(quizNumber);
+        //askQuestion(quizNumber);
 
-        boolean finished = false;
+        /*boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
             finished = processQuizCommand(command);
@@ -298,27 +298,41 @@ public class Game
                 System.out.println("Du klarede quizen!");
                 System.out.println("Du fik " + playerManager.getPoints() + " rigtige ud af " + answerList.size() + " spørgsmål");
             }
-        }
+        }*/
     }
 
-    private void askQuestion(int questionNumber) {
+    public ArrayList askQuestion(int questionNumber) {
+        ArrayList<String> question = new ArrayList();
         if(questionNumber < Questionlist.size()) {
             for(int i = questionNumber; i < questionNumber + 5; i++) {
                 System.out.println(Questionlist.get(i));
+                question.add(Questionlist.get(i));
             }
         }
         else {
             isQuizDone = true;
         }
+        return question;
     }
 
-    private void checkQuestion(int questionNumber, String answer) {
+    public boolean checkIfDone(int questionNumber) {
+        if(questionNumber >= Questionlist.size()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean checkQuestion(int questionNumber, String answer) {
         if(answer.equals(answerList.get(questionNumber - 1))) {
             System.out.println("Rigtigt svar");
             playerManager.addPoint();
+            return true;
         }
         else {
             System.out.println("Forkert svar");
+            return false;
         }
     }
 

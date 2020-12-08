@@ -1,12 +1,10 @@
 package worldofzuul;
 
-import javafx.animation.Animation;
-import javafx.animation.Interpolator;
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -15,6 +13,8 @@ import static worldofzuul.StageController.currentStage;
 
 public class Controller {
     StageController stageController = new StageController();
+
+    Game game = new Game();
 
     @FXML
     private ImageView startImage;
@@ -46,6 +46,7 @@ public class Controller {
     ///////////////////// MENU ////////////////////////
     public void startClicked(MouseEvent mouseEvent) throws Exception {
         System.out.println("Start");
+        stageController.changeScene("Quiz");
     }
 
     public void infoClicked(MouseEvent mouseEvent) throws IOException {
@@ -81,6 +82,16 @@ public class Controller {
         st.setCycleCount(1);
         st.setInterpolator(Interpolator.EASE_BOTH);
         st.play();
+    }
+
+    @FXML
+    public void animationOpacity() {
+        FadeTransition ft = new FadeTransition(Duration.seconds(0.2));
+        ft.setFromValue(0);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.setInterpolator(Interpolator.EASE_BOTH);
+        ft.play();
     }
 
     // Menu animation

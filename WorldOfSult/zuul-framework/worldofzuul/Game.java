@@ -301,6 +301,27 @@ public class Game
         }*/
     }
 
+    public boolean checkHarOpgave() {
+        // Load Questions and Answers from file
+        boolean canLoadFile = false;
+        Path fileName = Path.of("harOpgave.txt");
+        String actual = null;
+        try {
+            actual = Files.readString(fileName);
+            canLoadFile = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            canLoadFile = false;
+            System.out.println("Can't load file");
+        }
+        if(actual.equals("true")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public ArrayList askQuestion(int questionNumber) {
         ArrayList<String> question = new ArrayList();
         if(questionNumber < Questionlist.size()) {

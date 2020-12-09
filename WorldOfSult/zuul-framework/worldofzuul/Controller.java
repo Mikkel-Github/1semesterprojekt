@@ -331,21 +331,21 @@ public class Controller {
 
     ///////////////////// QUIZ /////////////////////////
     public void MandClicked(MouseEvent mouseEvent) throws Exception {
-        if(HarOpgave==false){
+        if(game.checkHarOpgave()==false){
             SkjulTale();
             MandTale.setVisible(true);
         }
     }
 
     public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
-        if(HarOpgave==false) {
+        if(game.checkHarOpgave()==false) {
             SkjulTale();
             KvindeTale.setVisible(true);
         }
     }
 
     public void DrengClicked(MouseEvent mouseEvent) throws Exception {
-        if(HarOpgave==false) {
+        if(game.checkHarOpgave()==false) {
             SkjulTale();
             BarnTale.setVisible(true);
         }

@@ -1,6 +1,8 @@
 package worldofzuul;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -319,6 +321,16 @@ public class Game
         }
         else {
             return false;
+        }
+    }
+
+    public void writeHarOpgave(String input) {
+        try {
+            PrintWriter writer = new PrintWriter("harOpgave.txt");
+            writer.print(input);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

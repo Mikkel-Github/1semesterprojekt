@@ -3,15 +3,20 @@ package worldofzuul;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 import javax.swing.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.PrivateKey;
+import java.util.ArrayList;
 
 
 import static worldofzuul.StageController.currentStage;
@@ -25,6 +30,8 @@ public class Controller {
     boolean tekstfelt = false;
 
     boolean HarOpgave = false;
+
+    boolean inventoryOpen = false;
 
     @FXML
     private ImageView startImage;
@@ -88,6 +95,10 @@ public class Controller {
     private Button kassavaKnap;
     @FXML
     private Button risKnap;
+    @FXML
+    private Pane inventoryBox;
+    @FXML
+    private GridPane inventoryGrid;
 
 
 
@@ -95,6 +106,7 @@ public class Controller {
     public void initialize() {
         if(currentStage.equals("Menu")) {
             animateLogo();
+            game.read();
         }
         else if(currentStage.equals("Quiz")) {
 
@@ -104,7 +116,7 @@ public class Controller {
     ///////////////////// MENU ////////////////////////
     public void startClicked(MouseEvent mouseEvent) throws Exception {
         System.out.println("Start");
-        stageController.changeScene("Quiz");
+        stageController.changeScene("Landsby");
     }
 
     public void infoClicked(MouseEvent mouseEvent) throws IOException {
@@ -377,4 +389,43 @@ public class Controller {
 
         BarnTale.setVisible(false);
     }
+
+    public void toggleInventory(MouseEvent mouseEvent) throws FileNotFoundException {
+        // todo : Lav åben og luk animation - Mikkel
+        if(inventoryOpen) {
+            inventoryBox.setVisible(false);
+            inventoryOpen = false;
+        }
+        else {
+            // Hent inventory
+            ArrayList<String> inventory = playerController.getItemsFromInventory();
+
+
+            for(String s : inventory) {
+                FileInputStream input = null;
+                try {
+                    input = new FileInputStream("@../src/" + "Fisk" + ".png");
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                Image image = new Image(input);
+                ImageView imageView = new ImageView(image);
+                inventoryGrid.add(imageView, 1, 0);
+            }
+
+            FileInputStream input = new FileInputStream("@../src/Fisk.png");
+            Image image = new Image(input);
+            ImageView imageView = new ImageView(image);
+            inventoryGrid.add(imageView, 1, 0);
+
+            // Vis inventory
+            inventoryBox.setVisible(true);
+            inventoryOpen = true;
+        }
+    }
+
+    public void toggleHints(MouseEvent mouseEvent) {
+    }
+
+
 }

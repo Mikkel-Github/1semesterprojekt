@@ -11,6 +11,8 @@ import javafx.util.Duration;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.PrivateKey;
 
 
@@ -21,6 +23,7 @@ public class Controller {
 
     Game game = new Game();
     Player playerController = new Player();
+
 
     boolean tekstfelt = false;
 
@@ -104,7 +107,7 @@ public class Controller {
     ///////////////////// MENU ////////////////////////
     public void startClicked(MouseEvent mouseEvent) throws Exception {
         System.out.println("Start");
-        stageController.changeScene("Quiz");
+        stageController.changeScene("Landsby");
     }
 
     public void infoClicked(MouseEvent mouseEvent) throws IOException {
@@ -376,5 +379,33 @@ public class Controller {
         KvindeTale.setVisible(false);
 
         BarnTale.setVisible(false);
+    }
+
+    public boolean startQuiz(){
+        boolean canLoadFile = false;
+        Path fileName = Path.of("antalKlaredeOpgaver.txt");
+        String actual = null;
+        try{
+            actual = Files.readString(fileName);
+            canLoadFile = true;
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            canLoadFile = false;
+            System.out.println("Can't load file");
+        }
+        if(actual.equals("3")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+    public void afleverGenstande() throws IOException {
+        //kode til at aflevere
+        if(startQuiz() == true) {
+            stageController.changeScene("Quiz");
+        }
     }
 }

@@ -18,25 +18,25 @@
          </ImageView>
          <AnchorPane layoutX="500.0" layoutY="425.0">
             <children>
-               <ImageView fx:id="bøf" fitHeight="158.0" fitWidth="245.0" layoutY="8.0" onMouseClicked="#BøfClicked" preserveRatio="true">
+               <ImageView fx:id="bøf" fitHeight="103.0" fitWidth="119.0" layoutX="51.0" layoutY="8.0" onMouseClicked="#BøfClicked" preserveRatio="true">
                   <image>
                      <Image url="@../src/Bøf.png" />
                   </image>
                </ImageView>
             </children>
          </AnchorPane>
-         <AnchorPane layoutX="200.0" layoutY="365.0">
+         <AnchorPane layoutX="200.0" layoutY="365.0" prefWidth="193.0">
             <children>
-               <ImageView fx:id="kylling" fitHeight="240.0" fitWidth="354.0" layoutY="26.0" onMouseClicked="#KyllingClicked" preserveRatio="true">
+               <ImageView fx:id="kylling" fitHeight="149.0" fitWidth="128.0" layoutX="110.0" layoutY="63.0" onMouseClicked="#KyllingClicked" preserveRatio="true">
                   <image>
                      <Image url="@../src/Kylling.png" />
                   </image>
                </ImageView>
             </children>
          </AnchorPane>
-         <AnchorPane layoutX="250.0" layoutY="250.0" prefHeight="167.0" prefWidth="245.0">
+         <AnchorPane layoutX="290.0" layoutY="250.0" prefHeight="171.0" prefWidth="206.0">
             <children>
-               <ImageView fx:id="fisk" fitHeight="184.0" fitWidth="270.0" layoutY="14.0" onMouseClicked="#FiskClicked" preserveRatio="true">
+               <ImageView fx:id="fisk" fitHeight="149.0" fitWidth="150.0" layoutX="29.0" layoutY="21.0" onMouseClicked="#FiskClicked" preserveRatio="true">
                   <image>
                      <Image url="@../src/Fisk.png" />
                   </image>

@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import javax.swing.*;
@@ -41,14 +42,6 @@ public class Controller {
     private ImageView slutImage;
     @FXML
     private ImageView logoImage;
-    @FXML
-    private ImageView answerA;
-    @FXML
-    private ImageView answerB;
-    @FXML
-    private ImageView answerC;
-    @FXML
-    private ImageView answerD;
     @FXML
     private AnchorPane MandTale;
     @FXML
@@ -99,7 +92,8 @@ public class Controller {
     private Pane inventoryBox;
     @FXML
     private GridPane inventoryGrid;
-
+    @FXML
+    private Text playerBalance;
 
 
     @FXML
@@ -183,21 +177,6 @@ public class Controller {
     ///////////////////// INFO ////////////////////////
     public void backToMenu(MouseEvent mouseEvent) throws IOException {
         stageController.changeScene("Menu");
-    }
-
-    public void chooseAnswer(MouseEvent mouseEvent) {
-        if(mouseEvent.getTarget() == answerA) {
-            System.out.println("Player chose A");
-        }
-        else if(mouseEvent.getTarget() == answerB) {
-            System.out.println("Player chose B");
-        }
-        else if(mouseEvent.getTarget() == answerC) {
-            System.out.println("Player chose C");
-        }
-        else if(mouseEvent.getTarget() == answerD) {
-            System.out.println("Player chose D");
-        }
     }
 
     public void MarkedspladsClicked(MouseEvent mouseEvent) throws IOException {
@@ -307,32 +286,32 @@ public class Controller {
                 playerController.subtractMoneyFromPlayer(50);
                 playerController.addItemToInventory("Bøf");
             }
-        } else if (mouseEvent.getTarget() == kyllingKnap) {
+        } if (mouseEvent.getTarget() == kyllingKnap) {
             if (playerController.canPlayerBuy(30)) {
                 playerController.subtractMoneyFromPlayer(30);
                 playerController.addItemToInventory("Kylling");
             }
-        } else if (mouseEvent.getTarget() == fiskKnap) {
+        } if (mouseEvent.getTarget() == fiskKnap) {
             if (playerController.canPlayerBuy(20)) {
                 playerController.subtractMoneyFromPlayer(20);
                 playerController.addItemToInventory("Fisk");
             }
-        } else if (mouseEvent.getTarget() == yamsKnap) {
+        } if (mouseEvent.getTarget() == yamsKnap) {
             if (playerController.canPlayerBuy(30)) {
                 playerController.subtractMoneyFromPlayer(30);
                 playerController.addItemToInventory("Yams");
             }
-        } else if (mouseEvent.getTarget() == kassavaKnap) {
+        } if (mouseEvent.getTarget() == kassavaKnap) {
             if (playerController.canPlayerBuy(20)) {
                 playerController.subtractMoneyFromPlayer(20);
                 playerController.addItemToInventory("Kassava");
             }
-        } else if (mouseEvent.getTarget() == risKnap) {
+        } if (mouseEvent.getTarget() == risKnap) {
             if (playerController.canPlayerBuy(40)) {
                 playerController.subtractMoneyFromPlayer(40);
                 playerController.addItemToInventory("Ris");
             }
-        } else if (mouseEvent.getTarget() == bananKnap) {
+        } if (mouseEvent.getTarget() == bananKnap) {
             if (playerController.canPlayerBuy(30)) {
                 playerController.subtractMoneyFromPlayer(30);
                 playerController.addItemToInventory("Banan");
@@ -389,41 +368,114 @@ public class Controller {
         BarnTale.setVisible(false);
     }
 
-    public void toggleInventory(MouseEvent mouseEvent) throws FileNotFoundException {
-        // todo : Lav åben og luk animation - Mikkel
+    public void toggleInventory(MouseEvent mouseEvent) {
         if(inventoryOpen) {
-            inventoryBox.setVisible(false);
+            ScaleTransition st = new ScaleTransition(Duration.seconds(0.2), inventoryBox);
+            st.setFromX(1.0);
+            st.setToX(0.0);
+            st.setFromY(1.0);
+            st.setToY(0.0);
+            st.setInterpolator(Interpolator.EASE_BOTH);
+            st.play();
+
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), inventoryBox);
+            tt.setFromX(0);
+            tt.setToX(275);
+            tt.setFromY(0);
+            tt.setToY(-275);
+            tt.setInterpolator(Interpolator.EASE_BOTH);
+            tt.play();
+
+            inventoryBox.setDisable(true);
             inventoryOpen = false;
         }
         else {
             // Hent inventory
             ArrayList<String> inventory = playerController.getItemsFromInventory();
+            int column = 0;
+            int row = 0;
 
-
-            for(String s : inventory) {
+            for(int i = 0; i < inventory.size(); i++) {
                 FileInputStream input = null;
                 try {
-                    input = new FileInputStream("@../src/" + "Fisk" + ".png");
+                    input = new FileInputStream("WorldOfSult\\zuul-framework\\worldofzuul\\src\\" + inventory.get(i) + ".png");
+                    Image image = new Image(input);
+                    ImageView imageView = new ImageView(image);
+                    imageView.setPreserveRatio(true);
+                    imageView.setFitWidth(100);
+                    inventoryGrid.add(imageView, column, row);
+                    if(column == 2) {
+                        column = 0;
+                        row++;
+                    }
+                    else {
+                        column++;
+                    }
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-                Image image = new Image(input);
-                ImageView imageView = new ImageView(image);
-                inventoryGrid.add(imageView, 1, 0);
             }
 
-            FileInputStream input = new FileInputStream("@../src/Fisk.png");
-            Image image = new Image(input);
-            ImageView imageView = new ImageView(image);
-            inventoryGrid.add(imageView, 1, 0);
+            // Hent players penge
+            playerBalance.setText("Penge: " + playerController.getPlayerBalance());
+
 
             // Vis inventory
             inventoryBox.setVisible(true);
+            inventoryBox.setDisable(false);
             inventoryOpen = true;
+
+            ScaleTransition st = new ScaleTransition(Duration.seconds(0.2), inventoryBox);
+            st.setFromX(0.0);
+            st.setToX(1.0);
+            st.setFromY(0.0);
+            st.setToY(1.0);
+            st.setInterpolator(Interpolator.EASE_BOTH);
+            st.play();
+
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), inventoryBox);
+            tt.setFromX(275);
+            tt.setToX(0);
+            tt.setFromY(-275);
+            tt.setToY(0);
+            tt.setInterpolator(Interpolator.EASE_BOTH);
+            tt.play();
         }
     }
 
+    public void opdaterInventory() {
+        // Hent inventory
+        ArrayList<String> inventory = playerController.getItemsFromInventory();
+        int column = 0;
+        int row = 0;
+
+        for(int i = 0; i < inventory.size(); i++) {
+            FileInputStream input = null;
+            try {
+                input = new FileInputStream("WorldOfSult\\zuul-framework\\worldofzuul\\src\\" + inventory.get(i) + ".png");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Image image = new Image(input);
+            ImageView imageView = new ImageView(image);
+            imageView.setPreserveRatio(true);
+            imageView.setFitWidth(100);
+            inventoryGrid.add(imageView, column, row);
+            if(column == 2) {
+                column = 0;
+                row++;
+            }
+            else {
+                column++;
+            }
+        }
+
+        // Hent players penge
+        playerBalance.setText("Penge: " + playerController.getPlayerBalance());
+    }
+
     public void toggleHints(MouseEvent mouseEvent) {
+        opdaterInventory();
     }
 
 

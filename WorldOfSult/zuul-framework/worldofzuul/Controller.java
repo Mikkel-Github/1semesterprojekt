@@ -106,7 +106,6 @@ public class Controller {
     public void initialize() {
         if(currentStage.equals("Menu")) {
             animateLogo();
-            game.read();
         }
         else if(currentStage.equals("Quiz")) {
 

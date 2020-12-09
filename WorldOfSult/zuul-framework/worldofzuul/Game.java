@@ -301,23 +301,6 @@ public class Game
         }*/
     }
 
-    public boolean read() {
-        // Load Questions and Answers from file
-        boolean canLoadFile = false;
-        Path fileName = Path.of("haropgave.txt");
-        String actual = null;
-        try {
-            System.out.println("can load");
-            actual = Files.readString(fileName);
-            canLoadFile = true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            canLoadFile = false;
-            System.out.println("Can't load file");
-        }
-        return true;
-    }
-
     public ArrayList askQuestion(int questionNumber) {
         ArrayList<String> question = new ArrayList();
         if(questionNumber < Questionlist.size()) {

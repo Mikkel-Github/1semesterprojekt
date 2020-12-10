@@ -17,6 +17,8 @@ import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.PrivateKey;
 import java.util.ArrayList;
 
@@ -488,6 +490,34 @@ public class Controller {
         KvindeTale.setVisible(false);
 
         BarnTale.setVisible(false);
+    }
+
+    public boolean startQuiz(){
+        boolean canLoadFile = false;
+        Path fileName = Path.of("antalKlaredeOpgaver.txt");
+        String actual = null;
+        try{
+            actual = Files.readString(fileName);
+            canLoadFile = true;
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            canLoadFile = false;
+            System.out.println("Can't load file");
+        }
+        if(actual.equals("3")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+    public void afleverGenstande() throws IOException {
+        //kode til at aflevere
+        if(startQuiz() == true) {
+            stageController.changeScene("Quiz");
+        }
     }
 
     public void toggleInventory(MouseEvent mouseEvent) {

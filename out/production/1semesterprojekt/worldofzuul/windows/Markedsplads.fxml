@@ -35,7 +35,7 @@
                   <Image url="@../src/Skilt_Landsby.png" />
                </image>
             </ImageView>
-            <Pane fx:id="inventoryBox" visible="false" layoutX="725.0" layoutY="200.0" prefHeight="400.0" prefWidth="500.0">
+            <Pane fx:id="inventoryBox" visible="false" layoutX="725.0" layoutY="200.0" onMouseClicked="#getItem" prefHeight="400.0" prefWidth="500.0">
                <children>
                   <ImageView fitHeight="400.0" fitWidth="500.0" pickOnBounds="true">
                      <image>
@@ -53,6 +53,53 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
+                     <children>
+                        <ImageView fx:id="c0r0Marker" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" visible="false">
+                           <image>
+                              <Image url="@../src/marker.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="c1r0Marker" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" visible="false" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@../src/marker.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="c2r0Marker" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" visible="false" GridPane.columnIndex="2">
+                           <image>
+                              <Image url="@../src/marker.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="c0r1Marker" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" visible="false" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../src/marker.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="c1r1Marker" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../src/marker.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="c2r1Marker" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../src/marker.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="c0r2Marker" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" visible="false" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../src/marker.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="c1r2Marker" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../src/marker.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="c2r2Marker" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../src/marker.png" />
+                           </image>
+                        </ImageView>
+                     </children>
                   </GridPane>
                   <Text fx:id="playerBalance" fill="WHITE" layoutX="50.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Penge: ">
                      <font>

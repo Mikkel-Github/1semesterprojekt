@@ -1,1 +1,1 @@
-Fisk,Kylling,Bøf
+Kylling,Kylling,Fisk,Fisk,Kylling,Fisk,Yams,Banan,Banan,

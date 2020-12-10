@@ -24,20 +24,56 @@ public class Player {
     //////////////////////////// INVENTORY ////////////////////////////////////////
     // add item to inventory
     public void addItemToInventory(String item) {
-        //inventory.add(item);
         FileWriter writer = null;
         try {
             writer = new FileWriter("inventory.txt", true);
-            writer.write("," + item);
+            writer.write(item + ",");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public boolean canAddItemToInventory() {
+        if(getItemsFromInventory().size() < 9) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     // remove item with specific name, from the inventory
     public void removeItemFromInventory(String item) {
-        inventory.remove(item);
+        // Make copy of inventory
+        ArrayList<String> temp = getItemsFromInventory();
+
+        boolean removedOne = false;
+
+        // Then clear inventory
+        try {
+            PrintWriter writer = new PrintWriter("inventory.txt");
+            writer.print("");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Then write the items back, without the one removed item
+        for(String s : temp) {
+            System.out.print(s);
+            if(removedOne) {
+                addItemToInventory(s);
+            }
+            else {
+                if(!s.equals(item)) {
+                    addItemToInventory(s);
+                }
+                else{
+                    removedOne = true;
+                }
+            }
+        }
     }
 
     // Get items in players inventory
@@ -67,23 +103,12 @@ public class Player {
         return items;
     }
 
-    // Get specific items in players inventory
-    // get with a number
-    public String getSpecificItemFromInventory(int id) {
-        return inventory.get(id);
-    }
-    // Get with item name
-    public String getSpecificItemFromInventory(String item) {
-        return inventory.get(inventory.indexOf(item));
-    }
-
 
     ///////////////////////////// PLAYER BALANCE //////////////////////////////////
     // Add money to the player
     public void addMoneyToPlayer(int amount) {
         //playerBalance += amount;
         String balance = String.valueOf(getPlayerBalance() + amount);
-        System.out.println(balance);
         try {
             PrintWriter writer = new PrintWriter("playerBalance.txt");
             writer.print(balance);
@@ -108,7 +133,6 @@ public class Player {
     }
 
     public boolean canPlayerBuy(int amount) {
-        System.out.println(getPlayerBalance() + " - " + amount + " = " + (getPlayerBalance()-amount));
         if (getPlayerBalance() - amount >= 0) {
             return true;
         }

@@ -163,6 +163,15 @@
                            <Image url="@../src/marker.png" />
                         </image>
                      </ImageView>
+                     <ImageView fx:id="c0r0Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" />
+                     <ImageView fx:id="c1r0Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                     <ImageView fx:id="c2r0Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                     <ImageView fx:id="c0r1Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                     <ImageView fx:id="c1r1Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <ImageView fx:id="c2r1Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     <ImageView fx:id="c0r2Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                     <ImageView fx:id="c1r2Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <ImageView fx:id="c2r2Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   </children>
                </GridPane>
                <Text fx:id="playerBalance" fill="WHITE" layoutX="50.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Penge: ">

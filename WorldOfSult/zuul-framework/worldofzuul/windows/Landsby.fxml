@@ -41,7 +41,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="mandAflever" layoutX="242.0" layoutY="227.0" mnemonicParsing="false" text="Aflever mad" visible="false" onMouseClicked="#afleverGenstande" />
+            <Button fx:id="mandAflever" layoutX="242.0" layoutY="227.0" mnemonicParsing="false" text="Aflever mad" visible="true" onMouseClicked="#afleverGenstande" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="KvindeTale" layoutX="202.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" visible="false">
@@ -58,7 +58,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="kvindeAflever" layoutX="240.0" layoutY="229.0" mnemonicParsing="false" text="Aflever mad" visible="false" onMouseClicked="#afleverGenstande" />
+            <Button fx:id="kvindeAflever" layoutX="240.0" layoutY="229.0" mnemonicParsing="false" text="Aflever mad" visible="true" onMouseClicked="#afleverGenstande" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="BarnTale" layoutX="349.0" layoutY="195.0" prefHeight="200.0" prefWidth="200.0" visible="false">
@@ -75,7 +75,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="barnAflever" layoutX="248.0" layoutY="229.0" mnemonicParsing="false" text="Aflever mad" visible="false" onMouseClicked="#afleverGenstande"/>
+            <Button fx:id="barnAflever" layoutX="248.0" layoutY="229.0" mnemonicParsing="false" text="Aflever mad" visible="true" onMouseClicked="#afleverGenstande"/>
          </children>
       </AnchorPane>
       <ImageView fitHeight="259.0" fitWidth="168.0" layoutX="1103.0" layoutY="484.0" onMouseClicked="#SkiltClicked" preserveRatio="true">
@@ -147,6 +147,15 @@
                         <Image url="@../src/marker.png" />
                      </image>
                   </ImageView>
+                  <ImageView fx:id="c0r0Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="c1r0Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                  <ImageView fx:id="c2r0Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                  <ImageView fx:id="c0r1Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                  <ImageView fx:id="c1r1Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ImageView fx:id="c2r1Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ImageView fx:id="c0r2Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                  <ImageView fx:id="c1r2Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ImageView fx:id="c2r2Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Text fx:id="playerBalance" fill="WHITE" layoutX="50.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Penge: ">

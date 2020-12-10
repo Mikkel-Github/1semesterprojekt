@@ -17,6 +17,7 @@ import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.PrivateKey;
@@ -123,7 +124,18 @@ public class Controller {
     private ImageView c1r2Marker;
     @FXML
     private ImageView c2r2Marker;
-
+    @FXML
+    private Button mandAflever;
+    @FXML
+    private Button kvindeAflever;
+    @FXML
+    private Button barnAflever;
+    @FXML
+    private Text mandTekst;
+    @FXML
+    private Text kvindeTekst;
+    @FXML
+    private Text barnTekst;
 
     @FXML
     public void initialize() {
@@ -513,14 +525,57 @@ public class Controller {
         }
 
     }
-    public void afleverGenstande() throws IOException {
-        //kode til at aflevere
+    public String getKlaredeOpgaver() {
+        Path fileName = Path.of("antalKlaredeOpgaver.txt");
+        String actual = null;
+        try{
+            actual = Files.readString(fileName);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+
+            System.out.println("Can't load file");
+        }
+        return actual;
+    }
+
+    public void afleverGenstande(MouseEvent mouseEvent) throws IOException {
+        if(!inventoryOpen) {
+            toggleInventory();
+        }
+        if(inventoryMarkedItem != null){
+            PrintWriter writer = null;
+            try {
+                writer = new PrintWriter("inventory.txt");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(inventoryMarkedItem.equals("Fisk") && mouseEvent.getTarget() == mandAflever){
+                mandTekst.setText("Tak for mad");
+                mandAflever.setVisible(false);
+                if(writer != null) {
+                    writer.print((String)((int) getKlaredeOpgaver() + 1));
+                    writer.close();
+                }
+            }
+            else if(inventoryMarkedItem.equals("Banan") && mouseEvent.getTarget() == kvindeAflever){
+                kvindeTekst.setText("Tak for mad");
+                kvindeAflever.setVisible(false);
+            }
+            else if(inventoryMarkedItem.equals("Ris") && mouseEvent.getTarget() == barnAflever){
+                barnTekst.setText("Tak for mad");
+                barnAflever.setVisible(false);
+            }
+            //test om personen får det rigtige her!
+        }
+
+
         if(startQuiz() == true) {
             stageController.changeScene("Quiz");
         }
     }
 
-    public void toggleInventory(MouseEvent mouseEvent) {
+    public void toggleInventory() {
         if(inventoryOpen) {
             ScaleTransition st = new ScaleTransition(Duration.seconds(0.2), inventoryBox);
             st.setFromX(1.0);
@@ -692,4 +747,5 @@ public class Controller {
             }
         }
     }
+
 }

@@ -2,16 +2,23 @@ package worldofzuul;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import javax.swing.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.PrivateKey;
+import java.util.ArrayList;
 
 
 import static worldofzuul.StageController.currentStage;
@@ -22,9 +29,13 @@ public class Controller {
     Game game = new Game();
     Player playerController = new Player();
 
-    boolean tekstfelt = false;
-
     boolean HarOpgave = false;
+
+    boolean inventoryOpen = false;
+
+    String inventoryMarkedItem;
+
+    ImageView shownMarker = null;
 
     @FXML
     private ImageView startImage;
@@ -34,14 +45,6 @@ public class Controller {
     private ImageView slutImage;
     @FXML
     private ImageView logoImage;
-    @FXML
-    private ImageView answerA;
-    @FXML
-    private ImageView answerB;
-    @FXML
-    private ImageView answerC;
-    @FXML
-    private ImageView answerD;
     @FXML
     private AnchorPane MandTale;
     @FXML
@@ -75,20 +78,49 @@ public class Controller {
     @FXML
     private Pane kassavaTekst;
     @FXML
-    private Button bøfKnap;
+    private ImageView bøfKnap;
     @FXML
-    private Button fiskKnap;
+    private ImageView fiskKnap;
     @FXML
-    private Button kyllingKnap;
+    private ImageView kyllingKnap;
     @FXML
-    private Button yamsKnap;
+    private ImageView yamsKnap;
     @FXML
-    private Button bananKnap;
+    private ImageView bananKnap;
     @FXML
-    private Button kassavaKnap;
+    private ImageView kassavaKnap;
     @FXML
-    private Button risKnap;
-
+    private ImageView risKnap;
+    @FXML
+    private Pane inventoryBox;
+    @FXML
+    private GridPane inventoryGrid;
+    @FXML
+    private Text playerBalance;
+    @FXML
+    private Text playerBalanceKødMarked;
+    @FXML
+    private Text priceText;
+    @FXML
+    private Text informationText;
+    @FXML
+    private ImageView c0r0Marker;
+    @FXML
+    private ImageView c1r0Marker;
+    @FXML
+    private ImageView c2r0Marker;
+    @FXML
+    private ImageView c0r1Marker;
+    @FXML
+    private ImageView c1r1Marker;
+    @FXML
+    private ImageView c2r1Marker;
+    @FXML
+    private ImageView c0r2Marker;
+    @FXML
+    private ImageView c1r2Marker;
+    @FXML
+    private ImageView c2r2Marker;
 
 
     @FXML
@@ -96,15 +128,15 @@ public class Controller {
         if(currentStage.equals("Menu")) {
             animateLogo();
         }
-        else if(currentStage.equals("Quiz")) {
-
+        else if(currentStage.equals("kødMarked") || currentStage.equals("frugtOgGrønt")) {
+            playerBalanceKødMarked.setText("Penge: " + playerController.getPlayerBalance());
         }
     }
 
     ///////////////////// MENU ////////////////////////
     public void startClicked(MouseEvent mouseEvent) throws Exception {
         System.out.println("Start");
-        stageController.changeScene("Quiz");
+        stageController.changeScene("Landsby");
     }
 
     public void infoClicked(MouseEvent mouseEvent) throws IOException {
@@ -174,21 +206,6 @@ public class Controller {
         stageController.changeScene("Menu");
     }
 
-    public void chooseAnswer(MouseEvent mouseEvent) {
-        if(mouseEvent.getTarget() == answerA) {
-            System.out.println("Player chose A");
-        }
-        else if(mouseEvent.getTarget() == answerB) {
-            System.out.println("Player chose B");
-        }
-        else if(mouseEvent.getTarget() == answerC) {
-            System.out.println("Player chose C");
-        }
-        else if(mouseEvent.getTarget() == answerD) {
-            System.out.println("Player chose D");
-        }
-    }
-
     public void MarkedspladsClicked(MouseEvent mouseEvent) throws IOException {
         System.out.println("kødmarked klikket");
         stageController.changeScene("Markedsplads");
@@ -219,114 +236,209 @@ public class Controller {
     }
 
     public void FiskClicked(MouseEvent mouseEvent) {
-
-        if (tekstfelt == false) {
-            fiskTekst.setVisible(true);
-            tekstfelt = true;
-        } else {
-            fiskTekst.setVisible(false);
-            tekstfelt = false;
-        }
-
+        hideFoodBox();
+        fiskTekst.setVisible(true);
     }
 
     public void KyllingClicked(MouseEvent mouseEvent) {
-        if (tekstfelt == false) {
-            kyllingTekst.setVisible(true);
-            tekstfelt = true;
-        } else {
-            kyllingTekst.setVisible(false);
-            tekstfelt = false;
-        }
+        hideFoodBox();
+        kyllingTekst.setVisible(true);
     }
 
     public void BøfClicked(MouseEvent mouseEvent) {
-        if (tekstfelt == false) {
-            bøfTekst.setVisible(true);
-            tekstfelt = true;
-        } else {
-            bøfTekst.setVisible(false);
-            tekstfelt = false;
-        }
+        hideFoodBox();
+        bøfTekst.setVisible(true);
     }
 
     public void bananClicked(MouseEvent mouseEvent) {
-        if (tekstfelt == false) {
-            bananTekst.setVisible(true);
-            tekstfelt = true;
-        } else {
-            bananTekst.setVisible(false);
-            tekstfelt = false;
-        }
+        hideFoodBox();
+        bananTekst.setVisible(true);
     }
 
     public void YamsClicked(MouseEvent mouseEvent) {
-        if (tekstfelt == false) {
-            yamsTekst.setVisible(true);
-            tekstfelt = true;
-        } else {
-            yamsTekst.setVisible(false);
-            tekstfelt = false;
-        }
+        hideFoodBox();
+        yamsTekst.setVisible(true);
     }
 
     public void RisClicked(MouseEvent mouseEvent) {
-        if (tekstfelt == false) {
-            risTekst.setVisible(true);
-            tekstfelt = true;
-        } else {
-            risTekst.setVisible(false);
-            tekstfelt = false;
-        }
+        hideFoodBox();
+        risTekst.setVisible(true);
     }
 
     public void KassavaClicked(MouseEvent mouseEvent) {
-        if (tekstfelt == false) {
-            kassavaTekst.setVisible(true);
-            tekstfelt = true;
-        } else {
-            kassavaTekst.setVisible(false);
-            tekstfelt = false;
+        hideFoodBox();
+        kassavaTekst.setVisible(true);
+    }
+
+    public void hideFoodBox() {
+        informationText.setVisible(false);
+        if(fiskTekst != null) {
+            if(fiskTekst.isVisible()) {
+                fiskTekst.setVisible(false);
+            }
+            if(kyllingTekst.isVisible()) {
+                kyllingTekst.setVisible(false);
+            }
+            if(bøfTekst.isVisible()) {
+                bøfTekst.setVisible(false);
+            }
+        }
+        if(bananTekst != null) {
+            if(bananTekst.isVisible()) {
+                bananTekst.setVisible(false);
+            }
+            if(yamsTekst.isVisible()) {
+                yamsTekst.setVisible(false);
+            }
+            if(risTekst.isVisible()) {
+                risTekst.setVisible(false);
+            }
+            if(kassavaTekst.isVisible()) {
+                kassavaTekst.setVisible(false);
+            }
         }
     }
 
     public void Køb(MouseEvent mouseEvent) {
+        informationText.setVisible(false);
+        String amount = "";
         if (mouseEvent.getTarget() == bøfKnap) {
             if (playerController.canPlayerBuy(50)) {
-                playerController.subtractMoneyFromPlayer(50);
-                playerController.addItemToInventory("Bøf");
+                if(playerController.canAddItemToInventory()) {
+                    playerController.subtractMoneyFromPlayer(50);
+                    playerController.addItemToInventory("Bøf");
+                    amount = "50";
+                    opdaterInventory();
+                }
+                else{
+                    informationText.setText("Du har ikke plads til mere");
+                    informationText.setVisible(true);
+                }
             }
-        } else if (mouseEvent.getTarget() == kyllingKnap) {
+            else {
+                informationText.setText("Du har ikke råd");
+                informationText.setVisible(true);
+            }
+        } if (mouseEvent.getTarget() == kyllingKnap) {
             if (playerController.canPlayerBuy(30)) {
-                playerController.subtractMoneyFromPlayer(30);
-                playerController.addItemToInventory("Kylling");
+                if(playerController.canAddItemToInventory()) {
+                    playerController.subtractMoneyFromPlayer(30);
+                    playerController.addItemToInventory("Kylling");
+                    amount = "30";
+                    opdaterInventory();
+                }
+                else{
+                    informationText.setText("Du har ikke plads til mere");
+                    informationText.setVisible(true);
+                }
             }
-        } else if (mouseEvent.getTarget() == fiskKnap) {
+            else {
+                informationText.setText("Du har ikke råd");
+                informationText.setVisible(true);
+            }
+        } if (mouseEvent.getTarget() == fiskKnap) {
             if (playerController.canPlayerBuy(20)) {
-                playerController.subtractMoneyFromPlayer(20);
-                playerController.addItemToInventory("Fisk");
+                if(playerController.canAddItemToInventory()) {
+                    playerController.subtractMoneyFromPlayer(20);
+                    playerController.addItemToInventory("Fisk");
+                    amount = "20";
+                    opdaterInventory();
+                }
+                else{
+                    informationText.setText("Du har ikke plads til mere");
+                    informationText.setVisible(true);
+                }
             }
-        } else if (mouseEvent.getTarget() == yamsKnap) {
+            else {
+                informationText.setText("Du har ikke råd");
+                informationText.setVisible(true);
+            }
+        } if (mouseEvent.getTarget() == yamsKnap) {
             if (playerController.canPlayerBuy(30)) {
-                playerController.subtractMoneyFromPlayer(30);
-                playerController.addItemToInventory("Yams");
+                if(playerController.canAddItemToInventory()) {
+                    playerController.subtractMoneyFromPlayer(30);
+                    playerController.addItemToInventory("Yams");
+                    amount = "30";
+                    opdaterInventory();
+                }
+                else{
+                    informationText.setText("Du har ikke plads til mere");
+                    informationText.setVisible(true);
+                }
             }
-        } else if (mouseEvent.getTarget() == kassavaKnap) {
+            else {
+                informationText.setText("Du har ikke råd");
+                informationText.setVisible(true);
+            }
+        } if (mouseEvent.getTarget() == kassavaKnap) {
             if (playerController.canPlayerBuy(20)) {
-                playerController.subtractMoneyFromPlayer(20);
-                playerController.addItemToInventory("Kassava");
+                if(playerController.canAddItemToInventory()) {
+                    playerController.subtractMoneyFromPlayer(20);
+                    playerController.addItemToInventory("Kassava");
+                    amount = "20";
+                    opdaterInventory();
+                }
+                else{
+                    informationText.setText("Du har ikke plads til mere");
+                    informationText.setVisible(true);
+                }
             }
-        } else if (mouseEvent.getTarget() == risKnap) {
+            else {
+                informationText.setText("Du har ikke råd");
+                informationText.setVisible(true);
+            }
+        } if (mouseEvent.getTarget() == risKnap) {
             if (playerController.canPlayerBuy(40)) {
-                playerController.subtractMoneyFromPlayer(40);
-                playerController.addItemToInventory("Ris");
+                if(playerController.canAddItemToInventory()) {
+                    playerController.subtractMoneyFromPlayer(40);
+                    playerController.addItemToInventory("Ris");
+                    amount = "40";
+                    opdaterInventory();
+                }
+                else{
+                    informationText.setText("Du har ikke plads til mere");
+                    informationText.setVisible(true);
+                }
             }
-        } else if (mouseEvent.getTarget() == bananKnap) {
+            else {
+                informationText.setText("Du har ikke råd");
+                informationText.setVisible(true);
+            }
+        } if (mouseEvent.getTarget() == bananKnap) {
             if (playerController.canPlayerBuy(30)) {
-                playerController.subtractMoneyFromPlayer(30);
-                playerController.addItemToInventory("Banan");
+                if(playerController.canAddItemToInventory()) {
+                    playerController.subtractMoneyFromPlayer(30);
+                    playerController.addItemToInventory("Banan");
+                    amount = "30";
+                    opdaterInventory();
+                }
+                else{
+                    informationText.setText("Du har ikke plads til mere");
+                    informationText.setVisible(true);
+                }
+            }
+            else {
+                informationText.setText("Du har ikke råd");
+                informationText.setVisible(true);
             }
         }
+        playerBalanceKødMarked.setText("Penge: " + playerController.getPlayerBalance());
+        priceText.setText(amount);
+        // Animation af prisen som bliver trukket fra
+        FadeTransition ft = new FadeTransition(Duration.seconds(0.5), priceText);
+        ft.setFromValue(0.0);
+        ft.setToValue(1.0);
+        ft.setAutoReverse(true);
+        ft.setCycleCount(2);
+        ft.setInterpolator(Interpolator.EASE_BOTH);
+
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(1), priceText);
+        tt.setFromY(0.0);
+        tt.setToY(-50.0);
+        tt.setInterpolator(Interpolator.EASE_OUT);
+
+        tt.play();
+        ft.play();
     }
 
     ///////////////////// QUIZ /////////////////////////
@@ -376,5 +488,178 @@ public class Controller {
         KvindeTale.setVisible(false);
 
         BarnTale.setVisible(false);
+    }
+
+    public void toggleInventory(MouseEvent mouseEvent) {
+        if(inventoryOpen) {
+            ScaleTransition st = new ScaleTransition(Duration.seconds(0.2), inventoryBox);
+            st.setFromX(1.0);
+            st.setToX(0.0);
+            st.setFromY(1.0);
+            st.setToY(0.0);
+            st.setInterpolator(Interpolator.EASE_BOTH);
+            st.play();
+
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), inventoryBox);
+            tt.setFromX(0);
+            tt.setToX(275);
+            tt.setFromY(0);
+            tt.setToY(-275);
+            tt.setInterpolator(Interpolator.EASE_BOTH);
+            tt.play();
+
+            inventoryBox.setDisable(true);
+            inventoryOpen = false;
+            inventoryMarkedItem = null;
+            shownMarker.setVisible(false);
+        }
+        else {
+            // Hent inventory
+            ArrayList<String> inventory = playerController.getItemsFromInventory();
+            int column = 0;
+            int row = 0;
+
+            for(int i = 0; i < inventory.size(); i++) {
+                FileInputStream input = null;
+                try {
+                    input = new FileInputStream("WorldOfSult\\zuul-framework\\worldofzuul\\src\\" + inventory.get(i) + ".png");
+                    Image image = new Image(input);
+                    ImageView imageView = new ImageView(image);
+                    imageView.setPreserveRatio(true);
+                    imageView.setFitWidth(100);
+                    inventoryGrid.add(imageView, column, row);
+                    if(column == 2) {
+                        column = 0;
+                        row++;
+                    }
+                    else {
+                        column++;
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            // Hent players penge
+            playerBalance.setText("Penge: " + playerController.getPlayerBalance());
+
+            // Vis inventory
+            inventoryBox.setVisible(true);
+            inventoryBox.setDisable(false);
+            inventoryOpen = true;
+
+            ScaleTransition st = new ScaleTransition(Duration.seconds(0.2), inventoryBox);
+            st.setFromX(0.0);
+            st.setToX(1.0);
+            st.setFromY(0.0);
+            st.setToY(1.0);
+            st.setInterpolator(Interpolator.EASE_BOTH);
+            st.play();
+
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), inventoryBox);
+            tt.setFromX(275);
+            tt.setToX(0);
+            tt.setFromY(-275);
+            tt.setToY(0);
+            tt.setInterpolator(Interpolator.EASE_BOTH);
+            tt.play();
+        }
+    }
+
+    public void opdaterInventory() {
+        // Hent inventory
+        ArrayList<String> inventory = playerController.getItemsFromInventory();
+        int column = 0;
+        int row = 0;
+
+        inventoryGrid.getChildren().removeAll();
+
+        for(int i = 0; i < inventory.size(); i++) {
+            FileInputStream input = null;
+            try {
+                input = new FileInputStream("WorldOfSult\\zuul-framework\\worldofzuul\\src\\" + inventory.get(i) + ".png");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Image image = new Image(input);
+            ImageView imageView = new ImageView(image);
+            imageView.setPreserveRatio(true);
+            imageView.setFitWidth(100);
+            inventoryGrid.add(imageView, column, row);
+            if(column == 2) {
+                column = 0;
+                row++;
+            }
+            else {
+                column++;
+            }
+        }
+
+        // Hent players penge
+        playerBalance.setText("Penge: " + playerController.getPlayerBalance());
+    }
+
+    public void toggleHints(MouseEvent mouseEvent) {
+        // todo : Mikkel - Lav hints box
+    }
+
+    public void getItem(MouseEvent mouseEvent) {
+        if(shownMarker != null) {
+            shownMarker.setVisible(false);
+        }
+
+        Node clickedNode = mouseEvent.getPickResult().getIntersectedNode();
+        // Finder hvilken column og row der bliver trykket på
+        Integer colIndex = GridPane.getColumnIndex(clickedNode);
+        Integer rowIndex = GridPane.getRowIndex(clickedNode);
+
+        if(colIndex != null && rowIndex != null) {
+            // Beregn hvilket item der bliver trykket på
+            int itemNumber = colIndex + (rowIndex * 3);
+            inventoryMarkedItem = playerController.getItemsFromInventory().get(itemNumber);
+            System.out.println(inventoryMarkedItem);
+            if(colIndex == 0) {
+                if(rowIndex == 0) {
+                    c0r0Marker.setVisible(true);
+                    shownMarker = c0r0Marker;
+                }
+                if(rowIndex == 1) {
+                    c0r1Marker.setVisible(true);
+                    shownMarker = c0r1Marker;
+                }
+                if(rowIndex == 2) {
+                    c0r2Marker.setVisible(true);
+                    shownMarker = c0r2Marker;
+                }
+            }
+            else if(colIndex == 1) {
+                if(rowIndex == 0) {
+                    c1r0Marker.setVisible(true);
+                    shownMarker = c1r0Marker;
+                }
+                if(rowIndex == 1) {
+                    c1r1Marker.setVisible(true);
+                    shownMarker = c1r1Marker;
+                }
+                if(rowIndex == 2) {
+                    c1r2Marker.setVisible(true);
+                    shownMarker = c1r2Marker;
+                }
+            }
+            else if(colIndex == 2) {
+                if(rowIndex == 0) {
+                    c2r0Marker.setVisible(true);
+                    shownMarker = c2r0Marker;
+                }
+                if(rowIndex == 1) {
+                    c2r1Marker.setVisible(true);
+                    shownMarker = c2r1Marker;
+                }
+                if(rowIndex == 2) {
+                    c2r2Marker.setVisible(true);
+                    shownMarker = c2r2Marker;
+                }
+            }
+        }
     }
 }

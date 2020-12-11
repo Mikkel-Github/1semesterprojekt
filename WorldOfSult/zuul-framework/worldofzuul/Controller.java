@@ -14,9 +14,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import javax.swing.*;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.PrivateKey;
@@ -123,7 +121,36 @@ public class Controller {
     private ImageView c1r2Marker;
     @FXML
     private ImageView c2r2Marker;
-
+    @FXML
+    private ImageView c0r0Item;
+    @FXML
+    private ImageView c1r0Item;
+    @FXML
+    private ImageView c2r0Item;
+    @FXML
+    private ImageView c0r1Item;
+    @FXML
+    private ImageView c1r1Item;
+    @FXML
+    private ImageView c2r1Item;
+    @FXML
+    private ImageView c0r2Item;
+    @FXML
+    private ImageView c1r2Item;
+    @FXML
+    private ImageView c2r2Item;
+    @FXML
+    private Button mandAflever;
+    @FXML
+    private Button kvindeAflever;
+    @FXML
+    private Button barnAflever;
+    @FXML
+    private Text mandTekst;
+    @FXML
+    private Text kvindeTekst;
+    @FXML
+    private Text barnTekst;
 
     @FXML
     public void initialize() {
@@ -492,35 +519,89 @@ public class Controller {
         BarnTale.setVisible(false);
     }
 
-    public boolean startQuiz(){
-        boolean canLoadFile = false;
+    public String getKlaredeOpgaver() {
         Path fileName = Path.of("antalKlaredeOpgaver.txt");
         String actual = null;
-        try{
+        try {
             actual = Files.readString(fileName);
-            canLoadFile = true;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-            canLoadFile = false;
             System.out.println("Can't load file");
         }
-        if(actual.equals("3")) {
-            return true;
+        System.out.println("Opgaver lavet: " + actual);
+
+        return actual;
+    }
+
+    public String increaseString(String input) throws IOException {
+        // Kan maksimalt returnere "3"
+        if(input.equals("0")) {
+            return "1";
+        }
+        else if(input.equals("1")) {
+            return "2";
+        }
+        else if(input.equals("2")){
+            return "3";
         }
         else {
-            return false;
-        }
-
-    }
-    public void afleverGenstande() throws IOException {
-        //kode til at aflevere
-        if(startQuiz() == true) {
-            stageController.changeScene("Quiz");
+            return "0";
         }
     }
 
-    public void toggleInventory(MouseEvent mouseEvent) {
+    public void afleverGenstande(MouseEvent mouseEvent) throws IOException {
+        if(!inventoryOpen) {
+            toggleInventory();
+        }
+        if(inventoryMarkedItem != null){
+            // Tjek for maden man aflevere
+            if(inventoryMarkedItem.equals("Fisk") && mouseEvent.getTarget() == mandAflever){
+                mandTekst.setText("Tak for mad");
+                SkjulTale();
+                mandAflever.setVisible(false);
+                playerController.removeItemFromInventory("Fisk");
+                opdaterInventory();
+                saveState(increaseString(getKlaredeOpgaver()));
+                if(getKlaredeOpgaver().equals("3")) {
+                    stageController.changeScene("Quiz");
+                }
+            }
+            else if(inventoryMarkedItem.equals("Banan") && mouseEvent.getTarget() == kvindeAflever){
+                kvindeTekst.setText("Tak for mad");
+                SkjulTale();
+                kvindeAflever.setVisible(false);
+                playerController.removeItemFromInventory("Banan");
+                opdaterInventory();
+                saveState(increaseString(getKlaredeOpgaver()));
+                if(getKlaredeOpgaver().equals("3")) {
+                    stageController.changeScene("Quiz");
+                }
+            }
+            else if(inventoryMarkedItem.equals("Ris") && mouseEvent.getTarget() == barnAflever){
+                barnTekst.setText("Tak for mad");
+                SkjulTale();
+                barnAflever.setVisible(false);
+                playerController.removeItemFromInventory("Ris");
+                opdaterInventory();
+                saveState(increaseString(getKlaredeOpgaver()));
+                if(getKlaredeOpgaver().equals("3")) {
+                    stageController.changeScene("Quiz");
+                }
+            }
+        }
+    }
+
+    public void saveState(String input) {
+        try {
+            PrintWriter writer = new PrintWriter("antalKlaredeOpgaver.txt");
+            writer.print(input);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void toggleInventory() {
         if(inventoryOpen) {
             ScaleTransition st = new ScaleTransition(Duration.seconds(0.2), inventoryBox);
             st.setFromX(1.0);
@@ -541,32 +622,34 @@ public class Controller {
             inventoryBox.setDisable(true);
             inventoryOpen = false;
             inventoryMarkedItem = null;
-            shownMarker.setVisible(false);
+            if(shownMarker != null) {
+                shownMarker.setVisible(false);
+            }
         }
         else {
             // Hent inventory
             ArrayList<String> inventory = playerController.getItemsFromInventory();
-            int column = 0;
-            int row = 0;
 
-            for(int i = 0; i < inventory.size(); i++) {
-                FileInputStream input = null;
-                try {
-                    input = new FileInputStream("WorldOfSult\\zuul-framework\\worldofzuul\\src\\" + inventory.get(i) + ".png");
-                    Image image = new Image(input);
-                    ImageView imageView = new ImageView(image);
-                    imageView.setPreserveRatio(true);
-                    imageView.setFitWidth(100);
-                    inventoryGrid.add(imageView, column, row);
-                    if(column == 2) {
-                        column = 0;
-                        row++;
+            if(!(inventory.size() == 1 && inventory.get(0).equals(""))) {
+                for(int i = 0; i < inventory.size(); i++) {
+                    FileInputStream input = null;
+                    try {
+                        input = new FileInputStream("WorldOfSult\\zuul-framework\\worldofzuul\\src\\" + inventory.get(i) + ".png");
+                        Image image = new Image(input);
+                        switch (i) {
+                            case 0 -> c0r0Item.setImage(image);
+                            case 1 -> c1r0Item.setImage(image);
+                            case 2 -> c2r0Item.setImage(image);
+                            case 3 -> c0r1Item.setImage(image);
+                            case 4 -> c1r1Item.setImage(image);
+                            case 5 -> c2r1Item.setImage(image);
+                            case 6 -> c0r2Item.setImage(image);
+                            case 7 -> c1r2Item.setImage(image);
+                            case 8 -> c2r2Item.setImage(image);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    else {
-                        column++;
-                    }
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
                 }
             }
 
@@ -597,33 +680,72 @@ public class Controller {
     }
 
     public void opdaterInventory() {
+        inventoryBox.setDisable(true);
+        inventoryOpen = false;
+        inventoryMarkedItem = null;
+        if(shownMarker != null) {
+            shownMarker.setVisible(false);
+        }
+
         // Hent inventory
         ArrayList<String> inventory = playerController.getItemsFromInventory();
-        int column = 0;
-        int row = 0;
 
-        inventoryGrid.getChildren().removeAll();
-
-        for(int i = 0; i < inventory.size(); i++) {
-            FileInputStream input = null;
-            try {
-                input = new FileInputStream("WorldOfSult\\zuul-framework\\worldofzuul\\src\\" + inventory.get(i) + ".png");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+        if(!(inventory.size() == 1 && inventory.get(0).equals(""))) {
+            for (int i = 0; i < inventory.size(); i++) {
+                FileInputStream input = null;
+                try {
+                    input = new FileInputStream("WorldOfSult\\zuul-framework\\worldofzuul\\src\\" + inventory.get(i) + ".png");
+                    Image image = new Image(input);
+                    switch (i) {
+                        case 0 -> c0r0Item.setImage(image);
+                        case 1 -> c1r0Item.setImage(image);
+                        case 2 -> c2r0Item.setImage(image);
+                        case 3 -> c0r1Item.setImage(image);
+                        case 4 -> c1r1Item.setImage(image);
+                        case 5 -> c2r1Item.setImage(image);
+                        case 6 -> c0r2Item.setImage(image);
+                        case 7 -> c1r2Item.setImage(image);
+                        case 8 -> c2r2Item.setImage(image);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            Image image = new Image(input);
-            ImageView imageView = new ImageView(image);
-            imageView.setPreserveRatio(true);
-            imageView.setFitWidth(100);
-            inventoryGrid.add(imageView, column, row);
-            if(column == 2) {
-                column = 0;
-                row++;
-            }
-            else {
-                column++;
+            for(int i = inventory.size(); i < 9; i++) {
+                switch (i) {
+                    case 8 -> c2r2Item.setImage(null);
+                    case 7 -> c1r2Item.setImage(null);
+                    case 6 -> c0r2Item.setImage(null);
+                    case 5 -> c2r1Item.setImage(null);
+                    case 4 -> c1r1Item.setImage(null);
+                    case 3 -> c0r1Item.setImage(null);
+                    case 2 -> c2r0Item.setImage(null);
+                    case 1 -> c1r0Item.setImage(null);
+                    case 0 -> c0r0Item.setImage(null);
+                }
             }
         }
+        else {
+            for(int i = inventory.size() - 1; i < 9; i++) {
+                switch (i) {
+                    case 8 -> c2r2Item.setImage(null);
+                    case 7 -> c1r2Item.setImage(null);
+                    case 6 -> c0r2Item.setImage(null);
+                    case 5 -> c2r1Item.setImage(null);
+                    case 4 -> c1r1Item.setImage(null);
+                    case 3 -> c0r1Item.setImage(null);
+                    case 2 -> c2r0Item.setImage(null);
+                    case 1 -> c1r0Item.setImage(null);
+                    case 0 -> c0r0Item.setImage(null);
+                }
+            }
+        }
+
+
+        // Vis inventory
+        inventoryBox.setVisible(true);
+        inventoryBox.setDisable(false);
+        inventoryOpen = true;
 
         // Hent players penge
         playerBalance.setText("Penge: " + playerController.getPlayerBalance());
@@ -637,59 +759,51 @@ public class Controller {
         if(shownMarker != null) {
             shownMarker.setVisible(false);
         }
-
-        Node clickedNode = mouseEvent.getPickResult().getIntersectedNode();
-        // Finder hvilken column og row der bliver trykket på
-        Integer colIndex = GridPane.getColumnIndex(clickedNode);
-        Integer rowIndex = GridPane.getRowIndex(clickedNode);
-
-        if(colIndex != null && rowIndex != null) {
-            // Beregn hvilket item der bliver trykket på
-            int itemNumber = colIndex + (rowIndex * 3);
-            inventoryMarkedItem = playerController.getItemsFromInventory().get(itemNumber);
-            System.out.println(inventoryMarkedItem);
-            if(colIndex == 0) {
-                if(rowIndex == 0) {
-                    c0r0Marker.setVisible(true);
-                    shownMarker = c0r0Marker;
-                }
-                if(rowIndex == 1) {
-                    c0r1Marker.setVisible(true);
-                    shownMarker = c0r1Marker;
-                }
-                if(rowIndex == 2) {
-                    c0r2Marker.setVisible(true);
-                    shownMarker = c0r2Marker;
-                }
-            }
-            else if(colIndex == 1) {
-                if(rowIndex == 0) {
-                    c1r0Marker.setVisible(true);
-                    shownMarker = c1r0Marker;
-                }
-                if(rowIndex == 1) {
-                    c1r1Marker.setVisible(true);
-                    shownMarker = c1r1Marker;
-                }
-                if(rowIndex == 2) {
-                    c1r2Marker.setVisible(true);
-                    shownMarker = c1r2Marker;
-                }
-            }
-            else if(colIndex == 2) {
-                if(rowIndex == 0) {
-                    c2r0Marker.setVisible(true);
-                    shownMarker = c2r0Marker;
-                }
-                if(rowIndex == 1) {
-                    c2r1Marker.setVisible(true);
-                    shownMarker = c2r1Marker;
-                }
-                if(rowIndex == 2) {
-                    c2r2Marker.setVisible(true);
-                    shownMarker = c2r2Marker;
-                }
-            }
+        if(mouseEvent.getTarget().equals(c0r0Item)) {
+            c0r0Marker.setVisible(true);
+            shownMarker = c0r0Marker;
+            inventoryMarkedItem = playerController.getItemsFromInventory().get(0);
         }
+        else if(mouseEvent.getTarget().equals(c1r0Item)) {
+            c1r0Marker.setVisible(true);
+            shownMarker = c1r0Marker;
+            inventoryMarkedItem = playerController.getItemsFromInventory().get(1);
+        }
+        else if(mouseEvent.getTarget().equals(c2r0Item)) {
+            c2r0Marker.setVisible(true);
+            shownMarker = c2r0Marker;
+            inventoryMarkedItem = playerController.getItemsFromInventory().get(2);
+        }
+        else if(mouseEvent.getTarget().equals(c0r1Item)) {
+            c0r1Marker.setVisible(true);
+            shownMarker = c0r1Marker;
+            inventoryMarkedItem = playerController.getItemsFromInventory().get(3);
+        }
+        else if(mouseEvent.getTarget().equals(c1r1Item)) {
+            c1r1Marker.setVisible(true);
+            shownMarker = c1r1Marker;
+            inventoryMarkedItem = playerController.getItemsFromInventory().get(4);
+        }
+        else if(mouseEvent.getTarget().equals(c2r1Item)) {
+            c2r1Marker.setVisible(true);
+            shownMarker = c2r1Marker;
+            inventoryMarkedItem = playerController.getItemsFromInventory().get(5);
+        }
+        else if(mouseEvent.getTarget().equals(c0r2Item)) {
+            c0r2Marker.setVisible(true);
+            shownMarker = c0r2Marker;
+            inventoryMarkedItem = playerController.getItemsFromInventory().get(6);
+        }
+        else if(mouseEvent.getTarget().equals(c1r2Item)) {
+            c1r2Marker.setVisible(true);
+            shownMarker = c1r2Marker;
+            inventoryMarkedItem = playerController.getItemsFromInventory().get(7);
+        }
+        else if(mouseEvent.getTarget().equals(c2r2Item)) {
+            c2r2Marker.setVisible(true);
+            shownMarker = c2r2Marker;
+            inventoryMarkedItem = playerController.getItemsFromInventory().get(8);
+        }
+        System.out.println(inventoryMarkedItem);
     }
 }

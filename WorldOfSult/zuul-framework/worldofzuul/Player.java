@@ -160,6 +160,16 @@ public class Player {
         return amount;
     }
 
+    ///////////////////////////// RESET antal færdige opgaver når spillet starter ///////////////////////////
+    public void resetTasks() {
+        try {
+            PrintWriter writer = new PrintWriter("antalKlaredeOpgaver.txt");
+            writer.print("0");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     ///////////////////////////// PLAYER QUIZ //////////////////////////////////
     // Adds a point to the players score

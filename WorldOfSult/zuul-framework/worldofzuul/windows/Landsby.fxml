@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.Pane?>
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldofzuul.Controller">
    <children>
       <ImageView>
@@ -42,11 +36,12 @@
             </ImageView>
             <Button fx:id="MandSvarJa" layoutX="228.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#SvarJaClicked" text="Ja" />
             <Button fx:id="MandSvarNej" layoutX="292.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#SkjulTale" text="Ikke nu" />
-            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
+            <Text fx:id="mandTekst" layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
+            <Button fx:id="mandAflever" layoutX="242.0" layoutY="227.0" mnemonicParsing="false" text="Aflever mad" visible="true" onMouseClicked="#afleverGenstande" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="KvindeTale" layoutX="202.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" visible="false">
@@ -58,11 +53,12 @@
             </ImageView>
             <Button fx:id="KvindeSvarJa" layoutX="228.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#SvarJaClicked" text="Ja" />
             <Button fx:id="KvindeSvarNej" layoutX="292.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#SkjulTale" text="Ikke nu" />
-            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
+            <Text fx:id="kvindeTekst" layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
+            <Button fx:id="kvindeAflever" layoutX="240.0" layoutY="229.0" mnemonicParsing="false" text="Aflever mad" visible="true" onMouseClicked="#afleverGenstande" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="BarnTale" layoutX="349.0" layoutY="195.0" prefHeight="200.0" prefWidth="200.0" visible="false">
@@ -74,11 +70,12 @@
             </ImageView>
             <Button fx:id="BarnSvarJa" layoutX="228.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#SvarJaClicked" text="Ja" />
             <Button fx:id="BarnSvarNej" layoutX="292.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#SkjulTale" text="Ikke nu" />
-            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
+            <Text fx:id="barnTekst" layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
+            <Button fx:id="barnAflever" layoutX="248.0" layoutY="229.0" mnemonicParsing="false" text="Aflever mad" visible="true" onMouseClicked="#afleverGenstande"/>
          </children>
       </AnchorPane>
       <ImageView fitHeight="259.0" fitWidth="168.0" layoutX="1103.0" layoutY="484.0" onMouseClicked="#SkiltClicked" preserveRatio="true">
@@ -86,7 +83,7 @@
             <Image url="@../src/Skilt_Markedsplads.png" />
          </image>
       </ImageView>
-      <Pane fx:id="inventoryBox" onMouseClicked="#getItem" visible="false" layoutX="725.0" layoutY="200.0" prefHeight="400.0" prefWidth="500.0">
+      <Pane fx:id="inventoryBox" layoutX="725.0" layoutY="200.0" onMouseClicked="#getItem" prefHeight="400.0" prefWidth="500.0" visible="false">
          <children>
             <ImageView fitHeight="400.0" fitWidth="500.0" pickOnBounds="true">
                <image>
@@ -150,6 +147,15 @@
                         <Image url="@../src/marker.png" />
                      </image>
                   </ImageView>
+                  <ImageView fx:id="c0r0Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="c1r0Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                  <ImageView fx:id="c2r0Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                  <ImageView fx:id="c0r1Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                  <ImageView fx:id="c1r1Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ImageView fx:id="c2r1Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ImageView fx:id="c0r2Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
+                  <ImageView fx:id="c1r2Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ImageView fx:id="c2r2Item" fitHeight="91.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Text fx:id="playerBalance" fill="WHITE" layoutX="50.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Penge: ">

@@ -303,7 +303,7 @@ public class Game
         }*/
     }
 
-    public boolean checkHarOpgave() {
+    public String checkHarOpgave() {
         // Load Questions and Answers from file
         boolean canLoadFile = false;
         Path fileName = Path.of("harOpgave.txt");
@@ -316,12 +316,7 @@ public class Game
             canLoadFile = false;
             System.out.println("Can't load file");
         }
-        if(actual.equals("true")) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return actual;
     }
 
     public void writeHarOpgave(String input) {

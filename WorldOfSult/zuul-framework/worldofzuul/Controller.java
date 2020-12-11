@@ -104,7 +104,7 @@ public class Controller {
     ///////////////////// MENU ////////////////////////
     public void startClicked(MouseEvent mouseEvent) throws Exception {
         System.out.println("Start");
-        stageController.changeScene("Quiz");
+        stageController.changeScene("Landsby");
     }
 
     public void infoClicked(MouseEvent mouseEvent) throws IOException {
@@ -331,21 +331,21 @@ public class Controller {
 
     ///////////////////// QUIZ /////////////////////////
     public void MandClicked(MouseEvent mouseEvent) throws Exception {
-        if(game.checkHarOpgave()==false){
+        if(game.checkHarOpgave().equals("mand") || game.checkHarOpgave().equals("")){
             SkjulTale();
             MandTale.setVisible(true);
         }
     }
 
     public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
-        if(game.checkHarOpgave()==false) {
+        if(game.checkHarOpgave().equals("kvinde") || game.checkHarOpgave().equals("")) {
             SkjulTale();
             KvindeTale.setVisible(true);
         }
     }
 
     public void DrengClicked(MouseEvent mouseEvent) throws Exception {
-        if(game.checkHarOpgave()==false) {
+        if(game.checkHarOpgave().equals("dreng") || game.checkHarOpgave().equals("")) {
             SkjulTale();
             BarnTale.setVisible(true);
         }
@@ -357,15 +357,18 @@ public class Controller {
 
 
     public void SvarJaClicked(MouseEvent mouseEvent)throws Exception {
-        HarOpgave=true;
+
         if(mouseEvent.getTarget()==MandSvarJa){
            playerController.addMoneyToPlayer(100);
+           game.writeHarOpgave("mand");
         }
         else if(mouseEvent.getTarget()==KvindeSvarJa) {
             playerController.addMoneyToPlayer(0);
+            game.writeHarOpgave("kvinde");
         }
         else if(mouseEvent.getTarget()==BarnSvarJa) {
             playerController.addMoneyToPlayer(1);
+            game.writeHarOpgave("dreng");
         }
         SkjulTale();
     }

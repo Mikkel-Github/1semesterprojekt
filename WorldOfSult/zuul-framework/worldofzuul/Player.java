@@ -8,12 +8,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class Player {
-    // Inventory
-    ArrayList<String> inventory = new ArrayList<String>();
-
-    // Players balance
-    int playerBalance = 0;
-
     // Player quiz score
     int playerQuizScore = 0;
 
@@ -164,7 +158,7 @@ public class Player {
     public void resetTasks() {
         try {
             PrintWriter writer = new PrintWriter("antalKlaredeOpgaver.txt");
-            writer.print("0");
+            writer.print("");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -179,6 +173,7 @@ public class Player {
 
     // Returns the players score
     public int getPoints() {
+        // todo : Mikkel - fortæl brugeren hvor mange brugeren har fået rigtigt i alt
         return playerQuizScore;
     }
 

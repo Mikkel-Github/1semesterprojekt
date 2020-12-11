@@ -29,10 +29,6 @@ public class Controller {
     Game game = new Game();
     Player playerController = new Player();
 
-    boolean tekstfelt = false;
-
-    boolean HarOpgave = false;
-
     boolean inventoryOpen = false;
 
     String inventoryMarkedItem;
@@ -40,21 +36,7 @@ public class Controller {
     ImageView shownMarker = null;
 
     @FXML
-    private ImageView startImage;
-    @FXML
-    private ImageView infoImage;
-    @FXML
-    private ImageView slutImage;
-    @FXML
     private ImageView logoImage;
-    @FXML
-    private ImageView answerA;
-    @FXML
-    private ImageView answerB;
-    @FXML
-    private ImageView answerC;
-    @FXML
-    private ImageView answerD;
     @FXML
     private AnchorPane MandTale;
     @FXML
@@ -103,8 +85,6 @@ public class Controller {
     private ImageView risKnap;
     @FXML
     private Pane inventoryBox;
-    @FXML
-    private GridPane inventoryGrid;
     @FXML
     private Text playerBalance;
     @FXML
@@ -166,6 +146,7 @@ public class Controller {
     public void initialize() {
         if(currentStage.equals("Menu")) {
             animateLogo();
+            playerController.resetTasks();
         }
         else if(currentStage.equals("kødMarked") || currentStage.equals("frugtOgGrønt")) {
             playerBalanceKødMarked.setText("Penge: " + playerController.getPlayerBalance());
@@ -211,16 +192,6 @@ public class Controller {
         st.setCycleCount(1);
         st.setInterpolator(Interpolator.EASE_BOTH);
         st.play();
-    }
-
-    @FXML
-    public void animationOpacity() {
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2));
-        ft.setFromValue(0);
-        ft.setToValue(1);
-        ft.setCycleCount(1);
-        ft.setInterpolator(Interpolator.EASE_BOTH);
-        ft.play();
     }
 
     // Menu animation
@@ -482,23 +453,83 @@ public class Controller {
 
     ///////////////////// QUIZ /////////////////////////
     public void MandClicked(MouseEvent mouseEvent) throws Exception {
-        if(game.checkHarOpgave().equals("mand") || game.checkHarOpgave().equals("")){
-            SkjulTale();
-            MandTale.setVisible(true);
+        boolean isDone = false;
+        for(String s : getKlaredeOpgaver()) {
+            if(s.equals("mand")) {
+                isDone = true;
+            }
+        }
+        if(!isDone) {
+            if(game.checkHarOpgave().equals("mand")) {
+                SkjulTale();
+                MandTale.setVisible(true);
+                MandSvarJa.setVisible(false);
+                MandSvarNej.setVisible(false);
+                mandAflever.setVisible(true);
+                mandTekst.setText("Har du købt det?");
+            }
+            else if(game.checkHarOpgave().equals("")){
+                SkjulTale();
+                MandTale.setVisible(true);
+                MandSvarJa.setVisible(true);
+                MandSvarNej.setVisible(true);
+                mandAflever.setVisible(false);
+                mandTekst.setText("Jeg mangler en fisk. Vil du hjælpe mig?");
+            }
         }
     }
 
     public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
-        if(game.checkHarOpgave().equals("kvinde") || game.checkHarOpgave().equals("")) {
-            SkjulTale();
-            KvindeTale.setVisible(true);
+        boolean isDone = false;
+        for(String s : getKlaredeOpgaver()) {
+            if(s.equals("kvinde")) {
+                isDone = true;
+            }
+        }
+        if(!isDone) {
+            if(game.checkHarOpgave().equals("kvinde")) {
+                SkjulTale();
+                KvindeTale.setVisible(true);
+                KvindeSvarJa.setVisible(false);
+                KvindeSvarNej.setVisible(false);
+                kvindeAflever.setVisible(true);
+                kvindeTekst.setText("Har du købt det?");
+            }
+            else if(game.checkHarOpgave().equals("")){
+                SkjulTale();
+                KvindeTale.setVisible(true);
+                KvindeSvarJa.setVisible(true);
+                KvindeSvarNej.setVisible(true);
+                kvindeAflever.setVisible(false);
+                kvindeTekst.setText("Jeg mangler en banan. Vil du hjælpe mig?");
+            }
         }
     }
 
     public void DrengClicked(MouseEvent mouseEvent) throws Exception {
-        if(game.checkHarOpgave().equals("dreng") || game.checkHarOpgave().equals("")) {
-            SkjulTale();
-            BarnTale.setVisible(true);
+        boolean isDone = false;
+        for(String s : getKlaredeOpgaver()) {
+            if(s.equals("barn")) {
+                isDone = true;
+            }
+        }
+        if(!isDone) {
+            if(game.checkHarOpgave().equals("dreng")) {
+                SkjulTale();
+                BarnTale.setVisible(true);
+                BarnSvarJa.setVisible(false);
+                BarnSvarNej.setVisible(false);
+                barnAflever.setVisible(true);
+                barnTekst.setText("Har du købt det?");
+            }
+            else if(game.checkHarOpgave().equals("")){
+                SkjulTale();
+                BarnTale.setVisible(true);
+                BarnSvarJa.setVisible(true);
+                BarnSvarNej.setVisible(true);
+                barnAflever.setVisible(false);
+                barnTekst.setText("Jeg mangler en pose ris. Vil du hjælpe mig?");
+            }
         }
     }
 
@@ -537,7 +568,7 @@ public class Controller {
         BarnTale.setVisible(false);
     }
 
-    public String getKlaredeOpgaver() {
+    public ArrayList<String> getKlaredeOpgaver() {
         Path fileName = Path.of("antalKlaredeOpgaver.txt");
         String actual = null;
         try {
@@ -548,23 +579,15 @@ public class Controller {
         }
         System.out.println("Opgaver lavet: " + actual);
 
-        return actual;
-    }
+        ArrayList<String> tasksDone = new ArrayList<String>();
+        // Set Questions and Answers up in a list
+        String[] tasksDoneList = actual.split(",");
+        for (String s : tasksDoneList) {
+            System.out.println(s);
+            tasksDone.add(s);
+        }
 
-    public String increaseString(String input) throws IOException {
-        // Kan maksimalt returnere "3"
-        if(input.equals("0")) {
-            return "1";
-        }
-        else if(input.equals("1")) {
-            return "2";
-        }
-        else if(input.equals("2")){
-            return "3";
-        }
-        else {
-            return "0";
-        }
+        return tasksDone;
     }
 
     public void afleverGenstande(MouseEvent mouseEvent) throws IOException {
@@ -579,8 +602,9 @@ public class Controller {
                 mandAflever.setVisible(false);
                 playerController.removeItemFromInventory("Fisk");
                 opdaterInventory();
-                saveState(increaseString(getKlaredeOpgaver()));
-                if(getKlaredeOpgaver().equals("3")) {
+                saveState("mand");
+                game.writeHarOpgave("");
+                if(getKlaredeOpgaver().size() == 3) {
                     stageController.changeScene("Quiz");
                 }
             }
@@ -590,8 +614,9 @@ public class Controller {
                 kvindeAflever.setVisible(false);
                 playerController.removeItemFromInventory("Banan");
                 opdaterInventory();
-                saveState(increaseString(getKlaredeOpgaver()));
-                if(getKlaredeOpgaver().equals("3")) {
+                saveState("kvinde");
+                game.writeHarOpgave("");
+                if(getKlaredeOpgaver().size() == 3) {
                     stageController.changeScene("Quiz");
                 }
             }
@@ -601,8 +626,9 @@ public class Controller {
                 barnAflever.setVisible(false);
                 playerController.removeItemFromInventory("Ris");
                 opdaterInventory();
-                saveState(increaseString(getKlaredeOpgaver()));
-                if(getKlaredeOpgaver().equals("3")) {
+                saveState("barn");
+                game.writeHarOpgave("");
+                if(getKlaredeOpgaver().size() == 3) {
                     stageController.changeScene("Quiz");
                 }
             }
@@ -610,9 +636,10 @@ public class Controller {
     }
 
     public void saveState(String input) {
+        FileWriter writer = null;
         try {
-            PrintWriter writer = new PrintWriter("antalKlaredeOpgaver.txt");
-            writer.print(input);
+            writer = new FileWriter("antalKlaredeOpgaver.txt", true);
+            writer.write(input + ",");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

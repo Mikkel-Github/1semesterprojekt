@@ -35,7 +35,7 @@
                   <Image url="@../src/Skilt_Landsby.png" />
                </image>
             </ImageView>
-            <Pane fx:id="inventoryBox" visible="false" onMouseClicked="#getItem" layoutX="725.0" layoutY="200.0" prefHeight="400.0" prefWidth="500.0">
+            <Pane fx:id="inventoryBox" layoutX="725.0" layoutY="200.0" onMouseClicked="#getItem" prefHeight="400.0" prefWidth="500.0" visible="false">
                <children>
                   <ImageView fitHeight="400.0" fitWidth="500.0" pickOnBounds="true">
                      <image>
@@ -117,9 +117,9 @@
                   </Text>
                </children>
             </Pane>
-            <Pane fx:id="hintsBox" visible="false" layoutX="722.0" layoutY="20.0" prefHeight="100.0" prefWidth="470.0">
+            <Pane fx:id="hintsBox" layoutX="722.0" layoutY="20.0" prefHeight="145.0" prefWidth="470.0" visible="false">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="470.0" pickOnBounds="true">
+                  <ImageView fitHeight="145.0" fitWidth="470.0" pickOnBounds="true">
                      <image>
                         <Image url="@../src/Inventory_Square.png" />
                      </image>

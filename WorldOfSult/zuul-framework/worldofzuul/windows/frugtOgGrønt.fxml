@@ -203,9 +203,9 @@
                   </Text>
                </children>
             </Pane>
-            <Pane fx:id="hintsBox" layoutX="722.0" layoutY="20.0" prefHeight="100.0" prefWidth="470.0" visible="false">
+            <Pane fx:id="hintsBox" layoutX="722.0" layoutY="20.0" prefHeight="126.0" prefWidth="470.0" visible="false">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="470.0" pickOnBounds="true">
+                  <ImageView fitHeight="126.0" fitWidth="470.0" pickOnBounds="true">
                      <image>
                         <Image url="@../src/Inventory_Square.png" />
                      </image>

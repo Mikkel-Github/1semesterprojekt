@@ -129,11 +129,11 @@ public class Controller {
     @FXML
     private ImageView c2r2Item;
     @FXML
-    private Button mandAflever;
+    private ImageView mandAflever;
     @FXML
-    private Button kvindeAflever;
+    private ImageView kvindeAflever;
     @FXML
-    private Button barnAflever;
+    private ImageView barnAflever;
     @FXML
     private Text mandTekst;
     @FXML
@@ -144,6 +144,8 @@ public class Controller {
     private Pane hintsBox;
     @FXML
     private Text hintsText;
+    @FXML
+    private Button tagQuizButton;
 
     @FXML
     public void initialize() {
@@ -476,8 +478,20 @@ public class Controller {
                 MandSvarJa.setVisible(true);
                 MandSvarNej.setVisible(true);
                 mandAflever.setVisible(false);
-                mandTekst.setText("Jeg mangler en fisk. Vil du hjælpe mig?");
+                mandTekst.setText("Hej. Jeg hedder Lucas\n" +
+                        "Jeg er 26 år gammel. Jeg har brug for din hjælp til at handle ind. '" +
+                        "Jeg får ikke nok mad, jeg har brug for C-vitamin, B1 vitamin og over 30g kulhydrater. " +
+                        "Jeg kan give dig 15Kr, til at købe maden for mig. Kan du hjælpe mig?");
             }
+        }
+        else {
+            SkjulTale();
+            MandTale.setVisible(true);
+            MandSvarJa.setVisible(false);
+            MandSvarNej.setVisible(false);
+            mandAflever.setVisible(false);
+            mandTekst.setText("Mange tak for din hjælp.\n" +
+                    "Uden din hjælp havde jeg risikeret skørbug, svage tænder og appetitløshed, på grund af C-vitamin mangel. \n");
         }
     }
 
@@ -503,8 +517,20 @@ public class Controller {
                 KvindeSvarJa.setVisible(true);
                 KvindeSvarNej.setVisible(true);
                 kvindeAflever.setVisible(false);
-                kvindeTekst.setText("Jeg mangler en banan. Vil du hjælpe mig?");
+                kvindeTekst.setText("Hej jeg hedder Tina\n" +
+                        "Jeg er en kvinde på 26 år, og jeg er underernæret og har brug for din hjælp til at købe noget mad" +
+                        " som indeholder mere end 60 kulhydrater og mere end 0,50 mg B1 vitaminer. " +
+                        "Hvis du tager imod min opgave, så kan jeg give dig 15Kr til at købe for henne på markedspladsen. Kan du hjælpe mig?");
             }
+        }
+        else {
+            SkjulTale();
+            KvindeTale.setVisible(true);
+            KvindeSvarJa.setVisible(false);
+            KvindeSvarNej.setVisible(false);
+            kvindeAflever.setVisible(false);
+            kvindeTekst.setText("Mange tak for din hjælp.\n" +
+                    "Uden din hjælp havde jeg risikeret nedsat appetit, koncentrationsbesvær, træthed og irritabilitet, på grund af mangel på B1 vitamin.\n");
         }
     }
 
@@ -530,8 +556,20 @@ public class Controller {
                 BarnSvarJa.setVisible(true);
                 BarnSvarNej.setVisible(true);
                 barnAflever.setVisible(false);
-                barnTekst.setText("Jeg mangler en pose ris. Vil du hjælpe mig?");
+                barnTekst.setText("Hej jeg hedder Mads\n" +
+                        "Jeg er en dreng på 8 år, og jeg er underernæret og har brug for din hjælp til at købe noget mad" +
+                        " som indeholder omega 3 og en høj mængde proteiner. " +
+                        "Hvis du tager imod min opgave, så kan jeg give dig 10Kr til at købe for henne på markedspladsen. Kan du hjælpe mig?");
             }
+        }
+        else {
+            SkjulTale();
+            BarnTale.setVisible(true);
+            BarnSvarJa.setVisible(false);
+            BarnSvarNej.setVisible(false);
+            barnAflever.setVisible(false);
+            barnTekst.setText("Mange tak for din hjælp.\n" +
+                    "Uden din hjælp havde jeg risikeret udtørret hud og irriterede tørre øjne.\n");
         }
     }
 
@@ -542,22 +580,25 @@ public class Controller {
 
     public void SvarJaClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getTarget()==MandSvarJa){
-           playerController.addMoneyToPlayer(100);
+           playerController.addMoneyToPlayer(15);
            game.writeHarOpgave("mand");
            MandSvarJa.setVisible(false);
            MandSvarNej.setVisible(false);
+           game.writePersonHint("Manden skal have C- og B1 vitamin, og over 30g kulhydrater.");
         }
         else if(mouseEvent.getTarget()==KvindeSvarJa) {
-            playerController.addMoneyToPlayer(100);
+            playerController.addMoneyToPlayer(15);
             game.writeHarOpgave("kvinde");
             KvindeSvarJa.setVisible(false);
             KvindeSvarNej.setVisible(false);
+            game.writePersonHint("Kvinden skal have mere en 60 hulhydrater og mere end 0,50mg B1 vitamin.");
         }
         else if(mouseEvent.getTarget()==BarnSvarJa) {
-            playerController.addMoneyToPlayer(100);
+            playerController.addMoneyToPlayer(10);
             game.writeHarOpgave("dreng");
             BarnSvarJa.setVisible(false);
             BarnSvarNej.setVisible(false);
+            game.writePersonHint("Barnet har brug for mads om indeholder omega 3 og en høj mængde proteiner.");
         }
         SkjulTale();
     }
@@ -598,37 +639,46 @@ public class Controller {
         }
         if(inventoryMarkedItem != null){
             // Tjek for maden man aflevere
-            if(inventoryMarkedItem.equals("Fisk") && mouseEvent.getTarget() == mandAflever){
+            if(inventoryMarkedItem.equals("Kassava") && mouseEvent.getTarget() == mandAflever){
                 SkjulTale();
                 mandAflever.setVisible(false);
-                playerController.removeItemFromInventory("Fisk");
+                playerController.removeItemFromInventory("Kassava");
                 opdaterInventory();
                 saveState("mand");
                 game.writeHarOpgave("");
                 if(getKlaredeOpgaver().size() == 3) {
-                    stageController.changeScene("Quiz");
+                    if(inventoryOpen) {
+                        toggleInventory();
+                    }
+                    tagQuizButton.setVisible(true);
                 }
             }
-            else if(inventoryMarkedItem.equals("Banan") && mouseEvent.getTarget() == kvindeAflever){
+            else if(inventoryMarkedItem.equals("Ris") && mouseEvent.getTarget() == kvindeAflever){
                 SkjulTale();
                 kvindeAflever.setVisible(false);
-                playerController.removeItemFromInventory("Banan");
+                playerController.removeItemFromInventory("Ris");
                 opdaterInventory();
                 saveState("kvinde");
                 game.writeHarOpgave("");
                 if(getKlaredeOpgaver().size() == 3) {
-                    stageController.changeScene("Quiz");
+                    if(inventoryOpen) {
+                        toggleInventory();
+                    }
+                    tagQuizButton.setVisible(true);
                 }
             }
-            else if(inventoryMarkedItem.equals("Ris") && mouseEvent.getTarget() == barnAflever){
+            else if(inventoryMarkedItem.equals("Fisk") && mouseEvent.getTarget() == barnAflever){
                 SkjulTale();
                 barnAflever.setVisible(false);
-                playerController.removeItemFromInventory("Ris");
+                playerController.removeItemFromInventory("Fisk");
                 opdaterInventory();
                 saveState("barn");
                 game.writeHarOpgave("");
                 if(getKlaredeOpgaver().size() == 3) {
-                    stageController.changeScene("Quiz");
+                    if(inventoryOpen) {
+                        toggleInventory();
+                    }
+                    tagQuizButton.setVisible(true);
                 }
             }
         }
@@ -807,15 +857,18 @@ public class Controller {
             }
             else if(currentStage.equals("Markedsplads")) {
                 hintsText.setText("I dette rum kan du vælge mellem at besøge “Frugt og grønt” eller “Kød”. \n" +
-                        "I disse 2 rum kan du købe mad som indeholder de forskellige vitaminer, som du skal bruge til at klare din opgave.");
+                        "I disse 2 rum kan du købe mad som indeholder de forskellige vitaminer, som du skal bruge til at klare din opgave.\n" +
+                        game.getPersonHints());
             }
             else if(currentStage.equals("frugtOgGrønt")) {
                 hintsText.setText("I dette rum er det muligt for dig at købe noget “Frugt og grønt” som indeholder x vitaminer, " +
-                        "som du efter at have købt, skal tage tilbage til landsbyen og aflevere, for at kunne klare din opgave.");
+                        "som du efter at have købt, skal tage tilbage til landsbyen og aflevere, for at kunne klare din opgave. \n" +
+                        game.getPersonHints());
             }
             else if(currentStage.equals("kødMarked")) {
                 hintsText.setText("I dette rum er det muligt for dig at købe noget “Kød” som indeholder x vitaminer, " +
-                        "som du efter at have købt, skal tage tilbage til landsbyen og aflevere, for at kunne klare din opgave.");
+                        "som du efter at have købt, skal tage tilbage til landsbyen og aflevere, for at kunne klare din opgave. \n" +
+                        game.getPersonHints());
             }
             else {
                 hintsText.setText("Der er ikke nogen hints at finde");
@@ -892,5 +945,9 @@ public class Controller {
             inventoryMarkedItem = playerController.getItemsFromInventory().get(8);
         }
         System.out.println(inventoryMarkedItem);
+    }
+
+    public void tagQuiz() throws IOException {
+        stageController.changeScene("Quiz");
     }
 }

@@ -50,16 +50,12 @@ public class Game
 
     public String checkHarOpgave() {
         // Load Questions and Answers from file
-        boolean canLoadFile = false;
         Path fileName = Path.of("harOpgave.txt");
         String actual = null;
         try {
             actual = Files.readString(fileName);
-            canLoadFile = true;
         } catch (IOException e) {
             e.printStackTrace();
-            canLoadFile = false;
-            System.out.println("Can't load file");
         }
         return actual;
     }
@@ -78,7 +74,6 @@ public class Game
         ArrayList<String> question = new ArrayList();
         if(questionNumber < Questionlist.size()) {
             for(int i = questionNumber; i < questionNumber + 5; i++) {
-                System.out.println(Questionlist.get(i));
                 question.add(Questionlist.get(i));
             }
         }
@@ -99,13 +94,32 @@ public class Game
 
     public boolean checkQuestion(int questionNumber, String answer) {
         if(answer.equals(answerList.get(questionNumber - 1))) {
-            System.out.println("Rigtigt svar");
             playerManager.addPoint();
             return true;
         }
         else {
-            System.out.println("Forkert svar");
             return false;
         }
+    }
+
+    public void writePersonHint(String s) {
+        try {
+            PrintWriter writer = new PrintWriter("personHints.txt");
+            writer.print(s);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getPersonHints() {
+        Path fileName = Path.of("personHints.txt");
+        String actual = null;
+        try {
+            actual = Files.readString(fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return actual;
     }
 }

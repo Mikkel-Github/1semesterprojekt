@@ -3,6 +3,7 @@ package worldofzuul;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -314,11 +315,11 @@ public class Controller {
         informationText.setVisible(false);
         String amount = "";
         if (mouseEvent.getTarget() == bøfKnap) {
-            if (playerController.canPlayerBuy(50)) {
+            if (playerController.canPlayerBuy(15)) {
                 if(playerController.canAddItemToInventory()) {
-                    playerController.subtractMoneyFromPlayer(50);
+                    playerController.subtractMoneyFromPlayer(15);
                     playerController.addItemToInventory("Bøf");
-                    amount = "50";
+                    amount = "15";
                     opdaterInventory();
                 }
                 else{
@@ -331,11 +332,11 @@ public class Controller {
                 informationText.setVisible(true);
             }
         } if (mouseEvent.getTarget() == kyllingKnap) {
-            if (playerController.canPlayerBuy(30)) {
+            if (playerController.canPlayerBuy(12)) {
                 if(playerController.canAddItemToInventory()) {
-                    playerController.subtractMoneyFromPlayer(30);
+                    playerController.subtractMoneyFromPlayer(12);
                     playerController.addItemToInventory("Kylling");
-                    amount = "30";
+                    amount = "12";
                     opdaterInventory();
                 }
                 else{
@@ -348,11 +349,11 @@ public class Controller {
                 informationText.setVisible(true);
             }
         } if (mouseEvent.getTarget() == fiskKnap) {
-            if (playerController.canPlayerBuy(20)) {
+            if (playerController.canPlayerBuy(10)) {
                 if(playerController.canAddItemToInventory()) {
-                    playerController.subtractMoneyFromPlayer(20);
+                    playerController.subtractMoneyFromPlayer(10);
                     playerController.addItemToInventory("Fisk");
-                    amount = "20";
+                    amount = "10";
                     opdaterInventory();
                 }
                 else{
@@ -365,11 +366,11 @@ public class Controller {
                 informationText.setVisible(true);
             }
         } if (mouseEvent.getTarget() == yamsKnap) {
-            if (playerController.canPlayerBuy(30)) {
+            if (playerController.canPlayerBuy(5)) {
                 if(playerController.canAddItemToInventory()) {
-                    playerController.subtractMoneyFromPlayer(30);
+                    playerController.subtractMoneyFromPlayer(5);
                     playerController.addItemToInventory("Yams");
-                    amount = "30";
+                    amount = "5";
                     opdaterInventory();
                 }
                 else{
@@ -382,11 +383,11 @@ public class Controller {
                 informationText.setVisible(true);
             }
         } if (mouseEvent.getTarget() == kassavaKnap) {
-            if (playerController.canPlayerBuy(20)) {
+            if (playerController.canPlayerBuy(6)) {
                 if(playerController.canAddItemToInventory()) {
-                    playerController.subtractMoneyFromPlayer(20);
+                    playerController.subtractMoneyFromPlayer(6);
                     playerController.addItemToInventory("Kassava");
-                    amount = "20";
+                    amount = "6";
                     opdaterInventory();
                 }
                 else{
@@ -399,11 +400,11 @@ public class Controller {
                 informationText.setVisible(true);
             }
         } if (mouseEvent.getTarget() == risKnap) {
-            if (playerController.canPlayerBuy(40)) {
+            if (playerController.canPlayerBuy(8)) {
                 if(playerController.canAddItemToInventory()) {
-                    playerController.subtractMoneyFromPlayer(40);
+                    playerController.subtractMoneyFromPlayer(8);
                     playerController.addItemToInventory("Ris");
-                    amount = "40";
+                    amount = "8";
                     opdaterInventory();
                 }
                 else{
@@ -416,11 +417,11 @@ public class Controller {
                 informationText.setVisible(true);
             }
         } if (mouseEvent.getTarget() == bananKnap) {
-            if (playerController.canPlayerBuy(30)) {
+            if (playerController.canPlayerBuy(3)) {
                 if(playerController.canAddItemToInventory()) {
-                    playerController.subtractMoneyFromPlayer(30);
+                    playerController.subtractMoneyFromPlayer(3);
                     playerController.addItemToInventory("Banan");
-                    amount = "30";
+                    amount = "3";
                     opdaterInventory();
                 }
                 else{

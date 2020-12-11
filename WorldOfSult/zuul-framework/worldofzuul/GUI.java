@@ -14,12 +14,10 @@ public class GUI extends Application {
         // Kalde "stageController.changeScene("Navnet på FXML dokumentet");" i funktionen
 
     static Stage primaryStage = null;
-    Player playerController = new Player();
-
+    Game game = new Game();
     @Override
     public void start(Stage primaryStage) throws Exception{
-        playerController.resetTasks();
-
+        game.writeHarOpgave("");
         GUI.primaryStage = primaryStage;
 
         StageController stageController = new StageController();

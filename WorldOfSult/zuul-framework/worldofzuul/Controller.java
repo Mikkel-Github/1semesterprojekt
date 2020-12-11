@@ -147,6 +147,8 @@ public class Controller {
         if(currentStage.equals("Menu")) {
             animateLogo();
             playerController.resetTasks();
+            playerController.resetInventory();
+            playerController.resetPlayerBalance();
         }
         else if(currentStage.equals("kødMarked") || currentStage.equals("frugtOgGrønt")) {
             playerBalanceKødMarked.setText("Penge: " + playerController.getPlayerBalance());

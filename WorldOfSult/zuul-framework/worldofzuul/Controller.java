@@ -35,6 +35,8 @@ public class Controller {
 
     ImageView shownMarker = null;
 
+    boolean hintsOpen = false;
+
     @FXML
     private ImageView logoImage;
     @FXML
@@ -141,6 +143,10 @@ public class Controller {
     private Text kvindeTekst;
     @FXML
     private Text barnTekst;
+    @FXML
+    private Pane hintsBox;
+    @FXML
+    private Text hintsText;
 
     @FXML
     public void initialize() {
@@ -799,7 +805,51 @@ public class Controller {
     }
 
     public void toggleHints(MouseEvent mouseEvent) {
-        // todo : Mikkel - Lav hints box
+        // todo : Mikkel - Lav animation
+        if(!hintsOpen) {
+            // Åben
+            hintsBox.setVisible(true);
+            if(currentStage.equals("Landsby")) {
+                hintsText.setText("I dette rum, kan du snakke med 3 forskellige personer, som er underernæret, disse personer mangler nogle specifikke vitaminer, som de selv vil fortælle dig mere om.\n\n" +
+                        "Du skal i dette rum klare 1 opgave fra hver af de 3 personer. Efter du har taget en opgave, skal du tage hen på markedspladsen, og købe noget mad til dem, " +
+                        "som indeholder de vitaminer som de mangler. Når du har købt maden der indeholder de vitaminer som personen mangler, så kan du aflevere maden til dem og på den måde klare din opgave.\n\n" +
+                        "Efter du har klaret alle 3 opgaver, så bliver du sendt videre til en quiz, omkring informationerne du har fået i løbet af spillet.");
+            }
+            else if(currentStage.equals("Markedsplads")) {
+                hintsText.setText("I dette rum kan du vælge mellem at besøge “Frugt og grønt” eller “Kød”. \n" +
+                        "I disse 2 rum kan du købe mad som indeholder de forskellige vitaminer, som du skal bruge til at klare din opgave.");
+            }
+            else if(currentStage.equals("frugtOgGrønt")) {
+                hintsText.setText("I dette rum er det muligt for dig at købe noget “Frugt og grønt” som indeholder x vitaminer, " +
+                        "som du efter at have købt, skal tage tilbage til landsbyen og aflevere, for at kunne klare din opgave.");
+            }
+            else if(currentStage.equals("kødMarked")) {
+                hintsText.setText("I dette rum er det muligt for dig at købe noget “Kød” som indeholder x vitaminer, " +
+                        "som du efter at have købt, skal tage tilbage til landsbyen og aflevere, for at kunne klare din opgave.");
+            }
+            else {
+                hintsText.setText("Der er ikke nogen hints at finde");
+            }
+            hintsOpen = true;
+
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), hintsBox);
+            tt.setFromY(-400);
+            tt.setToY(0);
+            tt.setInterpolator(Interpolator.EASE_BOTH);
+
+            tt.play();
+        }
+        else {
+            // Luk
+            hintsOpen = false;
+
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), hintsBox);
+            tt.setFromY(0);
+            tt.setToY(-400);
+            tt.setInterpolator(Interpolator.EASE_BOTH);
+            
+            tt.play();
+        }
     }
 
     public void getItem(MouseEvent mouseEvent) {

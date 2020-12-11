@@ -181,6 +181,20 @@
                </Text>
             </children>
          </Pane>
+         <Pane fx:id="hintsBox" visible="false" layoutX="722.0" layoutY="20.0" prefHeight="100.0" prefWidth="470.0">
+            <children>
+               <ImageView fitHeight="100.0" fitWidth="470.0" pickOnBounds="true">
+                  <image>
+                     <Image url="@../src/Inventory_Square.png" />
+                  </image>
+               </ImageView>
+               <Text fx:id="hintsText" fill="WHITE" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hints" wrappingWidth="449.40869140625">
+                  <font>
+                     <Font name="Calibri Bold" size="16.0" />
+                  </font>
+               </Text>
+            </children>
+         </Pane>
          <ImageView fx:id="hintsButton" fitWidth="65.0" layoutX="1210.0" layoutY="10.0" onMouseClicked="#toggleHints" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../src/Hints.png" />

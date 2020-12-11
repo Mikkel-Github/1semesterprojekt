@@ -2,22 +2,18 @@ package worldofzuul;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.PrivateKey;
 import java.util.ArrayList;
 
 
@@ -162,18 +158,15 @@ public class Controller {
     }
 
     ///////////////////// MENU ////////////////////////
-    public void startClicked(MouseEvent mouseEvent) throws Exception {
-        System.out.println("Start");
+    public void startClicked() throws Exception {
         stageController.changeScene("Landsby");
     }
 
-    public void infoClicked(MouseEvent mouseEvent) throws IOException {
-        System.out.println("Info");
+    public void infoClicked() throws IOException {
         stageController.changeScene("Info");
     }
 
-    public void slutClicked(MouseEvent mouseEvent) {
-        System.out.println("Slut");
+    public void slutClicked() {
         System.exit(0);
     }
 
@@ -220,70 +213,70 @@ public class Controller {
     }
 
     ///////////////////// INFO ////////////////////////
-    public void backToMenu(MouseEvent mouseEvent) throws IOException {
+    public void backToMenu() throws IOException {
         stageController.changeScene("Menu");
     }
 
-    public void MarkedspladsClicked(MouseEvent mouseEvent) throws IOException {
+    public void MarkedspladsClicked() throws IOException {
         System.out.println("kødmarked klikket");
         stageController.changeScene("Markedsplads");
     }
 
-    public void Skilt_kødmarkedClicked(MouseEvent mouseEvent) throws IOException {
+    public void Skilt_kødmarkedClicked() throws IOException {
         System.out.println("123");
         stageController.changeScene("kødMarked");
     }
 
-    public void Skilt_frugtoggrøntClicked(MouseEvent mouseEvent) throws IOException {
+    public void Skilt_frugtoggrøntClicked() throws IOException {
         System.out.println("frugtoggrønt klikket");
         stageController.changeScene("frugtOgGrønt");
     }
 
-    public void Skilt_MarkedspladsClicked(MouseEvent mouseEvent) throws IOException {
+    public void Skilt_MarkedspladsClicked() throws IOException {
         System.out.println("markedspladsskilt klikket");
         stageController.changeScene("Markedsplads");
     }
 
-    public void markedsplads_venstreClicked(MouseEvent mouseEvent) throws IOException {
+    public void markedsplads_venstreClicked() throws IOException {
         System.out.println("markedsplads klikket");
         stageController.changeScene("Markedsplads");
     }
-    public void Skilt_LandsbyClicked(MouseEvent mouseEvent) throws IOException {
+    public void Skilt_LandsbyClicked() throws IOException {
         System.out.println("Landsby klikket");
         stageController.changeScene("Landsby");
     }
 
-    public void FiskClicked(MouseEvent mouseEvent) {
+    public void FiskClicked() {
         hideFoodBox();
         fiskTekst.setVisible(true);
     }
 
-    public void KyllingClicked(MouseEvent mouseEvent) {
+    public void KyllingClicked() {
         hideFoodBox();
         kyllingTekst.setVisible(true);
     }
 
-    public void BøfClicked(MouseEvent mouseEvent) {
+    public void BøfClicked() {
         hideFoodBox();
         bøfTekst.setVisible(true);
     }
 
-    public void bananClicked(MouseEvent mouseEvent) {
+    public void bananClicked() {
         hideFoodBox();
         bananTekst.setVisible(true);
     }
 
-    public void YamsClicked(MouseEvent mouseEvent) {
+    public void YamsClicked() {
         hideFoodBox();
         yamsTekst.setVisible(true);
     }
 
-    public void RisClicked(MouseEvent mouseEvent) {
+    public void RisClicked() {
         hideFoodBox();
         risTekst.setVisible(true);
     }
 
-    public void KassavaClicked(MouseEvent mouseEvent) {
+    public void KassavaClicked() {
         hideFoodBox();
         kassavaTekst.setVisible(true);
     }
@@ -460,7 +453,7 @@ public class Controller {
     }
 
     ///////////////////// QUIZ /////////////////////////
-    public void MandClicked(MouseEvent mouseEvent) throws Exception {
+    public void MandClicked() {
         boolean isDone = false;
         for(String s : getKlaredeOpgaver()) {
             if(s.equals("mand")) {
@@ -487,7 +480,7 @@ public class Controller {
         }
     }
 
-    public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
+    public void KvindeClicked() {
         boolean isDone = false;
         for(String s : getKlaredeOpgaver()) {
             if(s.equals("kvinde")) {
@@ -514,7 +507,7 @@ public class Controller {
         }
     }
 
-    public void DrengClicked(MouseEvent mouseEvent) throws Exception {
+    public void DrengClicked() {
         boolean isDone = false;
         for(String s : getKlaredeOpgaver()) {
             if(s.equals("barn")) {
@@ -541,12 +534,12 @@ public class Controller {
         }
     }
 
-    public void SkiltClicked(MouseEvent mouseEvent) throws Exception{
+    public void SkiltClicked() throws Exception{
         stageController.changeScene("Markedsplads");
     }
 
 
-    public void SvarJaClicked(MouseEvent mouseEvent)throws Exception {
+    public void SvarJaClicked(MouseEvent mouseEvent) {
         if(mouseEvent.getTarget()==MandSvarJa){
            playerController.addMoneyToPlayer(100);
            game.writeHarOpgave("mand");
@@ -605,7 +598,6 @@ public class Controller {
         if(inventoryMarkedItem != null){
             // Tjek for maden man aflevere
             if(inventoryMarkedItem.equals("Fisk") && mouseEvent.getTarget() == mandAflever){
-                mandTekst.setText("Tak for mad");
                 SkjulTale();
                 mandAflever.setVisible(false);
                 playerController.removeItemFromInventory("Fisk");
@@ -617,7 +609,6 @@ public class Controller {
                 }
             }
             else if(inventoryMarkedItem.equals("Banan") && mouseEvent.getTarget() == kvindeAflever){
-                kvindeTekst.setText("Tak for mad");
                 SkjulTale();
                 kvindeAflever.setVisible(false);
                 playerController.removeItemFromInventory("Banan");
@@ -629,7 +620,6 @@ public class Controller {
                 }
             }
             else if(inventoryMarkedItem.equals("Ris") && mouseEvent.getTarget() == barnAflever){
-                barnTekst.setText("Tak for mad");
                 SkjulTale();
                 barnAflever.setVisible(false);
                 playerController.removeItemFromInventory("Ris");
@@ -804,8 +794,7 @@ public class Controller {
         playerBalance.setText("Penge: " + playerController.getPlayerBalance());
     }
 
-    public void toggleHints(MouseEvent mouseEvent) {
-        // todo : Mikkel - Lav animation
+    public void toggleHints() {
         if(!hintsOpen) {
             // Åben
             hintsBox.setVisible(true);
@@ -847,7 +836,7 @@ public class Controller {
             tt.setFromY(0);
             tt.setToY(-400);
             tt.setInterpolator(Interpolator.EASE_BOTH);
-            
+
             tt.play();
         }
     }

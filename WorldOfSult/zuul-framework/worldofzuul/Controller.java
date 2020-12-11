@@ -155,7 +155,7 @@ public class Controller {
             playerController.resetInventory();
             playerController.resetPlayerBalance();
         }
-        else if(currentStage.equals("kødMarked") || currentStage.equals("frugtOgGrønt")) {
+        else if(currentStage.equals("kodMarked") || currentStage.equals("frugtOgGront")) {
             playerBalanceKødMarked.setText("Penge: " + playerController.getPlayerBalance());
         }
     }
@@ -221,31 +221,25 @@ public class Controller {
     }
 
     public void MarkedspladsClicked() throws IOException {
-        System.out.println("kødmarked klikket");
         stageController.changeScene("Markedsplads");
     }
 
     public void Skilt_kødmarkedClicked() throws IOException {
-        System.out.println("123");
-        stageController.changeScene("kødMarked");
+        stageController.changeScene("kodMarked");
     }
 
     public void Skilt_frugtoggrøntClicked() throws IOException {
-        System.out.println("frugtoggrønt klikket");
-        stageController.changeScene("frugtOgGrønt");
+        stageController.changeScene("frugtOgGront");
     }
 
     public void Skilt_MarkedspladsClicked() throws IOException {
-        System.out.println("markedspladsskilt klikket");
         stageController.changeScene("Markedsplads");
     }
 
     public void markedsplads_venstreClicked() throws IOException {
-        System.out.println("markedsplads klikket");
         stageController.changeScene("Markedsplads");
     }
     public void Skilt_LandsbyClicked() throws IOException {
-        System.out.println("Landsby klikket");
         stageController.changeScene("Landsby");
     }
 
@@ -489,7 +483,7 @@ public class Controller {
             MandSvarJa.setVisible(false);
             MandSvarNej.setVisible(false);
             mandAflever.setVisible(false);
-            mandTekst.setText("Mange tak for din hjælp.\n" +
+            mandTekst.setText("\nMange tak for din hjælp.\n" +
                     "Uden din hjælp havde jeg risikeret skørbug, svage tænder og appetitløshed, på grund af C-vitamin mangel. \n");
         }
     }
@@ -528,7 +522,7 @@ public class Controller {
             KvindeSvarJa.setVisible(false);
             KvindeSvarNej.setVisible(false);
             kvindeAflever.setVisible(false);
-            kvindeTekst.setText("Mange tak for din hjælp.\n" +
+            kvindeTekst.setText("\nMange tak for din hjælp.\n" +
                     "Uden din hjælp havde jeg risikeret nedsat appetit, koncentrationsbesvær, træthed og irritabilitet, på grund af mangel på B1 vitamin.\n");
         }
     }
@@ -567,7 +561,7 @@ public class Controller {
             BarnSvarJa.setVisible(false);
             BarnSvarNej.setVisible(false);
             barnAflever.setVisible(false);
-            barnTekst.setText("Mange tak for din hjælp.\n" +
+            barnTekst.setText("\nMange tak for din hjælp.\n" +
                     "Uden din hjælp havde jeg risikeret udtørret hud og irriterede tørre øjne.\n");
         }
     }
@@ -617,15 +611,12 @@ public class Controller {
             actual = Files.readString(fileName);
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Can't load file");
         }
-        System.out.println("Opgaver lavet: " + actual);
 
         ArrayList<String> tasksDone = new ArrayList<String>();
         // Set Questions and Answers up in a list
         String[] tasksDoneList = actual.split(",");
         for (String s : tasksDoneList) {
-            System.out.println(s);
             tasksDone.add(s);
         }
 
@@ -639,13 +630,16 @@ public class Controller {
         if(inventoryMarkedItem != null){
             // Tjek for maden man aflevere
             if(inventoryMarkedItem.equals("Kassava") && mouseEvent.getTarget() == mandAflever){
-                SkjulTale();
                 mandAflever.setVisible(false);
                 playerController.removeItemFromInventory("Kassava");
                 playerController.resetPlayerBalance();
                 opdaterInventory();
                 saveState("mand");
                 game.writeHarOpgave("");
+                MandClicked();
+                if(inventoryOpen){
+                    toggleInventory();
+                }
                 if(getKlaredeOpgaver().size() == 3) {
                     if(inventoryOpen) {
                         toggleInventory();
@@ -658,16 +652,22 @@ public class Controller {
                 playerController.resetInventory();
                 playerController.addMoneyToPlayer(15);
                 opdaterInventory();
+                if(inventoryOpen){
+                    toggleInventory();
+                }
                 mandTekst.setText("Det er ikke rigtigt. \nPrøv igen.");
             }
             else if(inventoryMarkedItem.equals("Ris") && mouseEvent.getTarget() == kvindeAflever){
-                SkjulTale();
                 kvindeAflever.setVisible(false);
                 playerController.removeItemFromInventory("Ris");
                 playerController.resetPlayerBalance();
                 opdaterInventory();
                 saveState("kvinde");
                 game.writeHarOpgave("");
+                KvindeClicked();
+                if(inventoryOpen){
+                    toggleInventory();
+                }
                 if(getKlaredeOpgaver().size() == 3) {
                     if(inventoryOpen) {
                         toggleInventory();
@@ -680,6 +680,9 @@ public class Controller {
                 playerController.resetInventory();
                 playerController.addMoneyToPlayer(15);
                 opdaterInventory();
+                if(inventoryOpen){
+                    toggleInventory();
+                }
                 kvindeTekst.setText("Det er ikke rigtigt. \nPrøv igen.");
             }
             else if(inventoryMarkedItem.equals("Fisk") && mouseEvent.getTarget() == barnAflever){
@@ -690,6 +693,10 @@ public class Controller {
                 opdaterInventory();
                 saveState("barn");
                 game.writeHarOpgave("");
+                DrengClicked();
+                if(inventoryOpen){
+                    toggleInventory();
+                }
                 if(getKlaredeOpgaver().size() == 3) {
                     if(inventoryOpen) {
                         toggleInventory();
@@ -702,6 +709,9 @@ public class Controller {
                 playerController.resetInventory();
                 playerController.addMoneyToPlayer(10);
                 opdaterInventory();
+                if(inventoryOpen){
+                    toggleInventory();
+                }
                 barnTekst.setText("Det er ikke rigtigt. \nPrøv igen.");
             }
         }
@@ -883,12 +893,12 @@ public class Controller {
                         "I disse 2 rum kan du købe mad som indeholder de forskellige vitaminer, som du skal bruge til at klare din opgave.\n" +
                         game.getPersonHints());
             }
-            else if(currentStage.equals("frugtOgGrønt")) {
+            else if(currentStage.equals("frugtOgGront")) {
                 hintsText.setText("I dette rum er det muligt for dig at købe noget “Frugt og grønt” som indeholder x vitaminer, " +
                         "som du efter at have købt, skal tage tilbage til landsbyen og aflevere, for at kunne klare din opgave. \n" +
                         game.getPersonHints());
             }
-            else if(currentStage.equals("kødMarked")) {
+            else if(currentStage.equals("kodMarked")) {
                 hintsText.setText("I dette rum er det muligt for dig at købe noget “Kød” som indeholder x vitaminer, " +
                         "som du efter at have købt, skal tage tilbage til landsbyen og aflevere, for at kunne klare din opgave. \n" +
                         game.getPersonHints());
@@ -967,7 +977,6 @@ public class Controller {
             shownMarker = c2r2Marker;
             inventoryMarkedItem = playerController.getItemsFromInventory().get(8);
         }
-        System.out.println(inventoryMarkedItem);
     }
 
     public void tagQuiz() throws IOException {

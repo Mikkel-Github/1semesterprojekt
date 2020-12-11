@@ -16,14 +16,14 @@
       <children>
          <ImageView fx:id="kødMarked">
             <image>
-               <Image url="@../src/Kødmarked_MedHylder.png" />
+               <Image url="@../src/Kodmarked_MedHylder.png" />
             </image>
          </ImageView>
          <AnchorPane layoutX="500.0" layoutY="425.0">
             <children>
                <ImageView fx:id="bøf" fitHeight="103.0" fitWidth="119.0" layoutX="51.0" layoutY="8.0" onMouseClicked="#BøfClicked" preserveRatio="true">
                   <image>
-                     <Image url="@../src/Bøf.png" />
+                     <Image url="@../src/Bof.png" />
                   </image>
                </ImageView>
             </children>
@@ -63,7 +63,7 @@
                <Text layoutX="15.0" layoutY="22.0" text="Indeholder: 124 kcal, 20g protein, 0g kulhydrater, 4,2g fedt, 0,83g omega 3, vitamin B12 5,39 mcg, vitamin B6 0,40 mg, per 100 gram. - 10 kr" wrappingWidth="169.0" />
                <ImageView fx:id="fiskKnap" fitHeight="23.0" fitWidth="51.0" layoutX="81.0" layoutY="110.0" onMouseClicked="#Køb" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@../src/Køb.png" />
+                     <Image url="@../src/Kob.png" />
                   </image>
                </ImageView>
             </children>
@@ -78,7 +78,7 @@
                <Text layoutX="7.0" layoutY="30.0" text="Indeholder: 181 kcal, 18,8g protein, 0g kulhydrater, 14,5g fedt, 0,33 mg vitamin B12, per 100 gram. - 12 kr" wrappingWidth="161.80001831054685" />
                <ImageView fx:id="kyllingKnap" fitHeight="23.0" fitWidth="51.0" layoutX="71.0" layoutY="99.0" onMouseClicked="#Køb" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@../src/Køb.png" />
+                     <Image url="@../src/Kob.png" />
                   </image>
                </ImageView>
             </children>
@@ -93,7 +93,7 @@
                <Text layoutX="9.0" layoutY="27.0" text="Indeholder: 143 kcal, 27g protein, 0g kulhydrater, 13,88g fedt, vitamin B12 1,13 mg, per 100g. - 15 kr" wrappingWidth="182.4000000000001" />
                <ImageView fx:id="bøfKnap" fitHeight="23.0" fitWidth="51.0" layoutX="81.0" layoutY="110.0" onMouseClicked="#Køb" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@../src/Køb.png" />
+                     <Image url="@../src/Kob.png" />
                   </image>
                </ImageView>
             </children>

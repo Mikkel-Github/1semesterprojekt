@@ -29,48 +29,60 @@
             <Image url="@../src/Dreng.png" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="MandTale" layoutX="36.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+      <AnchorPane visible="false" fx:id="MandTale" layoutX="36.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0">
          <children>
             <ImageView fitHeight="302.0" fitWidth="578.0">
                <image>
                   <Image url="@../src/Talebobbel_Venstre.png" />
                </image>
             </ImageView>
-            <Button fx:id="MandSvarJa" layoutX="228.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#SvarJaClicked" text="Ja" />
-            <Button fx:id="MandSvarNej" layoutX="292.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#SkjulTale" text="Ikke nu" />
-            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
+            <ImageView fx:id="MandSvarJa" fitHeight="136.0" fitWidth="46.0" layoutX="228.0" layoutY="229.0" onMouseClicked="#SvarJaClicked" preserveRatio="true">
+               <Image url="@../src/ja.png" />
+            </ImageView>
+            <ImageView fx:id="MandSvarNej" fitHeight="136.0" fitWidth="46.0" layoutX="300.0" layoutY="229.0" onMouseClicked="#SvarJaClicked" preserveRatio="true">
+               <Image url="@../src/ikke_nu.png" />
+            </ImageView>
+            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeg mangler en fisk. Vil du hjælpe mig?" wrappingWidth="219.1754035949707">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="KvindeTale" layoutX="202.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+      <AnchorPane visible="false" fx:id="KvindeTale" layoutX="202.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0">
          <children>
             <ImageView fitHeight="302.0" fitWidth="578.0">
                <image>
                   <Image url="@../src/Talebobbel_Venstre.png" />
                </image>
             </ImageView>
-            <Button fx:id="KvindeSvarJa" layoutX="228.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#SvarJaClicked" text="Ja" />
-            <Button fx:id="KvindeSvarNej" layoutX="292.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#SkjulTale" text="Ikke nu" />
-            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
+            <ImageView fx:id="KvindeSvarJa" fitWidth="46.0" layoutX="228.0" layoutY="229.0" onMouseClicked="#SvarJaClicked" preserveRatio="true">
+               <Image url="@../src/ja.png" />
+            </ImageView>
+            <ImageView fx:id="KvindeSvarNej" fitHeight="136.0" fitWidth="46.0" layoutX="300.0" layoutY="229.0" onMouseClicked="#SvarJaClicked" preserveRatio="true">
+               <Image url="@../src/ikke_nu.png" />
+            </ImageView>
+            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeg mangler en banan. Vil du hjælpe mig?" wrappingWidth="219.1754035949707">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="BarnTale" layoutX="349.0" layoutY="195.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+      <AnchorPane visible="false" fx:id="BarnTale" layoutX="349.0" layoutY="195.0" prefHeight="200.0" prefWidth="200.0">
          <children>
             <ImageView fitHeight="302.0" fitWidth="578.0">
                <image>
                   <Image url="@../src/Talebobbel_Venstre.png" />
                </image>
             </ImageView>
-            <Button fx:id="BarnSvarJa" layoutX="228.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#SvarJaClicked" text="Ja" />
-            <Button fx:id="BarnSvarNej" layoutX="292.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#SkjulTale" text="Ikke nu" />
-            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tesssssst" wrappingWidth="219.1754035949707">
+            <ImageView fx:id="BarnSvarJa" fitWidth="46.0" layoutX="228.0" layoutY="229.0" onMouseClicked="#SvarJaClicked" preserveRatio="true">
+               <Image url="@../src/ja.png" />
+            </ImageView>
+            <ImageView fx:id="BarnSvarNej" fitHeight="136.0" fitWidth="46.0" layoutX="300.0" layoutY="229.0" onMouseClicked="#SvarJaClicked" preserveRatio="true">
+               <Image url="@../src/ikke_nu.png" />
+            </ImageView>
+            <Text layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeg mangler en pose ris. Vil du hjælpe mig?" wrappingWidth="219.1754035949707">
                <font>
                   <Font size="14.0" />
                </font>

@@ -49,17 +49,17 @@ public class Controller {
     @FXML
     private AnchorPane BarnTale;
     @FXML
-    private Button MandSvarJa;
+    private ImageView MandSvarJa;
     @FXML
-    private Button MandSvarNej;
+    private ImageView MandSvarNej;
     @FXML
-    private Button KvindeSvarJa;
+    private ImageView KvindeSvarJa;
     @FXML
-    private Button KvindeSvarNej;
+    private ImageView KvindeSvarNej;
     @FXML
-    private Button BarnSvarJa;
+    private ImageView BarnSvarJa;
     @FXML
-    private Button BarnSvarNej;
+    private ImageView BarnSvarNej;
     @FXML
     private Pane fiskTekst;
     @FXML
@@ -219,7 +219,6 @@ public class Controller {
     }
 
     public void FiskClicked(MouseEvent mouseEvent) {
-
         if (tekstfelt == false) {
             fiskTekst.setVisible(true);
             tekstfelt = true;
@@ -227,7 +226,6 @@ public class Controller {
             fiskTekst.setVisible(false);
             tekstfelt = false;
         }
-
     }
 
     public void KyllingClicked(MouseEvent mouseEvent) {
@@ -357,18 +355,23 @@ public class Controller {
 
 
     public void SvarJaClicked(MouseEvent mouseEvent)throws Exception {
-
         if(mouseEvent.getTarget()==MandSvarJa){
            playerController.addMoneyToPlayer(100);
            game.writeHarOpgave("mand");
+           MandSvarJa.setVisible(false);
+           MandSvarNej.setVisible(false);
         }
         else if(mouseEvent.getTarget()==KvindeSvarJa) {
-            playerController.addMoneyToPlayer(0);
+            playerController.addMoneyToPlayer(100);
             game.writeHarOpgave("kvinde");
+            KvindeSvarJa.setVisible(false);
+            KvindeSvarNej.setVisible(false);
         }
         else if(mouseEvent.getTarget()==BarnSvarJa) {
-            playerController.addMoneyToPlayer(1);
+            playerController.addMoneyToPlayer(100);
             game.writeHarOpgave("dreng");
+            BarnSvarJa.setVisible(false);
+            BarnSvarNej.setVisible(false);
         }
         SkjulTale();
     }

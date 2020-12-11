@@ -13,7 +13,10 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        // Reset documents
         game.writeHarOpgave("");
+        game.writePersonHint("");
+
         GUI.primaryStage = primaryStage;
 
         StageController stageController = new StageController();

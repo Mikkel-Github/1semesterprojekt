@@ -97,6 +97,15 @@ public class Player {
         return items;
     }
 
+    public void resetInventory() {
+        try {
+            PrintWriter writer = new PrintWriter("inventory.txt");
+            writer.print("");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     ///////////////////////////// PLAYER BALANCE //////////////////////////////////
     // Add money to the player
@@ -154,6 +163,16 @@ public class Player {
         return amount;
     }
 
+    public void resetPlayerBalance(){
+        try {
+            PrintWriter writer = new PrintWriter("playerBalance.txt");
+            writer.print("0");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     ///////////////////////////// RESET antal færdige opgaver når spillet starter ///////////////////////////
     public void resetTasks() {
         try {
@@ -173,7 +192,6 @@ public class Player {
 
     // Returns the players score
     public int getPoints() {
-        // todo : Mikkel - fortæl brugeren hvor mange brugeren har fået rigtigt i alt
         return playerQuizScore;
     }
 

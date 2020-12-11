@@ -15,11 +15,11 @@
             <Image url="@../src/Landsby_Baggrund.png" />
          </image>
       </ImageView>
-      <ScrollPane hbarPolicy="NEVER" layoutX="440.0" layoutY="300.0" prefHeight="300.0" prefWidth="400.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="372.0" layoutY="179.0" prefHeight="490.0" prefWidth="672.0">
         <content>
-          <Text text="Hey this is a test">
+          <Text lineSpacing="15.0" text="I dette spil får man et indblik i hvad underernæring kan gøre ved en person, samt hvad der kan hjælpe på ikke at være underernæret. Samt så giver vi spilleren en ide om hvilke konsekvenser der kan være ved ikke at få nok eller den rigtige næring. Til sidst i spillet bliver spilleren testet i en multiple choice test, for at se om personen har fået lært den viden vi gerne vil videreformidle dem. I dette spil arbejdes der også med FN’s verdensmål stop sult, hvori vi har valgt underernæring som underemne. Igennem hele spillet er det muligt at få hints til hvad du kan gøre, så du ikke sidder fast i spillet, uden en måde at komme videre på. Du vil kunne klikke dig videre igennem spillet ved at klikke på skiltene der er placeret igennem spillet. Du vil kunne snakke med de 3 personer du møder i det første rum. I Frugt og grønt, samt kød markedet, vil det være muligt at købe produkter, som du skal tilbage og aflevere til personen i det først rum, for at kunne klare opgaven du er blevet stillet. Der er mange mennesker der dør på grund af sult i Afrika. Derfor foregår spillet i en afrikansk landsby." translateX="10.0" translateY="10.0" wrappingWidth="648.8787841796875">
                <font>
-                  <Font name="Calibri" size="20.0" />
+                  <Font name="Calibri" size="18.0" />
                </font>
           </Text>
         </content>

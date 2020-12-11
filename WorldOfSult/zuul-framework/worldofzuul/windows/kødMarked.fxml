@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -61,7 +60,7 @@
                      <Image url="@../src/InformationsFirkant.png" />
                   </image>
                </ImageView>
-               <Label layoutX="15.0" layoutY="11.0" prefHeight="31.0" prefWidth="171.0" text="Bla bla" />
+               <Text layoutX="15.0" layoutY="22.0" text="Indeholder: 124 kcal, 20g protein, 0g kulhydrater, 4,2g fedt, 0,83g omega 3, vitamin B12 5,39 mcg, vitamin B6 0,40 mg, per 100 gram. - 10 kr" wrappingWidth="169.0" />
                <ImageView fx:id="fiskKnap" fitHeight="23.0" fitWidth="51.0" layoutX="81.0" layoutY="110.0" onMouseClicked="#Køb" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../src/Køb.png" />
@@ -76,7 +75,7 @@
                      <Image url="@../src/InformationsFirkant.png" />
                   </image>
                </ImageView>
-               <Label prefHeight="47.0" prefWidth="182.0" text="Bla Bla" />
+               <Text layoutX="7.0" layoutY="30.0" text="Indeholder: 181 kcal, 18,8g protein, 0g kulhydrater, 14,5g fedt, 0,33 mg vitamin B12, per 100 gram. - 12 kr" wrappingWidth="161.80001831054685" />
                <ImageView fx:id="kyllingKnap" fitHeight="23.0" fitWidth="51.0" layoutX="71.0" layoutY="99.0" onMouseClicked="#Køb" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../src/Køb.png" />
@@ -91,7 +90,7 @@
                      <Image url="@../src/InformationsFirkant.png" />
                   </image>
                </ImageView>
-               <Label prefHeight="41.0" prefWidth="200.0" text="Bla Bla" />
+               <Text layoutX="9.0" layoutY="27.0" text="Indeholder: 143 kcal, 27g protein, 0g kulhydrater, 13,88g fedt, vitamin B12 1,13 mg, per 100g. - 15 kr" wrappingWidth="182.4000000000001" />
                <ImageView fx:id="bøfKnap" fitHeight="23.0" fitWidth="51.0" layoutX="81.0" layoutY="110.0" onMouseClicked="#Køb" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../src/Køb.png" />
@@ -99,7 +98,7 @@
                </ImageView>
             </children>
          </Pane>
-         <Pane fx:id="inventoryBox" onMouseClicked="#getItem" layoutX="725.0" layoutY="200.0" prefHeight="400.0" prefWidth="500.0" visible="false">
+         <Pane fx:id="inventoryBox" layoutX="725.0" layoutY="200.0" onMouseClicked="#getItem" prefHeight="400.0" prefWidth="500.0" visible="false">
             <children>
                <ImageView fitHeight="400.0" fitWidth="500.0" pickOnBounds="true">
                   <image>
@@ -181,6 +180,20 @@
                </Text>
             </children>
          </Pane>
+         <Pane fx:id="hintsBox" layoutX="722.0" layoutY="20.0" prefHeight="126.0" prefWidth="470.0" visible="false">
+            <children>
+               <ImageView fitHeight="126.0" fitWidth="470.0" pickOnBounds="true">
+                  <image>
+                     <Image url="@../src/Inventory_Square.png" />
+                  </image>
+               </ImageView>
+               <Text fx:id="hintsText" fill="WHITE" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hints" wrappingWidth="449.40869140625">
+                  <font>
+                     <Font name="Calibri Bold" size="16.0" />
+                  </font>
+               </Text>
+            </children>
+         </Pane>
          <ImageView fx:id="hintsButton" fitWidth="65.0" layoutX="1210.0" layoutY="10.0" onMouseClicked="#toggleHints" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../src/Hints.png" />
@@ -201,7 +214,7 @@
                <Font name="Calibri Bold" size="33.0" />
             </font>
          </Text>
-         <Text fx:id="informationText" visible="false" fill="WHITE" layoutX="250.0" layoutY="701.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du har ikke råd" textAlignment="CENTER">
+         <Text fx:id="informationText" fill="WHITE" layoutX="250.0" layoutY="701.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du har ikke råd" textAlignment="CENTER" visible="false">
             <font>
                <Font name="System Bold" size="28.0" />
             </font>

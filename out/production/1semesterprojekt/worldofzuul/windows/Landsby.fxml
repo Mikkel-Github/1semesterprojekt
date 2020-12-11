@@ -40,18 +40,20 @@
                   <Image url="@../src/Talebobbel_Venstre.png" />
                </image>
             </ImageView>
+            <Text fx:id="mandTekst" layoutX="148.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeg mangler en fisk. Vil du hjælpe mig?" textAlignment="CENTER" wrappingWidth="271.1753730773926">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
             <ImageView fx:id="MandSvarJa" fitHeight="136.0" fitWidth="46.0" layoutX="228.0" layoutY="229.0" onMouseClicked="#SvarJaClicked" preserveRatio="true">
                <Image url="@../src/ja.png" />
             </ImageView>
             <ImageView fx:id="MandSvarNej" fitHeight="136.0" fitWidth="46.0" layoutX="300.0" layoutY="229.0" onMouseClicked="#SvarJaClicked" preserveRatio="true">
                <Image url="@../src/ikke_nu.png" />
             </ImageView>
-            <Text fx:id="mandTekst" layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeg mangler en fisk. Vil du hjælpe mig?" wrappingWidth="219.1754035949707">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-            <Button fx:id="mandAflever" layoutX="242.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#afleverGenstande" text="Aflever mad" visible="false" />
+            <ImageView fx:id="mandAflever" fitHeight="136.0" fitWidth="46.0" layoutX="242.0" layoutY="229.0" onMouseClicked="#afleverGenstande" preserveRatio="true">
+               <Image url="@../src/Aflever.png" />
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="KvindeTale" layoutX="202.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" visible="false">
@@ -67,12 +69,14 @@
             <ImageView fx:id="KvindeSvarNej" fitHeight="136.0" fitWidth="46.0" layoutX="300.0" layoutY="229.0" onMouseClicked="#SvarJaClicked" preserveRatio="true">
                <Image url="@../src/ikke_nu.png" />
             </ImageView>
-            <Text fx:id="kvindeTekst" layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeg mangler en banan. Vil du hjælpe mig?" wrappingWidth="219.1754035949707">
+            <Text fx:id="kvindeTekst" layoutX="141.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeg mangler en banan. Vil du hjælpe mig?" textAlignment="CENTER" wrappingWidth="287.97551345825195">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="kvindeAflever" layoutX="240.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#afleverGenstande" text="Aflever mad" visible="false" />
+            <ImageView fx:id="kvindeAflever" fitHeight="136.0" fitWidth="46.0" layoutX="240.0" layoutY="229.0" onMouseClicked="#afleverGenstande" preserveRatio="true">
+               <Image url="@../src/Aflever.png" />
+            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="BarnTale" layoutX="349.0" layoutY="195.0" prefHeight="200.0" prefWidth="200.0" visible="false">
@@ -88,12 +92,14 @@
             <ImageView fx:id="BarnSvarNej" fitHeight="136.0" fitWidth="46.0" layoutX="300.0" layoutY="229.0" onMouseClicked="#SvarJaClicked" preserveRatio="true">
                <Image url="@../src/ikke_nu.png" />
             </ImageView>
-            <Text fx:id="barnTekst" layoutX="172.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeg mangler en pose ris. Vil du hjælpe mig?" wrappingWidth="219.1754035949707">
+            <Text fx:id="barnTekst" layoutX="153.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeg mangler en pose ris. Vil du hjælpe mig?" textAlignment="CENTER" wrappingWidth="264.7755012512207">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="barnAflever" layoutX="248.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#afleverGenstande" text="Aflever mad" visible="false" />
+            <ImageView fx:id="barnAflever" fitHeight="136.0" fitWidth="46.0" layoutX="248.0" layoutY="229.0" onMouseClicked="#afleverGenstande" preserveRatio="true">
+               <Image url="@../src/Aflever.png" />
+            </ImageView>
          </children>
       </AnchorPane>
       <ImageView fitHeight="259.0" fitWidth="168.0" layoutX="1103.0" layoutY="484.0" onMouseClicked="#SkiltClicked" preserveRatio="true">
@@ -183,6 +189,20 @@
             </Text>
          </children>
       </Pane>
+      <Pane fx:id="hintsBox" layoutX="722.0" layoutY="20.0" prefHeight="280.0" prefWidth="470.0" visible="false">
+         <children>
+            <ImageView fitHeight="280.0" fitWidth="470.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../src/Inventory_Square.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="hintsText" fill="WHITE" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hints" wrappingWidth="449.40869140625">
+               <font>
+                  <Font name="Calibri Bold" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
       <ImageView fx:id="hintsButton" fitWidth="65.0" layoutX="1210.0" layoutY="10.0" onMouseClicked="#toggleHints" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../src/Hints.png" />
@@ -193,5 +213,10 @@
             <Image url="@../src/Inventory.png" />
          </image>
       </ImageView>
+      <Button fx:id="tagQuizButton" onMouseClicked="#tagQuiz" alignment="CENTER" layoutX="501.0" layoutY="329.0" mnemonicParsing="false" text="Tag Quiz" visible="false">
+         <font>
+            <Font size="52.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

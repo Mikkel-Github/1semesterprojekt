@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -69,7 +68,7 @@
                         <Image url="@../src/InformationsFirkant.png" />
                      </image>
                   </ImageView>
-                  <Label text="Bla" />
+                  <Text layoutX="9.0" layoutY="27.0" text="Indeholder: 82 kcal, 1,3g protein, 19g kulhydrater, 0,2 g fedt, A-vitamin 4,42 RE, C-vitamin 11,2 mg, per 100g. - 3 kr" wrappingWidth="181.35382080078125" />
                   <ImageView fx:id="bananKnap" fitHeight="23.0" fitWidth="51.0" layoutX="81.0" layoutY="110.0" onMouseClicked="#Køb" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../src/Køb.png" />
@@ -84,7 +83,7 @@
                         <Image url="@../src/InformationsFirkant.png" />
                      </image>
                   </ImageView>
-                  <Label text="Bla" />
+                  <Text layoutX="10.0" layoutY="25.0" text="Indeholder: 112 kcal, 1,5g protein, 27,9g kulhydrater, 0,2g fedt, vitamin B6 0,293 mg, C-vitamin 17,1 mg, per 100 gram. - 5 kr" wrappingWidth="181.35382080078114" />
                   <ImageView fx:id="yamsKnap" fitHeight="23.0" fitWidth="51.0" layoutX="81.0" layoutY="110.0" onMouseClicked="#Køb" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../src/Køb.png" />
@@ -99,7 +98,7 @@
                         <Image url="@../src/InformationsFirkant.png" />
                      </image>
                   </ImageView>
-                  <Label text="bla" />
+                  <Text layoutX="11.0" layoutY="29.0" text="Indeholder 365 kcal, 7,8g protein, 79,8g kulhydrater, 1,2g fedt, vitamin B1 0,61 mg, per 100 gram. - 8 kr" wrappingWidth="181.35382080078108" />
                   <ImageView fx:id="risKnap" fitHeight="23.0" fitWidth="51.0" layoutX="81.0" layoutY="110.0" onMouseClicked="#Køb" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../src/Køb.png" />
@@ -114,7 +113,7 @@
                         <Image url="@../src/InformationsFirkant.png" />
                      </image>
                   </ImageView>
-                  <Label text="bla" />
+                  <Text layoutX="10.0" layoutY="29.0" text="Indeholder: 159 kcal, 1,4g protein, 38,1g kulhydrater, 0,3g fedt, C-vitamin 20,6 mg, vitamin B1 0,087 mg, per 100 gram. - 6 kr" wrappingWidth="181.35382080078102" />
                   <ImageView fx:id="kassavaKnap" fitHeight="23.0" fitWidth="51.0" layoutX="81.0" layoutY="110.0" onMouseClicked="#Køb" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../src/Køb.png" />
@@ -122,7 +121,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane fx:id="inventoryBox" onMouseClicked="#getItem" layoutX="725.0" layoutY="200.0" prefHeight="400.0" prefWidth="500.0" visible="false">
+            <Pane fx:id="inventoryBox" layoutX="725.0" layoutY="200.0" onMouseClicked="#getItem" prefHeight="400.0" prefWidth="500.0" visible="false">
                <children>
                   <ImageView fitHeight="400.0" fitWidth="500.0" pickOnBounds="true">
                      <image>
@@ -204,6 +203,20 @@
                   </Text>
                </children>
             </Pane>
+            <Pane fx:id="hintsBox" layoutX="722.0" layoutY="20.0" prefHeight="126.0" prefWidth="470.0" visible="false">
+               <children>
+                  <ImageView fitHeight="126.0" fitWidth="470.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../src/Inventory_Square.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="hintsText" fill="WHITE" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hints" wrappingWidth="449.40869140625">
+                     <font>
+                        <Font name="Calibri Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
             <ImageView fx:id="hintsButton" fitWidth="65.0" layoutX="1210.0" layoutY="10.0" onMouseClicked="#toggleHints" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../src/Hints.png" />
@@ -224,7 +237,7 @@
                   <Font name="Calibri Bold" size="33.0" />
                </font>
             </Text>
-            <Text fx:id="informationText" visible="false" fill="WHITE" layoutX="250.0" layoutY="701.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du har ikke råd" textAlignment="CENTER">
+            <Text fx:id="informationText" fill="WHITE" layoutX="250.0" layoutY="701.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Du har ikke råd" textAlignment="CENTER" visible="false">
                <font>
                   <Font name="System Bold" size="28.0" />
                </font>

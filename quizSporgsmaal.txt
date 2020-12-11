@@ -1,8 +1,5 @@
-Spørgsmål 1,Svar A1,Svar B1,Svar C1,Svar D1;a;
-Spørgsmål 2,Svar A2,Svar B2,Svar C2,Svar D2;b;
-Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3;c;
-Hvad er meningen med livet?,A: En ko,B: Fisk,C: grise,D: øøøøøhhh;d;
-Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3;c;
-Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3;c;
-Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3;c;
-Spørgsmål 3,Svar A3,Svar B3,Svar C3,Svar D3;c;
+Hvad manglede drengen Mads?,Omega 3 og protein,En ged,B52-Vitamin,Kyllinge kød;a;
+Hvilke konsekvenser kan der være ved at være eller blive underernæret?,Svage tænder og koncentrations besvær,Højt humør og gode tænder,Dine negle falder af,Dit hår falder af;a;
+Hvilket produkt indeholder C-vitaminer?,Gedebøf,Ris,Kassava,Fisk;c;
+Hvilke vitaminer indeholder ris blandt andet?,A-vitaminer,B1-vitaminer,C-vitaminer,D-vitaminer;b;
+Hvilke konsekvenser kan det have hvis man mangler C-vitamin?,Skørbug,Udtørret hud,Dårlig hørelse,irriterede øjne;a

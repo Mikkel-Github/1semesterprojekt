@@ -35,7 +35,7 @@
                   <Image url="@../src/Skilt_Landsby.png" />
                </image>
             </ImageView>
-            <Pane fx:id="inventoryBox" visible="false" onMouseClicked="#getItem" layoutX="725.0" layoutY="200.0" prefHeight="400.0" prefWidth="500.0">
+            <Pane fx:id="inventoryBox" layoutX="725.0" layoutY="200.0" onMouseClicked="#getItem" prefHeight="400.0" prefWidth="500.0" visible="false">
                <children>
                   <ImageView fitHeight="400.0" fitWidth="500.0" pickOnBounds="true">
                      <image>
@@ -113,6 +113,20 @@
                   <Text fx:id="playerBalance" fill="WHITE" layoutX="50.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Penge: ">
                      <font>
                         <Font name="Calibri Bold" size="33.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane fx:id="hintsBox" layoutX="722.0" layoutY="20.0" prefHeight="145.0" prefWidth="470.0" visible="false">
+               <children>
+                  <ImageView fitHeight="145.0" fitWidth="470.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../src/Inventory_Square.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="hintsText" fill="WHITE" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hints" wrappingWidth="449.40869140625">
+                     <font>
+                        <Font name="Calibri Bold" size="16.0" />
                      </font>
                   </Text>
                </children>

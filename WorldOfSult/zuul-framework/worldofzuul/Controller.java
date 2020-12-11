@@ -632,7 +632,7 @@ public class Controller {
         return tasksDone;
     }
 
-    public void afleverGenstande(MouseEvent mouseEvent) throws IOException {
+    public void afleverGenstande(MouseEvent mouseEvent) {
         if(!inventoryOpen) {
             toggleInventory();
         }
@@ -642,6 +642,7 @@ public class Controller {
                 SkjulTale();
                 mandAflever.setVisible(false);
                 playerController.removeItemFromInventory("Kassava");
+                playerController.resetPlayerBalance();
                 opdaterInventory();
                 saveState("mand");
                 game.writeHarOpgave("");
@@ -652,10 +653,18 @@ public class Controller {
                     tagQuizButton.setVisible(true);
                 }
             }
+            else if(mouseEvent.getTarget() == mandAflever) {
+                playerController.resetPlayerBalance();
+                playerController.resetInventory();
+                playerController.addMoneyToPlayer(15);
+                opdaterInventory();
+                mandTekst.setText("Det er ikke rigtigt. \nPrøv igen.");
+            }
             else if(inventoryMarkedItem.equals("Ris") && mouseEvent.getTarget() == kvindeAflever){
                 SkjulTale();
                 kvindeAflever.setVisible(false);
                 playerController.removeItemFromInventory("Ris");
+                playerController.resetPlayerBalance();
                 opdaterInventory();
                 saveState("kvinde");
                 game.writeHarOpgave("");
@@ -666,10 +675,18 @@ public class Controller {
                     tagQuizButton.setVisible(true);
                 }
             }
+            else if(mouseEvent.getTarget() == kvindeAflever) {
+                playerController.resetPlayerBalance();
+                playerController.resetInventory();
+                playerController.addMoneyToPlayer(15);
+                opdaterInventory();
+                kvindeTekst.setText("Det er ikke rigtigt. \nPrøv igen.");
+            }
             else if(inventoryMarkedItem.equals("Fisk") && mouseEvent.getTarget() == barnAflever){
                 SkjulTale();
                 barnAflever.setVisible(false);
                 playerController.removeItemFromInventory("Fisk");
+                playerController.resetPlayerBalance();
                 opdaterInventory();
                 saveState("barn");
                 game.writeHarOpgave("");
@@ -679,6 +696,13 @@ public class Controller {
                     }
                     tagQuizButton.setVisible(true);
                 }
+            }
+            else if(mouseEvent.getTarget() == barnAflever) {
+                playerController.resetPlayerBalance();
+                playerController.resetInventory();
+                playerController.addMoneyToPlayer(10);
+                opdaterInventory();
+                barnTekst.setText("Det er ikke rigtigt. \nPrøv igen.");
             }
         }
     }

@@ -31,6 +31,8 @@ public class Controller {
     Game game = new Game();
     Player playerController = new Player();
 
+    boolean tekstfelt = false;
+
     boolean HarOpgave = false;
 
     boolean inventoryOpen = false;
@@ -48,23 +50,31 @@ public class Controller {
     @FXML
     private ImageView logoImage;
     @FXML
+    private ImageView answerA;
+    @FXML
+    private ImageView answerB;
+    @FXML
+    private ImageView answerC;
+    @FXML
+    private ImageView answerD;
+    @FXML
     private AnchorPane MandTale;
     @FXML
     private AnchorPane KvindeTale;
     @FXML
     private AnchorPane BarnTale;
     @FXML
-    private Button MandSvarJa;
+    private ImageView MandSvarJa;
     @FXML
-    private Button MandSvarNej;
+    private ImageView MandSvarNej;
     @FXML
-    private Button KvindeSvarJa;
+    private ImageView KvindeSvarJa;
     @FXML
-    private Button KvindeSvarNej;
+    private ImageView KvindeSvarNej;
     @FXML
-    private Button BarnSvarJa;
+    private ImageView BarnSvarJa;
     @FXML
-    private Button BarnSvarNej;
+    private ImageView BarnSvarNej;
     @FXML
     private Pane fiskTekst;
     @FXML
@@ -445,21 +455,21 @@ public class Controller {
 
     ///////////////////// QUIZ /////////////////////////
     public void MandClicked(MouseEvent mouseEvent) throws Exception {
-        if(HarOpgave==false){
+        if(game.checkHarOpgave().equals("mand") || game.checkHarOpgave().equals("")){
             SkjulTale();
             MandTale.setVisible(true);
         }
     }
 
     public void KvindeClicked(MouseEvent mouseEvent) throws Exception {
-        if(HarOpgave==false) {
+        if(game.checkHarOpgave().equals("kvinde") || game.checkHarOpgave().equals("")) {
             SkjulTale();
             KvindeTale.setVisible(true);
         }
     }
 
     public void DrengClicked(MouseEvent mouseEvent) throws Exception {
-        if(HarOpgave==false) {
+        if(game.checkHarOpgave().equals("dreng") || game.checkHarOpgave().equals("")) {
             SkjulTale();
             BarnTale.setVisible(true);
         }
@@ -471,15 +481,23 @@ public class Controller {
 
 
     public void SvarJaClicked(MouseEvent mouseEvent)throws Exception {
-        HarOpgave=true;
         if(mouseEvent.getTarget()==MandSvarJa){
            playerController.addMoneyToPlayer(100);
+           game.writeHarOpgave("mand");
+           MandSvarJa.setVisible(false);
+           MandSvarNej.setVisible(false);
         }
         else if(mouseEvent.getTarget()==KvindeSvarJa) {
-            playerController.addMoneyToPlayer(0);
+            playerController.addMoneyToPlayer(100);
+            game.writeHarOpgave("kvinde");
+            KvindeSvarJa.setVisible(false);
+            KvindeSvarNej.setVisible(false);
         }
         else if(mouseEvent.getTarget()==BarnSvarJa) {
-            playerController.addMoneyToPlayer(1);
+            playerController.addMoneyToPlayer(100);
+            game.writeHarOpgave("dreng");
+            BarnSvarJa.setVisible(false);
+            BarnSvarNej.setVisible(false);
         }
         SkjulTale();
     }

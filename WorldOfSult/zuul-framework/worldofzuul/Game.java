@@ -1,6 +1,8 @@
 package worldofzuul;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -299,6 +301,32 @@ public class Game
                 System.out.println("Du fik " + playerManager.getPoints() + " rigtige ud af " + answerList.size() + " spørgsmål");
             }
         }*/
+    }
+
+    public String checkHarOpgave() {
+        // Load Questions and Answers from file
+        boolean canLoadFile = false;
+        Path fileName = Path.of("harOpgave.txt");
+        String actual = null;
+        try {
+            actual = Files.readString(fileName);
+            canLoadFile = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            canLoadFile = false;
+            System.out.println("Can't load file");
+        }
+        return actual;
+    }
+
+    public void writeHarOpgave(String input) {
+        try {
+            PrintWriter writer = new PrintWriter("harOpgave.txt");
+            writer.print(input);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList askQuestion(int questionNumber) {

@@ -85,7 +85,7 @@ public class QuizController {
                 Text text = new Text(resultat.get(i) + ": " + resultat.get(i+1));
                 text.setCache(true);
                 text.setFill(Color.BLACK);
-                text.setFont(Font.font(24));
+                text.setFont(Font.font(16));
                 quizResults.getChildren().add(text);
                 scrollBox.setContent(quizResults);
             }

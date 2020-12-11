@@ -192,7 +192,6 @@ public class Player {
 
     // Returns the players score
     public int getPoints() {
-        // todo : Mikkel - fortæl brugeren hvor mange brugeren har fået rigtigt i alt
         return playerQuizScore;
     }
 

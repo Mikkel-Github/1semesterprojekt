@@ -39,9 +39,9 @@
                         <Image url="@../src/Answer_A_kridt.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="AnswerAText" disable="true" fill="WHITE" layoutX="100.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer A">
+                  <Text fx:id="AnswerAText" disable="true" fill="WHITE" layoutX="70.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer A" wrappingWidth="227.74917602539062">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
                </children>
@@ -53,9 +53,9 @@
                         <Image url="@../src/Answer_B_kridt.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="AnswerBText" disable="true" fill="WHITE" layoutX="100.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer B">
+                  <Text fx:id="AnswerBText" disable="true" fill="WHITE" layoutX="70.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer B" wrappingWidth="227.74917602539074">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
                </children>
@@ -67,9 +67,9 @@
                         <Image url="@../src/Answer_C_kridt.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="AnswerCText" disable="true" fill="WHITE" layoutX="100.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer C">
+                  <Text fx:id="AnswerCText" disable="true" fill="WHITE" layoutX="70.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer C" wrappingWidth="227.74917602539062">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
                </children>
@@ -81,9 +81,9 @@
                         <Image url="@../src/Answer_D_kridt.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="AnswerDText" disable="true" fill="WHITE" layoutX="100.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer D">
+                  <Text fx:id="AnswerDText" disable="true" fill="WHITE" layoutX="70.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer D" wrappingWidth="227.74917602539062">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
                </children>
@@ -104,15 +104,15 @@
                <Font name="Calibri Bold" size="16.0" />
             </font></TextArea>
        </StackPane>
-      <Pane fx:id="quizDone" disable="true" layoutX="390.0" opacity="0.0" prefHeight="700.0" prefWidth="500.0">
+      <Pane fx:id="quizDone" disable="true" layoutX="290.0" opacity="0.0" prefHeight="700.0" prefWidth="700.0">
          <children>
-            <Text fill="WHITE" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quizen er færdig">
+            <Text fill="WHITE" layoutX="100.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quizen er færdig">
                <font>
                   <Font size="70.0" />
                </font>
             </Text>
             <VBox fx:id="quizResults" layoutY="300.0" prefHeight="400.0" prefWidth="500.0" />
-            <ScrollPane fx:id="scrollBox" hbarPolicy="NEVER" layoutY="268.0" prefHeight="433.0" prefWidth="510.0" />
+            <ScrollPane fx:id="scrollBox" hbarPolicy="NEVER" layoutY="268.0" prefHeight="433.0" prefWidth="700.0" />
          </children>
       </Pane>
    </children>

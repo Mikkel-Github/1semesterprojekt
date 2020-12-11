@@ -455,7 +455,6 @@ public class Controller {
         ft.play();
     }
 
-    ///////////////////// QUIZ /////////////////////////
     public void MandClicked() {
         boolean isDone = false;
         for(String s : getKlaredeOpgaver()) {

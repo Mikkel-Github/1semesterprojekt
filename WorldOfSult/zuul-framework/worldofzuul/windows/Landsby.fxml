@@ -102,7 +102,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="259.0" fitWidth="168.0" layoutX="1103.0" layoutY="484.0" onMouseClicked="#SkiltClicked" preserveRatio="true">
+      <ImageView fx:id="skiltMarkedspladsImage" fitHeight="259.0" fitWidth="168.0" layoutX="1103.0" layoutY="484.0" onMouseClicked="#SkiltClicked" preserveRatio="true">
          <image>
             <Image url="@../src/Skilt_Markedsplads.png" />
          </image>

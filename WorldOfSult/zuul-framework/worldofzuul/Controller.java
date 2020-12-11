@@ -146,6 +146,8 @@ public class Controller {
     private Text hintsText;
     @FXML
     private Button tagQuizButton;
+    @FXML
+    private ImageView skiltMarkedspladsImage;
 
     @FXML
     public void initialize() {
@@ -645,6 +647,7 @@ public class Controller {
                         toggleInventory();
                     }
                     tagQuizButton.setVisible(true);
+                    skiltMarkedspladsImage.setDisable(true);
                 }
             }
             else if(mouseEvent.getTarget() == mandAflever) {
@@ -673,6 +676,7 @@ public class Controller {
                         toggleInventory();
                     }
                     tagQuizButton.setVisible(true);
+                    skiltMarkedspladsImage.setDisable(true);
                 }
             }
             else if(mouseEvent.getTarget() == kvindeAflever) {
@@ -702,6 +706,7 @@ public class Controller {
                         toggleInventory();
                     }
                     tagQuizButton.setVisible(true);
+                    skiltMarkedspladsImage.setDisable(true);
                 }
             }
             else if(mouseEvent.getTarget() == barnAflever) {

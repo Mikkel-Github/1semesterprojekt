@@ -22,12 +22,12 @@
             </ImageView>
             <ImageView fitHeight="230.0" fitWidth="201.0" layoutX="657.0" layoutY="479.0" onMouseClicked="#Skilt_kødmarkedClicked" preserveRatio="true">
                <image>
-                  <Image url="@../src/Skilt_kødmarked.png" />
+                  <Image url="@../src/Skilt_kodmarked.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="323.0" fitWidth="190.0" layoutX="254.0" layoutY="430.0" onMouseClicked="#Skilt_frugtoggrøntClicked" preserveRatio="true">
                <image>
-                  <Image url="@../src/Skilt_frugtoggrønt.png" />
+                  <Image url="@../src/Skilt_frugtoggront.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="201.0" fitWidth="144.0" layoutX="470.0" layoutY="28.0" onMouseClicked="#Skilt_LandsbyClicked" preserveRatio="true">
